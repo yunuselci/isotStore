@@ -2,23 +2,7 @@
 <header class="main-header dark-header fs-header sticky">
     <div class="header-inner">
         <div class="logo-holder">
-            <a href="index.html"><img src="{{ asset('theme') }}/images/logo.png" alt=""></a>
-        </div>
-        <div class="header-search vis-header-search">
-            <div class="header-search-input-item">
-                <input type="text" placeholder="Keywords" value=""/>
-            </div>
-            <div class="header-search-select-item">
-                <select data-placeholder="All Categories" class="chosen-select" >
-                    <option>All Categories</option>
-                    <option>Shops</option>
-                    <option>Hotels</option>
-                    <option>Restaurants</option>
-                    <option>Fitness</option>
-                    <option>Events</option>
-                </select>
-            </div>
-            <button class="header-search-button" onclick="window.location.href='listing.html'">Search</button>
+            <a href="{{route('home')}}"><img src="{{ asset('theme') }}/images/logo.png" alt=""></a>
         </div>
         <div class="show-search-button"><i class="fa fa-search"></i> <span>Search</span></div>
         <a href="dashboard-add-listing.html" class="add-list">Add Listing <span><i class="fa fa-plus"></i></span></a>
@@ -35,28 +19,30 @@
             <nav>
                 <ul>
                     <li>
-                        <a href="#" class="act-link">Home <i class="fa fa-caret-down"></i></a>
-                        <!--second level -->
-                        <ul>
-                            <li><a href="{{ asset('theme') }}/index.html">Parallax Image</a></li>
-                            <li><a href="{{ asset('theme') }}/index2.html">Video</a></li>
-                            <li><a href="{{ asset('theme') }}/index3.html">Map</a></li>
-                            <li><a href="{{ asset('theme') }}/index4.html">Slideshow</a></li>
-                            <li><a href="{{ asset('theme') }}/index5.html">Slider</a></li>
-                            <li><a href="{{ asset('theme') }}/index6.html">Fullscreen Slider</a></li>
-                        </ul>
-                        <!--second level end-->
+                        <a href="{{ route('home') }}" class="act-link">Anasayfa </a>
                     </li>
                     <li>
-                        <a href="#">Listings <i class="fa fa-caret-down"></i></a>
+                        <a href="{{ route('categories') }}"> Kategoriler <i class="fa fa-caret-down"></i></a>
                         <!--second level -->
                         <ul>
-                            <li><a href="listing.html">Column map</a></li>
-                            <li><a href="listing2.html">Column map 2</a></li>
-                            <li><a href="listing3.html">Fullwidth Map</a></li>
-                            <li><a href="listing4.html">Fullwidth Map 2</a></li>
-                            <li><a href="listing5.html">Without Map</a></li>
-                            <li><a href="listing6.html">Without Map 2</a></li>
+                            <li><a href="listing.html">Ziraat, İçecek ve Gıda Ürünleri</a></li>
+                            <li><a href="listing2.html">Tekstil</a></li>
+                            <li><a href="listing3.html">Deri ve Deri Kimyasalları</a></li>
+                            <li><a href="listing4.html">Moda</a></li>
+                            <li><a href="listing5.html">Elektrik ve Elektronik Ürünleri</a></li>
+                            <li><a href="listing6.html">Hediyelik, Hobi ve Oyuncak</a></li>
+                            <li><a href="listing.html">Medikal ve Tek Kullanımlık Ürünler</a></li>
+                            <li><a href="listing2.html">Yapı Malzemeleri ve Bahçe</a></li>
+                            <li><a href="listing3.html">Temizlik</a></li>
+                            <li><a href="listing4.html">Kimyasallar ve Hammaddeler</a></li>
+                            <li><a href="listing5.html">Ambalaj ve Kırtasiye</a></li>
+                            <li><a href="listing6.html">Kozmetik ve Kişisel Bakım</a></li>
+                            <li><a href="listing4.html">Spor Ekipmanları</a></li>
+                            <li><a href="listing5.html">Anne ve Bebek Ürünleri</a></li>
+                            <li><a href="listing6.html">Züccaciye</a></li>
+                            <li><a href="listing6.html">Mobilya</a></li>
+                            <li><a href="listing6.html">Oto Yedek Parça</a></li>
+                            <li><a href="listing6.html">Diğer</a></li>
                             <li>
                                 <a href="#">Single <i class="fa fa-caret-down"></i></a>
                                 <!--third  level  -->
@@ -73,25 +59,6 @@
                     </li>
                     <li>
                         <a href="blog.html">News</a>
-                    </li>
-                    <li>
-                        <a href="#">Pages <i class="fa fa-caret-down"></i></a>
-                        <!--second level -->
-                        <ul>
-                            <li><a href="about.html">About</a></li>
-                            <li><a href="contacts.html">Contacts</a></li>
-                            <li><a href="author-single.html">User single</a></li>
-                            <li><a href="how-itworks.html">How it Works</a></li>
-                            <li><a href="pricing-tables.html">Pricing</a></li>
-                            <li><a href="dashboard-myprofile.html">User Dasboard</a></li>
-                            <li><a href="blog-single.html">Blog Single</a></li>
-                            <li><a href="dashboard-add-listing.html">Add Listing</a></li>
-                            <li><a href="404.html">404</a></li>
-                            <li><a href="coming-soon.html">Coming Soon</a></li>
-                            <li><a href="header2.html">Header 2</a></li>
-                            <li><a href="footer-fixed.html">Footer Fixed</a></li>
-                        </ul>
-                        <!--second level end-->
                     </li>
                 </ul>
             </nav>
