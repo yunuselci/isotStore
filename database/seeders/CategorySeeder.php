@@ -16,95 +16,35 @@ class CategorySeeder extends Seeder
      */
     public function run()
     {
-        DB::table('categories')->insert([
-           'name'=> 'Ziraat, İçecek ve Gıda Ürünleri',
-            'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
-            'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
-        ]);
-        DB::table('categories')->insert([
-           'name'=> 'Tekstil',
-            'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
-            'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
-        ]);
-        DB::table('categories')->insert([
-           'name'=> 'Deri ve Deri Kimyasalları',
-            'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
-            'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
-        ]);
-        DB::table('categories')->insert([
-           'name'=> 'Moda',
-            'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
-            'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
-        ]);
-        DB::table('categories')->insert([
-           'name'=> 'Elektrik ve Elektronik Ürünleri',
-            'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
-            'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
-        ]);
-        DB::table('categories')->insert([
-           'name'=> 'Hediyelik, Hobi ve Oyuncak',
-            'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
-            'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
-        ]);
-        DB::table('categories')->insert([
-           'name'=> 'Medikal ve Tek Kullanımlık Ürünler',
-            'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
-            'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
-        ]);
-        DB::table('categories')->insert([
-           'name'=> 'Yapı Malzemeleri ve Bahçe',
-            'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
-            'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
-        ]);
-        DB::table('categories')->insert([
-           'name'=> 'Temizlik',
-            'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
-            'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
-        ]);
-        DB::table('categories')->insert([
-           'name'=> 'Kimyasallar ve Hammaddeler',
-            'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
-            'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
-        ]);
-        DB::table('categories')->insert([
-           'name'=> 'Ambalaj ve Kırtasiye',
-            'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
-            'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
-        ]);
-        DB::table('categories')->insert([
-           'name'=> 'Kozmetik ve Kişisel Bakım',
-            'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
-            'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
-        ]);
-        DB::table('categories')->insert([
-           'name'=> 'Spor Ekipmanları',
-            'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
-            'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
-        ]);
-        DB::table('categories')->insert([
-           'name'=> 'Anne ve Bebek Ürünleri',
-            'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
-            'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
-        ]);
-        DB::table('categories')->insert([
-           'name'=> 'Züccaciye',
-            'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
-            'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
-        ]);
-        DB::table('categories')->insert([
-           'name'=> 'Mobilya',
-            'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
-            'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
-        ]);
-        DB::table('categories')->insert([
-           'name'=> 'Oto Yedek Parça',
-            'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
-            'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
-        ]);
-        DB::table('categories')->insert([
-           'name'=> 'Diğer',
-            'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
-            'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
-        ]);
+        $names = array(
+            'Ziraat, İçecek ve Gıda Ürünleri',
+            'Tekstil',
+            'Deri ve Deri Kimyasalları',
+            'Moda',
+            'Elektrik ve Elektronik Ürünleri',
+            'Hediyelik, Hobi ve Oyuncak',
+            'Medikal ve Tek Kullanımlık Ürünler',
+            'Yapı Malzemeleri ve Bahçe',
+            'Temizlik',
+            'Kimyasallar ve Hammaddeler',
+            'Ambalaj ve Kırtasiye',
+            'Kozmetik ve Kişisel Bakım',
+            'Spor Ekipmanları',
+            'Anne ve Bebek Ürünleri',
+            'Züccaciye',
+            'Mobilya',
+            'Oto Yedek Parça',
+            'Diğer',
+        );
+
+        foreach ($names as $name){
+            DB::table('categories')->insert([
+                'name'=> $name,
+                'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
+                'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
+            ]);
+        }
+
+
     }
 }

@@ -270,7 +270,7 @@ blockquote p {
 }
 .box-item:before {
 	content:'';
-	position:absolute;l
+	position:absolute;
 	top:0;
 	left:0;
 	width:100%;
@@ -576,6 +576,30 @@ blockquote p {
     padding: 6px 15px;
 }
 /* ------Navigation------------------------------------------------------------ */
+.nav-scroll{
+    overflow-y: auto;
+    height: 200px;
+    overflow-x: hidden;
+    width:250px;
+}
+#style-pinar::-webkit-scrollbar {
+     width: 4px;
+ }
+
+#style-pinar::-webkit-scrollbar-track {
+     background: transparent;
+ }
+
+#style-pinar::-webkit-scrollbar-thumb {
+     min-height: 8px;
+     max-height: 8px;
+     background: #d6dee2;
+     border-radius: 8px;
+ }
+
+#style-pinar::-webkit-scrollbar-thumb:hover {
+     background: #bdc9d1;
+ }
 .nav-holder {
 	float:right;
 	position:relative;
@@ -958,7 +982,7 @@ section.gray-section .section-separator {
 	border-bottom-right-radius:30px;
 	cursor:pointer;
 }
- 
+
 .main-search-input-item  .nice-select {
 	color:#292929;
 	float:left;
@@ -975,7 +999,7 @@ section.gray-section .section-separator {
     background: #fff;
     border-radius: 4px;
 	max-height: 180px;
-	
+
 }
 .main-search-input-item  .nice-select .list li{
 	float:left;
@@ -3271,7 +3295,7 @@ article .list-single-main-item {
 	width:100%;
 	padding: 80px 12px 10px;
     background: #fff;
- 
+
     border-radius: 4px;
 }
 .custom-form .nice-select .list li{
@@ -4146,7 +4170,7 @@ article .list-single-main-item {
 	border-bottom:1px solid #eee;
 	width:100%;
 }
- 
+
 .dashboard-list:nth-child(2n+1) {
 	background: #fbfbfb;
 }
@@ -5715,7 +5739,7 @@ footer.main-footer.fixed-footer {
 	height:50px;
 	padding-right:40px;
 	border-top:1px solid #eee;
- 
+
 }
 .chat-widget_input textarea {
 	display: block;
@@ -5817,7 +5841,7 @@ footer.main-footer.fixed-footer {
 	left:4px;
 	top:70px;
 	font-weight:500;
- 
+
 }
 .chat-message.chat-message_user .chat-message-user-name {
 	left:inherit;
@@ -6473,7 +6497,7 @@ footer.main-footer.fixed-footer {
 	float:left;
 	width:100%;
 	padding:50px 20px;
-} 
+}
 }
 /*------Responsive------------------------------------------------*/
 @media only screen and  (max-width: 1524px) {
