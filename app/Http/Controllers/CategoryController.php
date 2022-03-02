@@ -9,6 +9,7 @@ class CategoryController extends Controller
 {
     public function index()
     {
-        return view('theme.include.categories');
+        $categories = Category::all();
+        return view('theme.include.categories',compact($categories));
     }
 }

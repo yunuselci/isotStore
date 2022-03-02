@@ -21,17 +21,21 @@
                     <li>
                         <a href="{{ route('home') }}" class="act-link">Anasayfa</a>
                     </li>
-                        <li>
-                            <a href="{{ route('categories') }}">Kategoriler<i class="fa fa-caret-down"></i></a>
-                        </li>
+                    @isset($categories)
+                    <li>
+                        <a href="{{ route('categories') }}"> Kategoriler<i class="fa fa-caret-down"></i></a>
+                        <!--second level -->
+                        <ul>
+                            <div class="nav-scroll" id="style-pinar">
+                                @foreach($categories as $category)
+                                <li><a href="#">{{ $category->name }}</a></li>
 
-                            <ul>
-                                <div class="nav-scroll" id="style-pinar">
-                                    <li><a href="listing.html"></a></li>
-                                </div>
-                            </ul>
-
-
+                                @endforeach
+                            </div>
+                        </ul>
+                        <!--second level end-->
+                    </li>
+                    @endisset
                     <li>
                         <a href="blog.html">News</a>
                     </li>
