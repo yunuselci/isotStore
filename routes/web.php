@@ -4,12 +4,12 @@ use Illuminate\Support\Facades\Route;
 
 
 
-Route::get('/', function () {
+Route::get('/home', function () {
     return view('welcome');
 });
 
-Route::get('/tema', function () {
-    return view('theme.theme');
+Route::get('/', function () {
+    return view('theme.include.home');
 });
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
