@@ -3,6 +3,7 @@
 namespace App\Providers;
 
 use App\Models\Category;
+use App\View\Composers\CategoryComposer;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\View;
 
@@ -26,8 +27,6 @@ class ViewServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        View::composer('theme.data.header', function ($view) {
-            $view->with('categories', Category::all());
-        });
+        View::composer('theme.data.header', CategoryComposer::class);
     }
 }
