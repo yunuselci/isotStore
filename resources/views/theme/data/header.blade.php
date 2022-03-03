@@ -27,9 +27,8 @@
                         <!--second level -->
                         <ul>
                             <div class="nav-scroll" id="style-pinar">
-                                @foreach($categories as $category)
-                                <li><a href="#">{{ $category->name }}</a></li>
-
+                                @foreach ( $categories as $index => $category )
+                                <li><a href="{{ $seflink[$index] }}">{{ $category->name }}</a></li>
                                 @endforeach
                             </div>
                         </ul>
