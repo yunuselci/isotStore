@@ -7,6 +7,7 @@ use Carbon\Carbon;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Str;
 
 class CategorySeeder extends Seeder
 {
@@ -41,6 +42,7 @@ class CategorySeeder extends Seeder
         foreach ($names as $name){
             Category::create([
                 'name'=> $name,
+                'seflink' => Str::slug($name),
                 'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
                 'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
             ]);

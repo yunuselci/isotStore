@@ -16,22 +16,8 @@ class CategoryComposer
     }
 
 
-    public function generateSeflink()
-    {
-        $slugNames = collect();
-        $categoryCollection = $this->categories->select('name')->get();
-        $categoryNames = $categoryCollection->pluck('name');
-        foreach ($categoryNames as $categoryName)
-        {
-            $slugNames->push( Str::slug($categoryName));
-        }
-        return $slugNames;
-
-    }
-
     public function compose(View $view)
     {
-        $view ->with('seflink', $this->generateSeflink());
         $view -> with('categories', $this->categories->all());
     }
 
