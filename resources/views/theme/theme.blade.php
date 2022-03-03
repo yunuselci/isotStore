@@ -33,7 +33,7 @@
 
         @yield('master')
         @yield('categories')
-
+        @yield('ads')
         @include('theme.data.footer')
 
     </div>

@@ -23,7 +23,7 @@
                     </li>
                     @isset($categories)
                     <li>
-                        <a href=" {{ route('categories') }}"> Kategoriler<i class="fa fa-caret-down"></i></a>
+                        <a href=" {{ route('categories') }}"> Kategoriler <i class="fa fa-caret-down"></i></a>
                         <!--second level -->
                         <ul>
                             <div class="nav-scroll" id="style-pinar">
@@ -36,7 +36,7 @@
                     </li>
                     @endisset
                     <li>
-                        <a href="blog.html">News</a>
+                        <a href=" {{ route('ads') }}">İlanlar</a>
                     </li>
                 </ul>
             </nav>
