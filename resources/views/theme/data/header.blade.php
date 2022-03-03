@@ -23,12 +23,12 @@
                     </li>
                     @isset($categories)
                     <li>
-                        <a href="{{ route('categories') }}"> Kategoriler<i class="fa fa-caret-down"></i></a>
+                        <a href=" {{ route('categories') }}"> Kategoriler<i class="fa fa-caret-down"></i></a>
                         <!--second level -->
                         <ul>
                             <div class="nav-scroll" id="style-pinar">
                                 @foreach ( $categories as $index => $category )
-                                <li><a href="{{ $seflink[$index] }}">{{ $category->name }}</a></li>
+                                <li><a href="kategoriler/{{ $seflink[$index] }}">{{ $category->name }}</a></li>
                                 @endforeach
                             </div>
                         </ul>
