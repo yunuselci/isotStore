@@ -32,6 +32,7 @@
         @include('theme.data.header')
 
         @yield('master')
+        @yield('categories')
 
         @include('theme.data.footer')
 
