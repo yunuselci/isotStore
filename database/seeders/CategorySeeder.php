@@ -43,6 +43,7 @@ class CategorySeeder extends Seeder
             Category::create([
                 'name'=> $name,
                 'seflink' => Str::slug($name),
+                'image' => 'iSotStore_' . Str::slug($name,'_') . '.jpg',
                 'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
                 'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
             ]);

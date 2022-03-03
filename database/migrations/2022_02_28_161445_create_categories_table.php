@@ -17,6 +17,7 @@ return new class extends Migration
             $table->id();
             $table->string('name',255);
             $table->string('seflink', 255);
+            $table->string('image',255);
             $table->timestamps();
         });
     }
