@@ -10,6 +10,12 @@ class CategoryController extends Controller
     public function index()
     {
         $categories = Category::all();
-        return view('theme.include.categories',compact($categories));
+        return view('theme.include.categories',compact('categories'));
+    }
+
+    public function seflink($seflink)
+    {
+
+        return view('theme.include.category-page',compact('seflink'));
     }
 }

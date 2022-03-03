@@ -31,10 +31,8 @@ class CategoryComposer
 
     public function compose(View $view)
     {
-       // $view ->with('seflink', $this->generateSeoURL($this->categories->select('name')->get()));
         $view ->with('seflink', $this->generateSeflink());
         $view -> with('categories', $this->categories->all());
-
     }
 
 }

@@ -13,6 +13,7 @@ Route::get('/laravel', function () {
 Route::get('/',[HomeController::class,'index'])->name('home');
 
 Route::get('/kategoriler',[CategoryController::class,'index'])->name('categories');
+Route::get('/kategoriler/{seflink}',[CategoryController::class,'seflink'])->name('seflink');
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return view('dashboard');
