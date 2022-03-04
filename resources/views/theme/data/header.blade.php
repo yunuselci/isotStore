@@ -5,7 +5,7 @@
             <a href="{{route('home')}}"><img src="{{ asset('theme') }}/images/logo.png" alt=""></a>
         </div>
         <div class="show-search-button"><i class="fa fa-search"></i> <span>Search</span></div>
-        <a href="dashboard-add-listing.html" class="add-list">Add Listing <span><i class="fa fa-plus"></i></span></a>
+        <a href="dashboard-add-listing.html" class="add-list">Ürün Listele <span><i class="fa fa-plus"></i></span></a>
         @if (Route::has('login'))
             @auth
                 <div class="header-user-menu">
@@ -14,16 +14,17 @@
                         {{ Auth::user()->name }}
                     </div>
                     <ul>
+                        <li><a href="{{ route('dashboard') }}" class="user-profile-act"><i class="fa fa-gears"></i>Kullanıcı Paneli</a></li>
                         <li><a href="{{ route('profile.show') }}"> {{ __('Profili Düzenle') }}</a></li>
                         <li><a href="dashboard-bookings.html"> İlanlarım </a></li>
                         <form method="POST" action="{{ route('logout') }}">
                             @csrf
 
-                            <x-jet-responsive-nav-link href="{{ route('logout') }}"
-                                                       onclick="event.preventDefault();
-                                    this.closest('form').submit();">
-                                {{ __('Çıkış Yap') }}
-                            </x-jet-responsive-nav-link>
+                            <button class="log-out-btn"  type="submit"
+                                    onclick="event.preventDefault();
+                                                     this.closest('form').submit();">
+                                Çıkış Yap
+                            </button>
                         </form>
                     </ul>
                 </div>

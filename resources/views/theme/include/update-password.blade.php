@@ -1,21 +1,20 @@
 @extends('theme.theme')
 @section('title')
-    Profil
+    Şifre Değiştirme - iSotStore
 @endsection
 
-@section('dashboard')
+@section('update-password')
 
     <div class="content">
         <!--section -->
-        <section id="sec1">
+        <section>
             <!-- container -->
             <div class="container">
                 <!-- profile-edit-wrap -->
                 <div class="profile-edit-wrap">
                     <div class="profile-edit-page-header">
-                        <h2>Profil Yönetimi</h2>
-                        <div class="breadcrumbs"><a href=" {{route('dashboard')}}">Profil</a></div>
-
+                        <h2>Şifre güncelleme</h2>
+                        <div class="breadcrumbs"><a href=" {{ route('dashboard') }}">Profil</a><a href="{{ route('edit.profile') }}">Profili düzenle</a><span>Şifreyi değiş</span></div>
                     </div>
                     <div class="row">
                         <div class="col-md-3">
@@ -44,7 +43,7 @@
                                         @csrf
 
                                         <button class="log-out-btn"  type="submit"
-                                                     onclick="event.preventDefault();
+                                                onclick="event.preventDefault();
                                                      this.closest('form').submit();">
                                             Çıkış Yap
                                         </button>
@@ -52,32 +51,35 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-md-9">
+                        <div class="col-md-7">
                             <!-- profile-edit-container-->
                             <div class="profile-edit-container">
-                                <div class="profile-edit-header fl-wrap" style="margin-top:30px">
-                                    <h4>Merhaba , <span> {{ Auth::user()->name }}</span></h4>
+                                <div class="profile-edit-header fl-wrap">
+                                    <h4>Hesabım</h4>
                                 </div>
-
-                                <!-- statistic-container-->
-                                <div class="statistic-container fl-wrap">
-                                    <!-- statistic-item-wrap-->
-                                    <div class="statistic-item-wrap">
-                                        <div class="statistic-item gradient-bg fl-wrap">
-                                            <i class="fa fa-map-marker"></i>
-                                            <div class="statistic-item-numder">21</div>
-                                            <h5>Active Listings</h5>
-                                        </div>
-                                    </div>
-                                    <!-- statistic-item-wrap end-->
+                                <div class="custom-form">
+                                    <form method="post" action="{{ route('user-password.update') }}">
+                                    @csrf
+                                        @method('PUT')
+                                    <label>Mevcut Şifre <i class="fa fa-unlock-alt"></i></label>
+                                    <input id="current_password" name="password" type="password" value=""/>
+                                    <label>Yeni Şifre <i class="fa fa-unlock-alt"></i></label>
+                                    <input id="password" name="password" type="password" value=""/>
+                                    <label>Yeni Şifre Tekrar <i class="fa fa-unlock-alt"></i>  </label>
+                                    <input id="password_confirmation" name="password" type="password" value=""/>
+                                    <button type="submit" class="btn  big-btn  color-bg flat-btn">Şifreyi güncelle</button>
+                                    </form>
                                 </div>
-                                <!-- statistic-container end-->
                             </div>
                             <!-- profile-edit-container end-->
                         </div>
+                        <div class="col-md-2">
+                            <div class="edit-profile-photo fl-wrap">
+                                <img src="{{ Auth::user()->profile_photo_url }}" class="respimg" alt="">
+                            </div>
+                        </div>
                     </div>
                 </div>
-
                 <!--profile-edit-wrap end -->
             </div>
             <!--container end -->
@@ -85,5 +87,6 @@
         <!-- section end -->
         <div class="limit-box fl-wrap"></div>
     </div>
+
 
 @endsection

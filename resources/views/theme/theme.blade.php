@@ -26,19 +26,20 @@
 <!--loader end-->
 <!-- Main  -->
 <div id="main">
-
+    @include('theme.data.header')
     <!--  wrapper  -->
     <div id="wrapper">
-        @include('theme.data.header')
 
         @yield('master')
         @yield('categories')
         @yield('ads')
         @yield('dashboard')
-        @include('theme.data.footer')
+        @yield('edit-profile')
+        @yield('update-password')
 
     </div>
     <!-- wrapper end -->
+    @include('theme.data.footer')
 
     <!--register form -->
     <div class="main-register-wrap modal">

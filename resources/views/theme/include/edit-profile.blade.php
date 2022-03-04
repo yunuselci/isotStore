@@ -1,21 +1,20 @@
 @extends('theme.theme')
 @section('title')
-    Profil
+    Profil Düzenleme - iSotStore
 @endsection
 
-@section('dashboard')
+@section('edit-profile')
 
     <div class="content">
         <!--section -->
-        <section id="sec1">
+        <section>
             <!-- container -->
             <div class="container">
                 <!-- profile-edit-wrap -->
                 <div class="profile-edit-wrap">
                     <div class="profile-edit-page-header">
-                        <h2>Profil Yönetimi</h2>
-                        <div class="breadcrumbs"><a href=" {{route('dashboard')}}">Profil</a></div>
-
+                        <h2>Profili düzenle</h2>
+                        <div class="breadcrumbs"><a href=" {{ route('dashboard') }}">Profil</a><span>Profili düzenle</span></div>
                     </div>
                     <div class="row">
                         <div class="col-md-3">
@@ -44,7 +43,7 @@
                                         @csrf
 
                                         <button class="log-out-btn"  type="submit"
-                                                     onclick="event.preventDefault();
+                                                onclick="event.preventDefault();
                                                      this.closest('form').submit();">
                                             Çıkış Yap
                                         </button>
@@ -52,32 +51,37 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-md-9">
+                        <div class="col-md-7">
                             <!-- profile-edit-container-->
                             <div class="profile-edit-container">
-                                <div class="profile-edit-header fl-wrap" style="margin-top:30px">
-                                    <h4>Merhaba , <span> {{ Auth::user()->name }}</span></h4>
+                                <div class="profile-edit-header fl-wrap">
+                                    <h4>Hesabım</h4>
                                 </div>
+                                <div class="custom-form">
+                                    @csrf
+                                    <label>İsim <i class="fa fa-user-o"></i></label>
+                                    <input type="text" placeholder="{{ Auth::user()->name }}" value=""/>
+                                    <label>E-Posta <i class="fa fa-envelope-o"></i>  </label>
+                                    <input type="text" placeholder="{{ Auth::user()->email }}" value=""/>
+                                    <button class="btn  big-btn  color-bg flat-btn">Değişiklikleri Kaydet<i class="fa fa-angle-right"></i></button>
 
-                                <!-- statistic-container-->
-                                <div class="statistic-container fl-wrap">
-                                    <!-- statistic-item-wrap-->
-                                    <div class="statistic-item-wrap">
-                                        <div class="statistic-item gradient-bg fl-wrap">
-                                            <i class="fa fa-map-marker"></i>
-                                            <div class="statistic-item-numder">21</div>
-                                            <h5>Active Listings</h5>
-                                        </div>
-                                    </div>
-                                    <!-- statistic-item-wrap end-->
                                 </div>
-                                <!-- statistic-container end-->
                             </div>
                             <!-- profile-edit-container end-->
                         </div>
+                        <div class="col-md-2">
+                            <div class="edit-profile-photo fl-wrap">
+                                <img src="{{ Auth::user()->profile_photo_url }}" class="respimg" alt="">
+                                <div class="change-photo-btn">
+                                    <div class="photoUpload">
+                                        <span><i class="fa fa-upload"></i> Upload Photo</span>
+                                        <input type="file" class="upload">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
-
                 <!--profile-edit-wrap end -->
             </div>
             <!--container end -->
