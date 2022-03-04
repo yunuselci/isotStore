@@ -15,6 +15,7 @@ return new class extends Migration
     {
         Schema::create('products', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('shop_id');
             $table->string('name',255);
             $table->text('description');
             $table->string('image',255);
@@ -25,6 +26,8 @@ return new class extends Migration
             $table->enum('faulty',[1,2])->default(1); //1 = No faulty, 2= Defective product
             $table->string('origin',45);
             $table->timestamps();
+            $table->foreign('shop_id')->references('id')
+                ->on('shops')->onDelete('cascade');
         });
     }
 

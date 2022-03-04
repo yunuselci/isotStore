@@ -9,14 +9,6 @@ class Shop extends Model
 {
     use HasFactory;
     protected $guarded=[];
-    public function products()
-    {
-        return $this->belongsToMany(
-            Product::class,
-            'products_shops',
-            'shop_id',
-            'product_id');
-    }
 
     public function user()
     {
@@ -36,6 +28,11 @@ class Shop extends Model
     public function certificates()
     {
         return $this->hasMany(Certificate::class);
+    }
+
+    public function products()
+    {
+        return $this->hasMany(Product::class);
     }
 
 }

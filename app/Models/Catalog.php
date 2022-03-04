@@ -10,7 +10,7 @@ class Catalog extends Model
     use HasFactory;
     protected $guarded=[];
 
-    public function shop()
+    public function shops()
     {
         return $this->belongsTo(Shop::class);
     }

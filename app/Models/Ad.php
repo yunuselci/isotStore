@@ -10,12 +10,19 @@ class Ad extends Model
     use HasFactory;
     protected $guarded = [];
 
-    public function category()
+    public function categories()
     {
         return $this->belongsTo(Category::class);
     }
-    public function shop()
+    public function shops()
     {
         return $this->belongsTo(Shop::class);
+    }
+    public function products()
+    {
+        return $this->hasManyThrough(
+            Product::class,
+            Shop::class,
+        );
     }
 }

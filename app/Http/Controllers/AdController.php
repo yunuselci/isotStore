@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Ad;
+use App\Models\Product;
 use App\Models\Shop;
 use Illuminate\Http\Request;
 
@@ -15,7 +16,8 @@ class AdController extends Controller
      */
     public function index()
     {
-
+        $products = Ad::find(1)->products;
+        return view('theme.include.ads',compact('products'));
     }
 
     /**
