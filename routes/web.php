@@ -17,6 +17,6 @@ Route::get('/kategoriler',[CategoryController::class,'index'])->name('categories
 Route::get('/kategoriler/{seflink}',[CategoryController::class,'seflink'])->name('seflink');
 Route::get('/ilanlar',[AdController::class,'index'])->name('ads');
 
-Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
-    return view('dashboard');
+Route::middleware(['auth:sanctum', 'verified'])->get('/profil', function () {
+    return view('theme.include.dashboard');
 })->name('dashboard');

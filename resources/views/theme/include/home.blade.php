@@ -8,153 +8,70 @@
 <div class="content">
     <!--section -->
     <section class="scroll-con-sec hero-section" data-scrollax-parent="true" id="sec1">
-        <div class="bg"  data-bg="images/bg/1.jpg" data-scrollax="properties: { translateY: '200px' }"></div>
+        <div class="bg"  data-bg="{{ asset('theme') }}/images/home.jpg" data-scrollax="properties: { translateY: '200px' }"></div>
         <div class="overlay"></div>
         <div class="hero-section-wrap fl-wrap">
             <div class="container">
                 <div class="intro-item fl-wrap">
-                    <h2>We will help you to find all</h2>
-                    <h3>Find great places , hotels , restourants , shops.</h3>
+                    <h2>Türkiye’nin Lider Stok Platformu</h2>
+                    <h3>Binlerce ürün arasından aradığınıza kolayca ulaşın.</h3>
                 </div>
                 <div class="main-search-input-wrap">
                     <div class="main-search-input fl-wrap">
                         <div class="main-search-input-item">
-                            <input type="text" placeholder="What are you looking for?" value=""/>
-                        </div>
-                        <div class="main-search-input-item location" id="autocomplete-container">
-                            <input type="text" placeholder="Location" id="autocomplete-input" value=""/>
-                            <a href="#"><i class="fa fa-dot-circle-o"></i></a>
+                            <input type="text" placeholder="Ürün Kodu & Ürün Adı" value=""/>
                         </div>
                         <div class="main-search-input-item">
-                            <select data-placeholder="All Categories" class="chosen-select" >
-                                <option>All Categories</option>
-                                <option>Shops</option>
-                                <option>Hotels</option>
-                                <option>Restaurants</option>
-                                <option>Fitness</option>
-                                <option>Events</option>
-                            </select>
+                            <input type="text" placeholder="Firma & Mağaza Adı" value=""/>
                         </div>
-                        <button class="main-search-button" onclick="window.location.href='listings-half-screen-map-list.html'">Search</button>
+                        <button class="main-search-button">Search</button>
                     </div>
                 </div>
             </div>
         </div>
         <div class="bubble-bg"> </div>
-        <div class="header-sec-link">
-            <div class="container"><a href="#sec2" class="custom-scroll-link">Let's Start</a></div>
-        </div>
     </section>
     <!-- section end -->
     <!--section -->
     <section id="sec2">
         <div class="container">
             <div class="section-title">
-                <h2>Featured Categories</h2>
-                <div class="section-subtitle">Catalog of Categories</div>
+                <h2>Kategoriler</h2>
+                <div class="section-subtitle">Bİ DÜNYA STOK BURADA</div>
                 <span class="section-separator"></span>
-                <p>Explore some of the best tips from around the city from our partners and friends.</p>
+                <p>TÜM SEKTÖRLERE ÖZEL ÜRÜN ÇEŞİTLİLİĞİ</p>
             </div>
             <!-- portfolio start -->
             <div class="gallery-items fl-wrap mr-bot spad">
                 <!-- gallery-item-->
+                @foreach($categories as $category)
                 <div class="gallery-item">
                     <div class="grid-item-holder">
                         <div class="listing-item-grid">
-                            <div class="bg"  data-bg="{{ asset('theme') }}/images/all/1.jpg"></div>
-                            <div class="listing-counter"><span>10 </span> Locations</div>
+                            <div class="bg"  data-bg="{{ asset('theme/images/category/'. $category->image ) }}"></div>
                             <div class="listing-item-cat">
-                                <h3><a href="listing.html">Conference and Event</a></h3>
-                                <p>Constant care and attention to the patients makes good record</p>
+                                <h3><a href="/kategoriler/{{ $category->seflink }}">{{ $category->name }}</a></h3>
                             </div>
                         </div>
                     </div>
                 </div>
-                <!-- gallery-item end-->
-                <!-- gallery-item-->
-                <div class="gallery-item gallery-item-second">
-                    <div class="grid-item-holder">
-                        <div class="listing-item-grid">
-                            <div class="bg"  data-bg="{{ asset('theme') }}/images/all/1.jpg"></div>
-                            <div class="listing-counter"><span>6 </span> Locations</div>
-                            <div class="listing-item-cat">
-                                <h3><a href="listing.html">Cafe - Pub</a></h3>
-                                <p>Constant care and attention to the patients makes good record</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- gallery-item end-->
-                <!-- gallery-item-->
-                <div class="gallery-item">
-                    <div class="grid-item-holder">
-                        <div class="listing-item-grid">
-                            <div class="bg"  data-bg="{{ asset('theme') }}/images/all/1.jpg"></div>
-                            <div class="listing-counter"><span>21 </span> Locations</div>
-                            <div class="listing-item-cat">
-                                <h3><a href="listing.html">Gym - Fitness</a></h3>
-                                <p>Constant care and attention to the patients makes good record</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- gallery-item end-->
-                <!-- gallery-item-->
-                <div class="gallery-item">
-                    <div class="grid-item-holder">
-                        <div class="listing-item-grid">
-                            <div class="bg"  data-bg="{{ asset('theme') }}/images/all/1.jpg"></div>
-                            <div class="listing-counter"><span>7 </span> Locations</div>
-                            <div class="listing-item-cat">
-                                <h3><a href="listing.html">Hotels</a></h3>
-                                <p>Constant care and attention to the patients makes good record</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- gallery-item end-->
-                <!-- gallery-item-->
-                <div class="gallery-item">
-                    <div class="grid-item-holder">
-                        <div class="listing-item-grid">
-                            <div class="bg"  data-bg="{{ asset('theme') }}/images/all/1.jpg"></div>
-                            <div class="listing-counter"><span>15 </span> Locations</div>
-                            <div class="listing-item-cat">
-                                <h3><a href="listing.html">Shop - Store</a></h3>
-                                <p>Constant care and attention to the patients makes good record</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                @endforeach
                 <!-- gallery-item end-->
             </div>
             <!-- portfolio end -->
-            <a href="listing.html" class="btn  big-btn circle-btn dec-btn  color-bg flat-btn">View All<i class="fa fa-eye"></i></a>
         </div>
     </section>
     <!-- section end -->
     <!--section -->
-    <section class="color-bg">
-        <div class="shapes-bg-big"></div>
+    <section class="parallax-section" data-scrollax-parent="true">
+        <div class="bg"  data-bg="{{ asset('theme') }}/images/home2.jpg" data-scrollax="properties: { translateY: '100px' }"></div>
+        <div class="overlay co lor-overlay"></div>
+        <!--container-->
         <div class="container">
-            <div class="row">
-                <div class="col-md-6">
-                    <div class="images-collage fl-wrap">
-                        <div class="images-collage-title">City<span>Book</span></div>
-                        <div class="images-collage-main images-collage-item"><img src="{{ asset('theme') }}/images/avatar/1.jpg" alt=""></div>
-                        <div class="images-collage-other images-collage-item" data-position-left="23" data-position-top="10" data-zindex="2"><img src="{{ asset('theme') }}/images/avatar/1.jpg" alt=""></div>
-                        <div class="images-collage-other images-collage-item" data-position-left="62" data-position-top="54" data-zindex="5"><img src="{{ asset('theme') }}/images/avatar/1.jpg" alt=""></div>
-                        <div class="images-collage-other images-collage-item anim-col" data-position-left="18" data-position-top="70" data-zindex="11"><img src="{{ asset('theme') }}/images/avatar/1.jpg" alt=""></div>
-                        <div class="images-collage-other images-collage-item" data-position-left="37" data-position-top="90" data-zindex="1"><img src="{{ asset('theme') }}/images/avatar/1.jpg" alt=""></div>
-                    </div>
-                </div>
-                <div class="col-md-6">
-                    <div class="color-bg-text">
-                        <h3>Join our online community</h3>
-                        <p>In ut odio libero, at vulputate urna. Nulla tristique mi a massa convallis cursus. Nulla eu mi magna. Etiam suscipit commodo gravida. Lorem ipsum dolor sit amet, conse ctetuer adipiscing elit, sed diam nonu mmy nibh euismod tincidunt ut laoreet dolore magna aliquam erat.</p>
-                        <a href="#" class="color-bg-link modal-open">Sign In Now</a>
-                    </div>
-                </div>
+            <div class="intro-item fl-wrap">
+                <h2>Ücretsiz Stoklarınızdaki Ürünleri Satın</h2>
+                <h3>Hemen Bir Mağaza Açmak İster Misiniz?</h3>
+                <a class="trs-btn" href="#">Mağazanı Oluştur, Hemen İlan Ver!</a>
             </div>
         </div>
     </section>

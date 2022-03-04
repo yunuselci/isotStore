@@ -34,6 +34,7 @@
         @yield('master')
         @yield('categories')
         @yield('ads')
+        @yield('dashboard')
         @include('theme.data.footer')
 
     </div>
@@ -45,51 +46,50 @@
         <div class="main-register-holder">
             <div class="main-register fl-wrap">
                 <div class="close-reg"><i class="fa fa-times"></i></div>
-                <h3>Sign In <span>City<strong>Book</strong></span></h3>
-                <div class="soc-log fl-wrap">
-                    <p>For faster login or register use your social account.</p>
-                    <a href="#" class="facebook-log"><i class="fa fa-facebook-official"></i>Log in with Facebook</a>
-                    <a href="#" class="twitter-log"><i class="fa fa-twitter"></i> Log in with Twitter</a>
-                </div>
-                <div class="log-separator fl-wrap"><span>or</span></div>
+                <h3>Giriş Yap <span>iSot<strong>Store</strong></span></h3>
                 <div id="tabs-container">
                     <ul class="tabs-menu">
-                        <li class="current"><a href="#tab-1">Login</a></li>
-                        <li><a href="#tab-2">Register</a></li>
+                        <li class="current"><a href="#tab-1">Giriş Yap</a></li>
+                        <li><a href="#tab-2">Kayıt Ol</a></li>
                     </ul>
                     <div class="tab">
                         <div id="tab-1" class="tab-content">
                             <div class="custom-form">
-                                <form method="post"  name="registerform">
-                                    <label>Username or Email Address * </label>
-                                    <input name="email" type="text"   onClick="this.select()" value="">
-                                    <label >Password * </label>
-                                    <input name="password" type="password"   onClick="this.select()" value="" >
-                                    <button type="submit"  class="log-submit-btn"><span>Log In</span></button>
+                                <form method="post" action="{{ route('login') }}">
+                                    @csrf
+                                    <label>E-Posta Adresi</label>
+                                    <input id="email" name="email" type="email"  onClick="this.select()" value="{{ __('E-Posta') }}" required>
+                                    <label >Şifre</label>
+                                    <input id="password" name="password" type="password"   onClick="this.select()" value="{{ __('Password') }}" required>
                                     <div class="clearfix"></div>
                                     <div class="filter-tags">
-                                        <input id="check-a" type="checkbox" name="check">
-                                        <label for="check-a">Remember me</label>
+                                        <input id="remember_me" type="checkbox" name="remember">
+                                        <label for="check-a">{{ __('Beni hatırla') }}</label>
                                     </div>
+                                    <button type="submit"  class="log-submit-btn"><span> {{ __('Giriş Yap') }}</span></button>
                                 </form>
+                                @if (Route::has('password.request'))
                                 <div class="lost_password">
-                                    <a href="#">Lost Your Password?</a>
+                                    <a href="{{ route('password.request') }}">{{ __('Şifreni mi unuttun ?') }}</a>
                                 </div>
+                                @endif
+
                             </div>
                         </div>
                         <div class="tab">
                             <div id="tab-2" class="tab-content">
                                 <div class="custom-form">
-                                    <form method="post"   name="registerform" class="main-register-form" id="main-register-form2">
-                                        <label >First Name * </label>
-                                        <input name="name" type="text"   onClick="this.select()" value="">
-                                        <label>Second Name *</label>
-                                        <input name="name2" type="text"  onClick="this.select()" value="">
-                                        <label>Email Address *</label>
-                                        <input name="email" type="text"  onClick="this.select()" value="">
-                                        <label >Password *</label>
-                                        <input name="password" type="password"   onClick="this.select()" value="" >
-                                        <button type="submit"     class="log-submit-btn"  ><span>Register</span></button>
+                                    <form method="post" action="{{ route('register') }}" n class="main-register-form" id="main-register-form2">
+                                        @csrf
+                                        <label >İsim </label>
+                                        <input id="name" name="name" type="text"   onClick="this.select()" value="{{ __('İsim') }}" required>
+                                        <label>E-Posta Adresi</label>
+                                        <input id="email" name="email" type="email"  onClick="this.select()" value="{{ __('E-Posta') }}" required>
+                                        <label >Şifre</label>
+                                        <input id="password" name="password" type="password"   onClick="this.select()" value="{{ __('Şifre') }}" required>
+                                        <label >Şifre Tekrar</label>
+                                        <input id="password_confirmation" name="password_confirmation" type="password"  onClick="this.select()" value="{{ __('Şifre Tekrar') }}" required>
+                                        <button type="submit" class="log-submit-btn"  ><span>{{ __('Kayıt Ol') }}</span></button>
                                     </form>
                                 </div>
                             </div>
@@ -107,7 +107,6 @@
 <script type="text/javascript" src="{{ asset('theme') }}/js/jquery.min.js"></script>
 <script type="text/javascript" src="{{ asset('theme') }}/js/plugins.js"></script>
 <script type="text/javascript" src="{{ asset('theme') }}/js/scripts.js"></script>
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDwJSRi0zFjDemECmFl9JtRj1FY7TiTRRo&libraries=places&callback=initAutocomplete"></script>
 @yield('js')
 </body>
 </html>
