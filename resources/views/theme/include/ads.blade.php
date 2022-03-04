@@ -13,22 +13,22 @@
                     <!-- list-main-wrap-->
                     <div class="list-main-wrap fl-wrap card-listing">
                         <!-- listing-item -->
-                        @isset($products)
-                            @foreach($products as $product)
+                        @isset($ads)
+                            @foreach($ads as $ad)
                                 <div class="listing-item">
                                     <article class="geodir-category-listing fl-wrap">
                                         <div class="geodir-category-img">
-                                            <img src="" alt="">
+                                            <img src="{{ asset( 'theme/images/all/'. $ad->products->image ) }}" alt="">
                                             <div class="overlay"></div>
                                         </div>
                                         <div class="geodir-category-content fl-wrap">
-                                            <h3>{{ $product->name }}</a></h3>
-
+                                            <h3>{{ $ad->products->name }}</a></h3>
                                         </div>
                                     </article>
                                 </div>
-                        @endforeach
-                    @endisset
+                            @endforeach
+
+                        @endisset
                     <!-- listing-item end-->
                     </div>
                     <!-- list-main-wrap end-->

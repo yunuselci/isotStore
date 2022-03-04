@@ -16,8 +16,8 @@ class AdController extends Controller
      */
     public function index()
     {
-        $products = Ad::find(1)->products;
-        return view('theme.include.ads',compact('products'));
+        $ads = Ad::with('products')->get();
+        return view('theme.include.ads',compact('ads'));
     }
 
     /**

@@ -20,9 +20,6 @@ class Ad extends Model
     }
     public function products()
     {
-        return $this->hasManyThrough(
-            Product::class,
-            Shop::class,
-        );
+        return $this->hasOne(Product::class);
     }
 }
