@@ -36,6 +36,7 @@
         @yield('dashboard')
         @yield('edit-profile')
         @yield('update-password')
+        @yield('show')
 
     </div>
     <!-- wrapper end -->

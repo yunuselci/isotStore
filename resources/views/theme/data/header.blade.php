@@ -15,7 +15,6 @@
                     </div>
                     <ul>
                         <li><a href="{{ route('dashboard') }}" class="user-profile-act"><i class="fa fa-gears"></i>Kullanıcı Paneli</a></li>
-                        <li><a href="{{ route('profile.show') }}"> {{ __('Profili Düzenle') }}</a></li>
                         <li><a href="dashboard-bookings.html"> İlanlarım </a></li>
                         <form method="POST" action="{{ route('logout') }}">
                             @csrf

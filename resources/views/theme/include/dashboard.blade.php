@@ -26,8 +26,7 @@
                                         <h3>Ana Bölüm</h3>
                                         <ul>
                                             <li><a href="{{ route('dashboard') }}" class="user-profile-act"><i class="fa fa-gears"></i>Kullanıcı paneli</a></li>
-                                            <li><a href="{{ route('edit.profile') }}"><i class="fa fa-user-o"></i> Profili düzenle</a></li>
-                                            <li><a href="{{ route('update.password') }}"><i class="fa fa-unlock-alt"></i>Şifreyi değiş</a></li>
+                                            <li><a href="{{ route('profile.show') }}"> {{ __('Profili Düzenle') }}</a></li>
                                         </ul>
                                     </div>
                                     <!-- user-profile-menu end-->
