@@ -1,6 +1,6 @@
 @extends('theme.theme')
 @section('title')
-    Profil Bilgileri - iSotStore
+    Profil Düzenleme - iSotStore
 @endsection
 
 @section('show')

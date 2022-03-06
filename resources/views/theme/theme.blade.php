@@ -60,19 +60,21 @@
                                 <form method="post" action="{{ route('login') }}">
                                     @csrf
                                     <label>E-Posta Adresi</label>
-                                    <input id="email" name="email" type="email"  onClick="this.select()" value="{{ __('E-Posta') }}" required>
+                                    <input id="email" name="email" type="email"  onClick="this.select()" value="{{ 'E-Posta' }}" required>
                                     <label >Şifre</label>
-                                    <input id="password" name="password" type="password"   onClick="this.select()" value="{{ __('Password') }}" required>
+                                    <input id="password" name="password" type="password"   onClick="this.select()" value="{{ 'Şifre' }}" required>
                                     <div class="clearfix"></div>
                                     <div class="filter-tags">
+                                        <label for="remember_me">
                                         <input id="remember_me" type="checkbox" name="remember">
-                                        <label for="check-a">{{ __('Beni hatırla') }}</label>
+                                        <span for="check-a">{{ 'Beni hatırla' }}</span>
+                                        </label>
                                     </div>
-                                    <button type="submit"  class="log-submit-btn"><span> {{ __('Giriş Yap') }}</span></button>
+                                    <button type="submit"  class="log-submit-btn"><span> {{ 'Giriş Yap' }}</span></button>
                                 </form>
                                 @if (Route::has('password.request'))
                                 <div class="lost_password">
-                                    <a href="{{ route('password.request') }}">{{ __('Şifreni mi unuttun ?') }}</a>
+                                    <a href="{{ route('password.request') }}">{{ 'Şifreni mi unuttun ?' }}</a>
                                 </div>
                                 @endif
 
@@ -84,14 +86,14 @@
                                     <form method="post" action="{{ route('register') }}" n class="main-register-form" id="main-register-form2">
                                         @csrf
                                         <label >İsim </label>
-                                        <input id="name" name="name" type="text"   onClick="this.select()" value="{{ __('İsim') }}" required>
+                                        <input id="name" name="name" type="text"   onClick="this.select()" value="{{ 'İsim' }}" required>
                                         <label>E-Posta Adresi</label>
-                                        <input id="email" name="email" type="email"  onClick="this.select()" value="{{ __('E-Posta') }}" required>
+                                        <input id="email" name="email" type="email"  onClick="this.select()" value="{{ 'E-Posta' }}" required>
                                         <label >Şifre</label>
-                                        <input id="password" name="password" type="password"   onClick="this.select()" value="{{ __('Şifre') }}" required>
+                                        <input id="password" name="password" type="password"   onClick="this.select()" value="{{ 'Şifre' }}" required>
                                         <label >Şifre Tekrar</label>
-                                        <input id="password_confirmation" name="password_confirmation" type="password"  onClick="this.select()" value="{{ __('Şifre Tekrar') }}" required>
-                                        <button type="submit" class="log-submit-btn"  ><span>{{ __('Kayıt Ol') }}</span></button>
+                                        <input id="password_confirmation" name="password_confirmation" type="password"  onClick="this.select()" value="{{ 'Şifre Tekrar' }}" required>
+                                        <button type="submit" class="log-submit-btn"  ><span>{{ 'Kayıt Ol' }}</span></button>
                                     </form>
                                 </div>
                             </div>

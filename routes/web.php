@@ -17,12 +17,6 @@ Route::get('/kategoriler',[CategoryController::class,'index'])->name('categories
 Route::get('/kategoriler/{seflink}',[CategoryController::class,'seflink'])->name('seflink');
 Route::get('/ilanlar',[AdController::class,'index'])->name('ads');
 
-Route::get('/profil/duzenle',function (){
-   return view('theme.include.edit-profile');
-})->name('edit.profile');
-Route::get('/profil/sifre-degis',function (){
-   return view('theme.include.update-password');
-})->name('update.password');
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/profil', function () {
     return view('theme.include.dashboard');
