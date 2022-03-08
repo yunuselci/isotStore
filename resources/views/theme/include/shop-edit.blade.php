@@ -34,7 +34,7 @@
                                         <h3>Mağazam</h3>
                                         <ul>
                                             <li><a href="{{ route('shopPage',1) }}" class="user-profile-act"><i class="fa fa-shopping-bag"></i>Mağazam</a></li>
-                                            <li><a href="{{ route('shopEdit',1) }}"><i class="fa fa-edit"></i>Mağaza düzenle</a></li>
+                                            <li><a href="{{ route('magazalar.edit',1) }}"><i class="fa fa-edit"></i>Mağaza düzenle</a></li>
                                         </ul>
                                     </div>
                                     <!-- user-profile-menu end-->
@@ -59,30 +59,38 @@
                                 </div>
                             </div>
                         </div>
+                        @isset($shop)
+                            @foreach($shop as $s)
                         <div class="col-md-7">
                             <!-- profile-edit-container-->
                             <div class="profile-edit-container">
                                 <div class="profile-edit-header fl-wrap">
-                                    <h4>Mağazam</h4>
+                                    <h4>Mağaza Bilgileri</h4>
                                 </div>
                                 <div class="custom-form">
+                                    <form action="{{route('magazalar.update',$s->id)}}" method="post" enctype="multipart/form-data">
+                                    @csrf
+                                    @method('PUT')
                                     <label>Mağaza Adı <i class="fa fa-user-o"></i></label>
-                                    <input type="text" placeholder="AlisaNoory" value=""/>
+                                    <input type="text" name="name" placeholder="{{ $s->name }}" value="{{ $s->name }}"/>
                                     <label>E-Posta<i class="fa fa-envelope-o"></i>  </label>
-                                    <input type="text" placeholder="AlisaNoory@domain.com" value=""/>
+                                    <input type="text" name="email" placeholder="{{ $s->email }}" value="{{ $s->email }}"/>
                                     <label>Phone<i class="fa fa-phone"></i>  </label>
-                                    <input type="text" placeholder="+7(123)987654" value=""/>
-                                    <label>Adress <i class="fa fa-map-marker"></i>  </label>
-                                    <input type="text" placeholder="USA 27TH Brooklyn NY" value=""/>
+                                    <input type="text" name="phone" placeholder="{{ $s->phone }}" value="{{ $s->phone }}"/>
+                                    <label>Adres <i class="fa fa-map-marker"></i>  </label>
+                                    <input type="text" name="address" placeholder="{{ $s->address }}" value="{{ $s->address }}"/>
                                     <label>Hakkımızda </label>
-                                    <textarea cols="40" rows="3" placeholder="About Me"></textarea>
+                                    <textarea cols="40" rows="3" name="about" placeholder="{{ $s->about }}" value="{{ $s->about }}"></textarea>
+                                    <button class="btn  big-btn  color-bg flat-btn">Değişiklikleri Kaydet<i class="fa fa-angle-right"></i></button>
+                                    </form>
+
                                 </div>
                             </div>
                             <!-- profile-edit-container end-->
                         </div>
                         <div class="col-md-2">
                             <div class="edit-profile-photo fl-wrap">
-                                <img src="images/avatar/1.jpg" class="respimg" alt="">
+                                <img src="{{ asset( 'theme/images/shop/'. $s->image ) }}" class="respimg" alt="">
                                 <div class="change-photo-btn">
                                     <div class="photoUpload">
                                         <span><i class="fa fa-upload"></i> Upload Photo</span>
@@ -91,6 +99,8 @@
                                 </div>
                             </div>
                         </div>
+                            @endforeach
+                        @endisset
                     </div>
                 </div>
                 <!--profile-edit-wrap end -->

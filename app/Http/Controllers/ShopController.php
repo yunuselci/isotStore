@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\ShopPostRequest;
 use App\Models\Shop;
 use Illuminate\Http\Request;
 
@@ -64,7 +65,7 @@ class ShopController extends Controller
      */
     public function edit($id)
     {
-        $shop = Shop::find($id);
+        $shop = Shop::find($id)->get();
         if($shop){
             return view('theme.include.shop-edit',compact('shop'));
         }else{
@@ -79,9 +80,31 @@ class ShopController extends Controller
      * @param  \App\Models\Shop  $shop
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Shop $shop)
+    public function update(Request $request, $id)
     {
-        //
+        $userId = auth()->id();
+        if(!is_null($request->image)){
+            $imageName = "iSotStore_".rand(0,10000).".".$request->image->getClientOriginalExtension();
+            $request->image->move(public_path('theme/images/shop'), $imageName);
+        }else{
+            $imageName = Shop::find($id)->image;
+        }
+        $shop = Shop::whereId($id)->update([
+            'name' => $request->name,
+            'user_id'=> $userId,
+            'email'=> $request->email,
+            'phone' => $request->phone,
+            'address' => $request->address,
+            'about' => $request->about,
+            'image' => $imageName
+
+        ]);
+        if($shop){
+            return redirect()->route('shopEdit')->with('success','Mağaza bilgileri başarıyla kaydedildi.');
+        }else{
+            return redirect()->route('shopEdit')->with('error','Bir hata meydana geldi.');
+
+        }
     }
 
     /**

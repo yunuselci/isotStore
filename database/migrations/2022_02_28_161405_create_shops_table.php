@@ -17,11 +17,11 @@ return new class extends Migration
             $table->id();
             $table->unsignedBigInteger('user_id');
             $table->string('name',255);
+            $table->string('email',55);
+            $table->string('phone',55);
+            $table->string('address',255);
             $table->text('about')->nullable();
             $table->string('image',255)->nullable()->default('default_shop_image.jpg');
-            $table->string('adress',255);
-            $table->string('phone',55);
-            $table->string('email',55);
             $table->timestamps();
             $table->foreign('user_id')->references('id')
                 ->on('users')->onDelete('cascade');
