@@ -31,7 +31,7 @@
                 <a href="{{ route('login') }}" class="text-sm text-gray-700 dark:text-gray-500 underline">Log in</a>
 
                 @if (Route::has('register'))
-                    <div class="show-reg-form modal-open"><i class="fa fa-sign-in"></i>Sign In</div>
+                    <div class="show-reg-form modal-open"><i class="fa fa-sign-in"></i>Giriş Yap</div>
                 @endif
             @endauth
         @endif
@@ -66,6 +66,9 @@
                     @endisset
                     <li>
                         <a href=" {{ route('ads') }}">İlanlar</a>
+                    </li>
+                    <li>
+                        <a href=" {{ route('shops') }}">Mağazalar</a>
                     </li>
                 </ul>
             </nav>
