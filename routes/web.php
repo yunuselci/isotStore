@@ -24,6 +24,7 @@ Route::get('/ilanlar',[AdController::class,'index'])->name('ads');
 //shop
 Route::get('/mağazalar',[ShopController::class,'index'])->name('shops');
 Route::get('/profil/mağazam/{id}',[ShopController::class,'show'])->name('shopPage');
+Route::get('/profil/mağazam/düzenle/{id}',[ShopController::class,'edit'])->name('shopEdit');
 
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/profil', function () {

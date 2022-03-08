@@ -1,10 +1,9 @@
 @extends('theme.theme')
 @section('title')
-    Şifre Değiştirme - iSotStore
+    Mağaza Düzenle - iSotStore
 @endsection
 
-@section('update-password')
-
+@section('shop-edit')
     <div class="content">
         <!--section -->
         <section>
@@ -13,8 +12,9 @@
                 <!-- profile-edit-wrap -->
                 <div class="profile-edit-wrap">
                     <div class="profile-edit-page-header">
-                        <h2>Şifre güncelleme</h2>
-                        <div class="breadcrumbs"><a href=" {{ route('dashboard') }}">Profil</a><a href="{{ route('edit.profile') }}">Profili düzenle</a><span>Şifreyi değiş</span></div>
+                        <h2>Profil Yönetimi</h2>
+                        <div class="breadcrumbs"><a href=" {{route('dashboard')}}">Profil</a><span>Mağaza düzenle</span></div>
+
                     </div>
                     <div class="row">
                         <div class="col-md-3">
@@ -24,9 +24,17 @@
                                     <div class="user-profile-menu">
                                         <h3>Ana Bölüm</h3>
                                         <ul>
-                                            <li><a href="{{ route('dashboard') }}" class="user-profile-act"><i class="fa fa-gears"></i>Kullanıcı paneli</a></li>
-                                            <li><a href="{{ route('edit.profile') }}"><i class="fa fa-user-o"></i> Profili düzenle</a></li>
-                                            <li><a href="{{ route('update.password') }}"><i class="fa fa-unlock-alt"></i>Şifreyi değiş</a></li>
+                                            <li><a href="{{ route('dashboard') }}" class="user-profile-act"><i class="fa fa-user"></i>Kullanıcı paneli</a></li>
+                                            <li><a href="{{ route('profile.show') }}"><i class="fa fa-edit"></i>Profili düzenle</a></li>
+                                        </ul>
+                                    </div>
+                                    <!-- user-profile-menu end-->
+                                    <!-- user-profile-menu-->
+                                    <div class="user-profile-menu">
+                                        <h3>Mağazam</h3>
+                                        <ul>
+                                            <li><a href="{{ route('shopPage',1) }}" class="user-profile-act"><i class="fa fa-shopping-bag"></i>Mağazam</a></li>
+                                            <li><a href="{{ route('shopEdit',1) }}"><i class="fa fa-edit"></i>Mağaza düzenle</a></li>
                                         </ul>
                                     </div>
                                     <!-- user-profile-menu end-->
@@ -55,27 +63,32 @@
                             <!-- profile-edit-container-->
                             <div class="profile-edit-container">
                                 <div class="profile-edit-header fl-wrap">
-                                    <h4>Hesabım</h4>
+                                    <h4>Mağazam</h4>
                                 </div>
                                 <div class="custom-form">
-                                    <form method="post" action="{{ route('user-password.update') }}">
-                                    @csrf
-                                        @method('PUT')
-                                    <label>Mevcut Şifre <i class="fa fa-unlock-alt"></i></label>
-                                    <input id="current_password" name="password" type="password" value=""/>
-                                    <label>Yeni Şifre <i class="fa fa-unlock-alt"></i></label>
-                                    <input id="password" name="password" type="password" value=""/>
-                                    <label>Yeni Şifre Tekrar <i class="fa fa-unlock-alt"></i>  </label>
-                                    <input id="password_confirmation" name="password" type="password" value=""/>
-                                    <button type="submit" class="btn  big-btn  color-bg flat-btn">Şifreyi güncelle</button>
-                                    </form>
+                                    <label>Mağaza Adı <i class="fa fa-user-o"></i></label>
+                                    <input type="text" placeholder="AlisaNoory" value=""/>
+                                    <label>E-Posta<i class="fa fa-envelope-o"></i>  </label>
+                                    <input type="text" placeholder="AlisaNoory@domain.com" value=""/>
+                                    <label>Phone<i class="fa fa-phone"></i>  </label>
+                                    <input type="text" placeholder="+7(123)987654" value=""/>
+                                    <label>Adress <i class="fa fa-map-marker"></i>  </label>
+                                    <input type="text" placeholder="USA 27TH Brooklyn NY" value=""/>
+                                    <label>Hakkımızda </label>
+                                    <textarea cols="40" rows="3" placeholder="About Me"></textarea>
                                 </div>
                             </div>
                             <!-- profile-edit-container end-->
                         </div>
                         <div class="col-md-2">
                             <div class="edit-profile-photo fl-wrap">
-                                <img src="{{ Auth::user()->profile_photo_url }}" class="respimg" alt="">
+                                <img src="images/avatar/1.jpg" class="respimg" alt="">
+                                <div class="change-photo-btn">
+                                    <div class="photoUpload">
+                                        <span><i class="fa fa-upload"></i> Upload Photo</span>
+                                        <input type="file" class="upload">
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -87,6 +100,4 @@
         <!-- section end -->
         <div class="limit-box fl-wrap"></div>
     </div>
-
-
 @endsection

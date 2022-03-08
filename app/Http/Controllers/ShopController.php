@@ -48,7 +48,11 @@ class ShopController extends Controller
     public function show($id)
     {
         $shop = Shop::with('products')->whereId($id)->get();
-        return view('theme.include.shop-page',compact('shop'));
+        if($shop){
+            return view('theme.include.shop-page',compact('shop'));
+        }else{
+            abort(404);
+        }
 
     }
 
@@ -56,10 +60,16 @@ class ShopController extends Controller
      * Show the form for editing the specified resource.
      *
      * @param  \App\Models\Shop  $shop
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
      */
-    public function edit(Shop $shop)
+    public function edit($id)
     {
+        $shop = Shop::find($id);
+        if($shop){
+            return view('theme.include.shop-edit',compact('shop'));
+        }else{
+            abort(404);
+        }
     }
 
     /**

@@ -35,7 +35,7 @@
                                         <h3>Mağazam</h3>
                                         <ul>
                                             <li><a href="{{ route('shopPage',1) }}" class="user-profile-act"><i class="fa fa-shopping-bag"></i>Mağazam</a></li>
-                                            <li><a href="{{ route('profile.show') }}"><i class="fa fa-edit"></i>Mağaza düzenle</a></li>
+                                            <li><a href="{{ route('shopEdit',1) }}"><i class="fa fa-edit"></i>Mağaza düzenle</a></li>
                                         </ul>
                                     </div>
                                     <!-- user-profile-menu end-->

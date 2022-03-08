@@ -37,6 +37,7 @@
         @yield('show')
         @yield('shops')
         @yield('shop-page')
+        @yield('shop-edit')
 
     </div>
     <!-- wrapper end -->
