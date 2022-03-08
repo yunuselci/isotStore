@@ -34,9 +34,9 @@
         @yield('categories')
         @yield('ads')
         @yield('dashboard')
-        @yield('edit-profile')
-        @yield('update-password')
         @yield('show')
+        @yield('shops')
+        @yield('shop-page')
 
     </div>
     <!-- wrapper end -->

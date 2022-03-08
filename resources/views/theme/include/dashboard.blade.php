@@ -25,8 +25,17 @@
                                     <div class="user-profile-menu">
                                         <h3>Ana Bölüm</h3>
                                         <ul>
-                                            <li><a href="{{ route('dashboard') }}" class="user-profile-act"><i class="fa fa-gears"></i>Kullanıcı paneli</a></li>
-                                            <li><a href="{{ route('profile.show') }}"> {{ __('Profili Düzenle') }}</a></li>
+                                            <li><a href="{{ route('dashboard') }}" class="user-profile-act"><i class="fa fa-user"></i>Kullanıcı paneli</a></li>
+                                            <li><a href="{{ route('profile.show') }}"><i class="fa fa-edit"></i>Profili düzenle</a></li>
+                                        </ul>
+                                    </div>
+                                    <!-- user-profile-menu end-->
+                                    <!-- user-profile-menu-->
+                                    <div class="user-profile-menu">
+                                        <h3>Mağazam</h3>
+                                        <ul>
+                                            <li><a href="{{ route('shopPage',1) }}" class="user-profile-act"><i class="fa fa-shopping-bag"></i>Mağazam</a></li>
+                                            <li><a href="{{ route('profile.show') }}"><i class="fa fa-edit"></i>Mağaza düzenle</a></li>
                                         </ul>
                                     </div>
                                     <!-- user-profile-menu end-->

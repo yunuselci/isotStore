@@ -3,7 +3,7 @@
     Mağazalar - iSotStore
 @endsection
 
-@section('ads')
+@section('shops')
     <!--  content  -->
     <div class="content">
         <!--  section  -->

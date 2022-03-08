@@ -19,7 +19,7 @@ return new class extends Migration
             $table->unsignedBigInteger('ad_id');
             $table->string('name',255);
             $table->text('description');
-            $table->string('image',255)->default('default_shop_image.jpg');
+            $table->string('image',255);
             $table->string('unit',45);
             $table->enum('type',[1,2])->default(1); //1 = For Sale, 2 = For Rent
             $table->enum('status',[1,2])->default(1); //1 = New Brand, 2 = Second Hand
