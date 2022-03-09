@@ -22,12 +22,10 @@ Route::get('/kategoriler/{seflink}',[CategoryController::class,'seflink'])->name
 Route::get('/ilanlar',[AdController::class,'index'])->name('ads');
 
 //shop
-/*
 
-*/
-Route::get('/mağazalar',[ShopController::class,'index'])->name('shops');
-Route::get('/profil/mağazam/{id}',[ShopController::class,'show'])->name('shopPage');
-//Route::get('/profil/mağazam/göster/{id}',[ShopController::class,'edit'])->name('shopEdit');
+Route::get('/magazalar',[ShopController::class,'index'])->name('shops');
+//Route::get('/profil/magazam/{id}',[ShopController::class,'show'])->name('shopPage');
+
 
 Route::middleware(['auth:sanctum', 'verified'])->group(function (){
 
@@ -35,7 +33,7 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function (){
         return view('theme.include.dashboard');
     })->name('dashboard');
     Route::resource('magazalar', ShopController::class)->except([
-        'index','show'
+        'index'
     ]);
 
 

@@ -38,6 +38,7 @@
         @yield('shops')
         @yield('shop-page')
         @yield('shop-edit')
+        @yield('shop-create')
 
     </div>
     <!-- wrapper end -->

@@ -13,7 +13,7 @@ class ShopPostRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -25,7 +25,7 @@ class ShopPostRequest extends FormRequest
     {
         return [
             'name'=>'required|string|max:255',
-            'email'=>'required|string|max:55',
+            'email'=>'required|email|max:55',
             'phone'=>'required|string|max:55',
             'address'=>'required|string|max:255',
             'image'=>'image|mimes:jpeg,jpg,png|max:5000',

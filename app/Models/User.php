@@ -60,7 +60,7 @@ class User extends Authenticatable
         'profile_photo_url',
     ];
 
-    public function shop()
+    public function shops()
     {
         return $this->hasOne(Shop::class);
     }

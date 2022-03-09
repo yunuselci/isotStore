@@ -34,8 +34,14 @@
                                     <div class="user-profile-menu">
                                         <h3>Mağazam</h3>
                                         <ul>
-                                            <li><a href="{{ route('shopPage',1) }}" class="user-profile-act"><i class="fa fa-shopping-bag"></i>Mağazam</a></li>
-                                            <li><a href="{{ route('magazalar.edit',1) }}"><i class="fa fa-edit"></i>Mağaza düzenle</a></li>
+                                            @foreach(Auth::user()->whereId(Auth::id())->with('shops')->get() as $value)
+                                            @if(!is_null($value->shops->first()->id))
+                                            <li><a href="{{ route('magazalar.show', $value->shops->first()->id) }}"><i class="fa fa-shopping-bag"></i> Mağazam </a></li>
+                                            <li><a href="{{ route('magazalar.edit',$value->shops->first()->id) }}"><i class="fa fa-edit"></i>Mağaza düzenle</a></li>
+                                            @else
+                                            <li><a href="{{ route('magazalar.create') }}"><i class="fa fa-shopping-bag"></i>Mağaza oluştur</a></li>
+                                            @endif
+                                            @endforeach
                                         </ul>
                                     </div>
                                     <!-- user-profile-menu end-->
