@@ -33,12 +33,14 @@
         @yield('master')
         @yield('categories')
         @yield('ads')
+        @yield('ad-create')
         @yield('dashboard')
         @yield('show')
         @yield('shops')
         @yield('shop-page')
         @yield('shop-edit')
         @yield('shop-create')
+
 
     </div>
     <!-- wrapper end -->

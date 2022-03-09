@@ -53,7 +53,7 @@
                                     <div class="user-profile-menu">
                                         <h3>Listelemeler</h3>
                                         <ul>
-                                            <li><a href="dashboard-listing-table.html"><i class="fa fa-th-list"></i>İlanlarım </a></li>
+                                            <li><a href="/profil/x"><i class="fa fa-th-list"></i>İlanlarım </a></li>
                                             <li><a href="dashboard-add-listing.html"><i class="fa fa-plus-square-o"></i>Yenisini Ekle</a></li>
                                         </ul>
                                     </div>

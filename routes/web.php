@@ -24,8 +24,9 @@ Route::get('/ilanlar',[AdController::class,'index'])->name('ads');
 //shop
 
 Route::get('/magazalar',[ShopController::class,'index'])->name('shops');
-//Route::get('/profil/magazam/{id}',[ShopController::class,'show'])->name('shopPage');
-
+Route::get('/profil/x',function (){
+    return view('theme.include.ad-create');
+})->name('x');
 
 Route::middleware(['auth:sanctum', 'verified'])->group(function (){
 
@@ -34,6 +35,9 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function (){
     })->name('dashboard');
     Route::resource('magazalar', ShopController::class)->except([
         'index'
+    ]);
+    Route::resource('ilanlar',AdController::class)->except([
+       'index'
     ]);
 
 
