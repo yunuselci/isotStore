@@ -25,10 +25,8 @@
                                     <div class="user-profile-menu">
                                         <h3>Ana Bölüm</h3>
                                         <ul>
-                                            <li><a href="{{ route('dashboard') }}"><i class="fa fa-user"></i>Kullanıcı
-                                                    paneli</a></li>
-                                            <li><a href="{{ route('profile.show') }}"><i class="fa fa-edit"></i>Profili
-                                                    düzenle</a></li>
+                                            <li><a href="{{ route('dashboard') }}"><i class="fa fa-user"></i>Kullanıcı paneli</a></li>
+                                            <li><a href="{{ route('profile.show') }}"><i class="fa fa-edit"></i>Profili düzenle</a></li>
                                         </ul>
                                     </div>
                                     <!-- user-profile-menu end-->
@@ -37,14 +35,11 @@
                                         <h3>Mağazam</h3>
                                         <ul>
                                             @foreach(Auth::user()->whereId(Auth::id())->with('shops')->get() as $value)
-                                                @if(is_null($value->shops))
-                                                    <li><a href="{{ route('magazalar.show', $value->shops[0]->id) }}"><i
-                                                                class="fa fa-shopping-bag"></i> Mağazam </a></li>
-                                                    <li><a href="{{ route('magazalar.edit',$value->shops[0]->id) }}"><i
-                                                                class="fa fa-edit"></i>Mağaza düzenle</a></li>
+                                                @if(!is_null($value->shops))
+                                                    <li><a href="{{ route('magazalar.show', $value->shops->first()->id) }}"><i class="fa fa-shopping-bag"></i> Mağazam </a></li>
+                                                    <li><a href="{{ route('magazalar.edit',$value->shops->first()->id) }}"><i class="fa fa-edit"></i>Mağaza düzenle</a></li>
                                                 @else
-                                                    <li><a href="{{ route('magazalar.create') }}" class="user-profile-act"><i
-                                                                class="fa fa-shopping-bag"></i>Mağaza oluştur</a></li>
+                                                    <li><a href="{{ route('magazalar.create') }}"><i class="fa fa-shopping-bag"></i>Mağaza oluştur</a></li>
                                                 @endif
                                             @endforeach
                                         </ul>
@@ -54,10 +49,8 @@
                                     <div class="user-profile-menu">
                                         <h3>Listelemeler</h3>
                                         <ul>
-                                            <li><a href="dashboard-listing-table.html"><i class="fa fa-th-list"></i>İlanlarım
-                                                </a></li>
-                                            <li><a href="dashboard-add-listing.html"><i class="fa fa-plus-square-o"></i>Yenisini
-                                                    Ekle</a></li>
+                                            <li><a href="dashboard-listing-table.html"><i class="fa fa-th-list"></i>İlanlarım</a></li>
+                                            <li><a href="dashboard-add-listing.html"><i class="fa fa-plus-square-o"></i>Yenisini Ekle</a></li>
                                         </ul>
                                     </div>
                                     <!-- user-profile-menu end-->

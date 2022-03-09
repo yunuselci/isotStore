@@ -17,6 +17,16 @@ class ShopController extends Controller
 
     public function create()
     {
+        $userId = auth()->id();
+
+        $shops = Shop::whereUserId($userId)->get();
+        foreach ($shops as $shop){
+            if($shop){
+                if(!is_null($shop->status)){
+                    return redirect()->route('dashboard')->with('error','Mevcut mağaza açma talebiniz bulunmaktadır, yönetici onayı bekleniyor.');
+                }
+            }
+        }
         return view('theme.include.shop-create');
     }
 

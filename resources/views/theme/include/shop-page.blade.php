@@ -78,7 +78,7 @@
                                     <div class="box-widget-content">
                                         <div class="list-author-widget-contacts list-item-widget-contacts">
                                             <ul>
-                                                <li><span><i class="fa fa-map-marker"></i> Adres :</span> {{ $s->adress }}</li>
+                                                <li><span><i class="fa fa-map-marker"></i> Adres :</span> {{ $s->address }}</li>
                                                 <li><span><i class="fa fa-phone"></i> Telefon :</span> {{ $s->phone }}</li>
                                                 <li><span><i class="fa fa-envelope-o"></i> E-Posta :</span> {{ $s->email }}</li>
                                                 <li><span><i class="fa fa-globe"></i> Website :</span> <a href="yunuselci.com">iSotStore</a></li>

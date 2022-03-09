@@ -35,9 +35,13 @@
                                         <h3>Mağazam</h3>
                                         <ul>
                                             @foreach(Auth::user()->whereId(Auth::id())->with('shops')->get() as $value)
-                                            @if(!is_null($value->shops->first()->id))
+                                            @if(!is_null($value->shops))
+                                                @if($value->shops->first()->status == 1)
                                             <li><a href="{{ route('magazalar.show', $value->shops->first()->id) }}"><i class="fa fa-shopping-bag"></i> Mağazam </a></li>
                                             <li><a href="{{ route('magazalar.edit',$value->shops->first()->id) }}"><i class="fa fa-edit"></i>Mağaza düzenle</a></li>
+                                                    @else
+                                                        <li><a class="user-profile-act"><i class="fa fa-warning"></i>Onay bekliyor</a></li>
+                                                @endif
                                             @else
                                             <li><a href="{{ route('magazalar.create') }}"><i class="fa fa-shopping-bag"></i>Mağaza oluştur</a></li>
                                             @endif
