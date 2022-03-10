@@ -1,4 +1,4 @@
-@extends('theme.theme')
+@extends('main.theme')
 @section('title')
     Kategoriler - iSotStore
 @endsection
@@ -18,7 +18,7 @@
                         <div class="listing-item">
                             <article class="geodir-category-listing fl-wrap">
                                 <div class="geodir-category-img">
-                                    <img src="{{ asset('theme/images/category/'. $category->image ) }}" alt="">
+                                    <img src="{{ asset('main/images/category/'. $category->image ) }}" alt="">
                                     <div class="overlay"></div>
                                 </div>
                                 <div class="geodir-category-content fl-wrap">

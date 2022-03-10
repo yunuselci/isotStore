@@ -1,4 +1,4 @@
-@extends('theme.theme')
+@extends('main.theme')
 @section('title')
     Mağaza Düzenle - iSotStore
 @endsection
@@ -128,7 +128,7 @@
                             </div>
                             <div class="col-md-2">
                                 <div class="edit-profile-photo fl-wrap">
-                                    <img src="{{ asset( 'theme/images/shop/'. $s->image ) }}" class="respimg" alt="">
+                                    <img src="{{ asset( 'main/images/shop/'. $s->image ) }}" class="respimg" alt="">
                                     <div class="change-photo-btn">
                                         <form action="{{route('magazalar.update',$s->id)}}" method="post"
                                               enctype="multipart/form-data">

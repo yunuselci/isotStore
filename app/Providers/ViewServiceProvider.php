@@ -27,7 +27,7 @@ class ViewServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        View::composer('theme.data.header', CategoryComposer::class);
-        View::composer('theme.include.home',CategoryComposer::class);
+        View::composer('main.data.header', CategoryComposer::class);
+        View::composer('main.include.home',CategoryComposer::class);
     }
 }

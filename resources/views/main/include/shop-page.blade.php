@@ -1,4 +1,4 @@
-@extends('theme.theme')
+@extends('main.theme')
 @section('title')
     Mağazam - iSotStore
 @endsection
@@ -13,7 +13,7 @@
                 <div class="section-title center-align">
 
                     <h2><span>Mağaza : {{ $s->name }}</span></h2>
-                    <div class="user-profile-avatar"><img src="{{ asset( 'theme/images/shop/'. $s->image ) }}" alt=""></div>
+                    <div class="user-profile-avatar"><img src="{{ asset( 'main/images/shop/'. $s->image ) }}" alt=""></div>
 
                 </div>
             </div>
@@ -43,7 +43,7 @@
                                     <div class="listing-item">
                                         <article class="geodir-category-listing fl-wrap">
                                             <div class="geodir-category-img">
-                                                <img src="{{ asset( 'theme/images/product/'. $products->image ) }}"
+                                                <img src="{{ asset( 'main/images/product/'. $products->image ) }}"
                                                      alt="">
                                                 <div class="overlay"></div>
                                             </div>

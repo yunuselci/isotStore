@@ -1,9 +1,9 @@
-@extends('theme.theme')
+@extends('main.theme')
 @section('title')
-    İlanlar - iSotStore
+    Mağazalar - iSotStore
 @endsection
 
-@section('ads')
+@section('shops')
     <!--  content  -->
     <div class="content">
         <!--  section  -->
@@ -35,17 +35,17 @@
                         <!-- list-main-wrap-->
                         <div class="list-main-wrap fl-wrap card-listing">
                             <!-- listing-item -->
-                            @isset($ads)
-                                @foreach($ads as $ad)
+                            @isset($shops)
+                                @foreach($shops as $shop)
                                     <div class="listing-item">
                                         <article class="geodir-category-listing fl-wrap">
                                             <div class="geodir-category-img">
-                                                <img src="{{ asset( 'theme/images/product/'. $ad->products->image ) }}"
+                                                <img src="{{ asset( 'main/images/shop/'. $shop->image ) }}"
                                                      alt="">
                                                 <div class="overlay"></div>
                                             </div>
                                             <div class="geodir-category-content fl-wrap">
-                                                <h3>{{ $ad->products->name }}</a></h3>
+                                                <h3>{{ $shop->name }}</a></h3>
                                             </div>
                                         </article>
                                     </div>

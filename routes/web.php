@@ -25,13 +25,13 @@ Route::get('/ilanlar',[AdController::class,'index'])->name('ads');
 
 Route::get('/magazalar',[ShopController::class,'index'])->name('shops');
 Route::get('/profil/x',function (){
-    return view('theme.include.ad-create');
+    return view('main.include.ad-create');
 })->name('x');
 
 Route::middleware(['auth:sanctum', 'verified'])->group(function (){
 
     Route::get('/profil',function (){
-        return view('theme.include.dashboard');
+        return view('main.include.dashboard');
     })->name('dashboard');
     Route::resource('magazalar', ShopController::class)->except([
         'index'

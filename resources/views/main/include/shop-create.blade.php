@@ -1,4 +1,4 @@
-@extends('theme.theme')
+@extends('main.theme')
 @section('title')
     Mağaza Oluştur - iSotStore
 @endsection

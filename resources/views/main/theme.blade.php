@@ -9,12 +9,12 @@
     <meta name="keywords" content=""/>
     <meta name="description" content=""/>
     <!--=============== css  ===============-->
-    <link type="text/css" rel="stylesheet" href="{{ asset('theme') }}/css/reset.css">
-    <link type="text/css" rel="stylesheet" href="{{ asset('theme') }}/css/plugins.css">
-    <link type="text/css" rel="stylesheet" href="{{ asset('theme') }}/css/style.css">
-    <link type="text/css" rel="stylesheet" href="{{ asset('theme') }}/css/color.css">
+    <link type="text/css" rel="stylesheet" href="{{ asset('main') }}/css/reset.css">
+    <link type="text/css" rel="stylesheet" href="{{ asset('main') }}/css/plugins.css">
+    <link type="text/css" rel="stylesheet" href="{{ asset('main') }}/css/style.css">
+    <link type="text/css" rel="stylesheet" href="{{ asset('main') }}/css/color.css">
     <!--=============== favicons ===============-->
-    <link rel="shortcut icon" href="{{ asset('theme') }}/images/favicon.ico">
+    <link rel="shortcut icon" href="{{ asset('main') }}/images/favicon.ico">
     @yield('css')
 </head>
 <body>
@@ -26,7 +26,7 @@
 <!--loader end-->
 <!-- Main  -->
 <div id="main">
-    @include('theme.data.header')
+    @include('main.data.header')
     <!--  wrapper  -->
     <div id="wrapper">
 
@@ -44,7 +44,7 @@
 
     </div>
     <!-- wrapper end -->
-    @include('theme.data.footer')
+    @include('main.data.footer')
 
     <!--register form -->
     <div class="main-register-wrap modal">
@@ -112,9 +112,9 @@
 </div>
 <!-- Main end -->
 <!--=============== scripts  ===============-->
-<script type="text/javascript" src="{{ asset('theme') }}/js/jquery.min.js"></script>
-<script type="text/javascript" src="{{ asset('theme') }}/js/plugins.js"></script>
-<script type="text/javascript" src="{{ asset('theme') }}/js/scripts.js"></script>
+<script type="text/javascript" src="{{ asset('main') }}/js/jquery.min.js"></script>
+<script type="text/javascript" src="{{ asset('main') }}/js/plugins.js"></script>
+<script type="text/javascript" src="{{ asset('main') }}/js/scripts.js"></script>
 @yield('js')
 </body>
 </html>

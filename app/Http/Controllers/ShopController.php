@@ -12,7 +12,7 @@ class ShopController extends Controller
     public function index()
     {
         $shops = Shop::with('ads')->get();
-        return view('theme.include.shops',compact('shops'));
+        return view('main.include.shops',compact('shops'));
     }
 
     public function create()
@@ -27,7 +27,7 @@ class ShopController extends Controller
                 }
             }
         }
-        return view('theme.include.shop-create');
+        return view('main.include.shop-create');
     }
 
     public function store(ShopPostRequest $request)
@@ -35,7 +35,7 @@ class ShopController extends Controller
         $userId = auth()->id();
         if(!is_null($request->image)){
             $imageName = "iSotStore_".rand(0,10000).".".$request->image->getClientOriginalExtension();
-            $request->image->move(public_path('theme/images/shop'), $imageName);
+            $request->image->move(public_path('main/images/shop'), $imageName);
         }else{
             $imageName = $request->image;
         }
@@ -64,7 +64,7 @@ class ShopController extends Controller
     {
         $shop = Shop::with('products')->whereId($id)->get();
         if($shop){
-            return view('theme.include.shop-page',compact('shop'));
+            return view('main.include.shop-page',compact('shop'));
         }else{
             abort(404);
         }
@@ -77,7 +77,7 @@ class ShopController extends Controller
         if($shop){
             $shop = Shop::find($id)->get();
 
-            return view('theme.include.shop-edit',compact('shop'));
+            return view('main.include.shop-edit',compact('shop'));
         }else{
             abort(404);
         }
@@ -88,7 +88,7 @@ class ShopController extends Controller
         $userId = auth()->id();
         if(!is_null($request->image)){
             $imageName = "iSotStore_".rand(0,10000).".".$request->image->getClientOriginalExtension();
-            $request->image->move(public_path('theme/images/shop'), $imageName);
+            $request->image->move(public_path('main/images/shop'), $imageName);
         }else{
             $imageName = Shop::find($id)->image;
         }

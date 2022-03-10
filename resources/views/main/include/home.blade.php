@@ -1,4 +1,4 @@
-@extends('theme.theme')
+@extends('main.theme')
 @section('title')
     iSotStore - Urfadan Toptan Ürünler Platformu
 @endsection
@@ -8,7 +8,7 @@
 <div class="content">
     <!--section -->
     <section class="scroll-con-sec hero-section" data-scrollax-parent="true" id="sec1">
-        <div class="bg"  data-bg="{{ asset('theme') }}/images/home.jpg" data-scrollax="properties: { translateY: '200px' }"></div>
+        <div class="bg"  data-bg="{{ asset('main') }}/images/home.jpg" data-scrollax="properties: { translateY: '200px' }"></div>
         <div class="overlay"></div>
         <div class="hero-section-wrap fl-wrap">
             <div class="container">
@@ -48,7 +48,7 @@
                 <div class="gallery-item">
                     <div class="grid-item-holder">
                         <div class="listing-item-grid">
-                            <div class="bg"  data-bg="{{ asset('theme/images/category/'. $category->image ) }}"></div>
+                            <div class="bg"  data-bg="{{ asset('main/images/category/'. $category->image ) }}"></div>
                             <div class="listing-item-cat">
                                 <h3><a href="/kategoriler/{{ $category->seflink }}">{{ $category->name }}</a></h3>
                             </div>
@@ -64,7 +64,7 @@
     <!-- section end -->
     <!--section -->
     <section class="parallax-section" data-scrollax-parent="true">
-        <div class="bg"  data-bg="{{ asset('theme') }}/images/home2.jpg" data-scrollax="properties: { translateY: '100px' }"></div>
+        <div class="bg"  data-bg="{{ asset('main') }}/images/home2.jpg" data-scrollax="properties: { translateY: '100px' }"></div>
         <div class="overlay co lor-overlay"></div>
         <!--container-->
         <div class="container">
@@ -96,13 +96,13 @@
                     <div class="listing-item">
                         <article class="geodir-category-listing fl-wrap">
                             <div class="geodir-category-img">
-                                <img src="{{ asset('theme') }}/images/all/1.jpg" alt="">
+                                <img src="{{ asset('main') }}/images/all/1.jpg" alt="">
                                 <div class="overlay"></div>
                                 <div class="list-post-counter"><span>4</span><i class="fa fa-heart"></i></div>
                             </div>
                             <div class="geodir-category-content fl-wrap">
                                 <a class="listing-geodir-category" href="listing.html">Retail</a>
-                                <div class="listing-avatar"><a href="author-single.html"><img src="{{ asset('theme') }}/images/avatar/1.jpg" alt=""></a>
+                                <div class="listing-avatar"><a href="author-single.html"><img src="{{ asset('main') }}/images/avatar/1.jpg" alt=""></a>
                                     <span class="avatar-tooltip">Added By  <strong>Lisa Smith</strong></span>
                                 </div>
                                 <h3><a href="listing-single.html">Event in City Mol</a></h3>
@@ -125,13 +125,13 @@
                     <div class="listing-item">
                         <article class="geodir-category-listing fl-wrap">
                             <div class="geodir-category-img">
-                                <img src="{{ asset('theme') }}/images/all/1.jpg" alt="">
+                                <img src="{{ asset('main') }}/images/all/1.jpg" alt="">
                                 <div class="overlay"></div>
                                 <div class="list-post-counter"><span>15</span><i class="fa fa-heart"></i></div>
                             </div>
                             <div class="geodir-category-content fl-wrap">
                                 <a class="listing-geodir-category" href="listing.html">Event</a>
-                                <div class="listing-avatar"><a href="author-single.html"><img src="{{ asset('theme') }}/images/avatar/1.jpg" alt=""></a>
+                                <div class="listing-avatar"><a href="author-single.html"><img src="{{ asset('main') }}/images/avatar/1.jpg" alt=""></a>
                                     <span class="avatar-tooltip">Added By  <strong>Mark Rose</strong></span>
                                 </div>
                                 <h3><a href="listing-single.html">Cafe "Lollipop"</a></h3>

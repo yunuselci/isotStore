@@ -10,8 +10,8 @@ class Category extends Model
     use HasFactory;
     protected $guarded=[];
 
-    public function ads()
+    public function listings()
     {
-        return $this->hasOne(Ad::class);
+        return $this->hasOne(Listing::class);
     }
 }

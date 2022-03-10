@@ -1,15 +1,15 @@
 /*
 
 	INSTRUCTIONS ---------------------------------------------------------------------------------
-  
+
   1. link this stylesheet in the head of your HTML
   	 <link href="YOUR PATH/my-style.css" rel="stylesheet" type="text/css" />
-     
-  2. Set the file name as data-theme attribute on your input
-  	 <input data-theme="my-style" />
-     
+
+  2. Set the file name as data-main attribute on your input
+  	 <input data-main="my-style" />
+
   3. That's it!
-  
+
   When you run script the style will be automatically applied.
 
 */
