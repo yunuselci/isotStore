@@ -71,6 +71,28 @@
                         <div class="col-md-9">
                             <!-- profile-edit-container-->
                             <div class="profile-edit-container add-list-container">
+                                @if ($message = Session::get('success'))
+                                    <div class="notification success fl-wrap">
+                                        <p> {{ $message }}</p>
+                                        <a class="notification-close" href="#"><i class="fa fa-times"></i></a>
+                                    </div>
+                                @elseif($message = Session::get('error'))
+                                    <div class="notification reject fl-wrap">
+                                        <p> {{ $message }}</p>
+                                        <a class="notification-close" href="#"><i class="fa fa-times"></i></a>
+                                    </div>
+                                @endif
+                                @if ($errors->any())
+                                    <div class="notification reject fl-wrap">
+                                        <ul>
+                                            @foreach ($errors->all() as $error)
+                                                <li>{{ $error }}</li>
+                                            @endforeach
+                                        </ul>
+                                        <a class="notification-close" href="#"><i class="fa fa-times"></i></a>
+
+                                    </div>
+                                @endif
                                 <div class="custom-form">
                                     <form action="{{ route('ilanlar.store') }}" method="post" enctype="multipart/form-data">
                                         @csrf
@@ -109,13 +131,15 @@
                                             <option value="2">Defolu ürün</option>
                                         </select>
                                         <label>Kategorisi: <i class="fa fa-map-marker"></i> </label>
-                                        <select class="chosen-select"  name="faulty">
+                                        <select class="chosen-select"  name="category_id">
                                             @foreach($categories as $category)
                                             <option value="{{ $category->id }}">{{ $category->name }}</option>
                                             @endforeach
                                         </select>
                                         <label>Menşei: <i class="fa fa-globe"></i> </label>
                                         <input type="text" name="origin"/>
+                                        <button class="btn  big-btn  color-bg flat-btn">Listele <i
+                                                class="fa fa-angle-right"></i></button>
                                     </form>
 
                                 </div>

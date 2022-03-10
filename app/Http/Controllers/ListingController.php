@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\ListPostRequest;
 use App\Models\Listing;
 use App\Models\Shop;
 use Illuminate\Http\Request;
@@ -23,9 +24,36 @@ class ListingController extends Controller
     }
 
 
-    public function store(Request $request)
+    public function store(ListPostRequest $request)
     {
-        //
+        $userId = auth()->id();
+        $shop = Shop::whereUserId($userId)->first();
+        if (!is_null($request->image)) {
+            $imageName = "iSotStore_" . rand(0, 10000) . "." . $request->image->getClientOriginalExtension();
+            $request->image->move(public_path('main/images/listing'), $imageName);
+        } else {
+            $imageName = $request->image;
+        }
+        $listing = Listing::create([
+            'name' => $request->name,
+            'description' => $request->description,
+            'image'=> $imageName,
+            'unit' => $request->unit,
+            'type'=> $request->type,
+            'status' => $request->status,
+            'delivery_status' => $request->delivery_status,
+            'faulty' => $request->faulty,
+            'origin'=> $request->origin,
+            'shop_id' => $shop->id,
+            'category_id'=> $request->category_id
+        ]);
+        if($listing)
+        {
+            return redirect() -> route('ilanlar.create')->with('success','İlan başarıyla eklendi.');
+        }else{
+            return redirect() -> route('ilanlar.create')->with('error','İlan eklenirken bir hatayla karşılaşıldı.');
+        }
+
     }
 
 

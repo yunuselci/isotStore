@@ -16,7 +16,7 @@ return new class extends Migration
         Schema::create('listings', function (Blueprint $table) {
             $table->id();
             $table->string('name',255);
-            $table->text('description');
+            $table->string('description',255);
             $table->string('image',255);
             $table->string('unit',45);
             $table->enum('type',[1,2])->default(1); //1 = For Sale, 2 = For Rent
