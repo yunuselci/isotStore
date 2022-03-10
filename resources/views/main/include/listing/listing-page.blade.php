@@ -114,7 +114,6 @@
                                                 <li><a href="#">Edit <i class="fa fa-pencil-square-o"></i></a></li>
                                                 <li>
                                                 <form action="{{ route('ilanlar.destroy', $listing->id) }}" method="post" id="deleteForm">
-                                                    {{ $listing->id }}
                                                     @csrf
                                                     @method('DELETE')
                                                     <a class="del-btn" onclick="myFunction({{ $listing->id }})"> Delete <i class="fa fa-trash-o"></i></a>
