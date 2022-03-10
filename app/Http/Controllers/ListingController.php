@@ -27,25 +27,26 @@ class ListingController extends Controller
     }
 
 
-    public function show(Listing $listing)
+    public function show($id)
+    {
+        $listings = Listing::whereShopId($id)->with('category')->get();
+        return view('main.include.listing.listing-page',compact('listings'));
+    }
+
+
+    public function edit($id)
     {
         //
     }
 
 
-    public function edit(Listing $listing)
+    public function update(Request $request, $id)
     {
         //
     }
 
 
-    public function update(Request $request, Listing $listing)
-    {
-        //
-    }
-
-
-    public function destroy(Listing $listing)
+    public function destroy()
     {
         //
     }

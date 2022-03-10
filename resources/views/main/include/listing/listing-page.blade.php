@@ -25,7 +25,7 @@
                                     <div class="user-profile-menu">
                                         <h3>Ana Bölüm</h3>
                                         <ul>
-                                            <li><a href="{{ route('dashboard') }}" class="user-profile-act"><i class="fa fa-user"></i>Kullanıcı paneli</a></li>
+                                            <li><a href="{{ route('dashboard') }}"><i class="fa fa-user"></i>Kullanıcı paneli</a></li>
                                             <li><a href="{{ route('profile.show') }}"><i class="fa fa-edit"></i>Profili düzenle</a></li>
                                         </ul>
                                     </div>
@@ -53,7 +53,7 @@
                                             <div class="user-profile-menu">
                                                 <h3>Listelemeler</h3>
                                                 <ul>
-                                                    <li><a href="/iln"><i class="fa fa-th-list"></i>İlanlarım </a></li>
+                                                    <li><a href="{{ route('ilanlar.show',$value->shops->first()->id) }}" class="user-profile-act"><i class="fa fa-th-list"></i>İlanlarım </a></li>
                                                     <li><a href="dashboard-add-listing.html"><i class="fa fa-plus-square-o"></i>Yenisini Ekle</a></li>
                                                 </ul>
                                             </div>
@@ -78,19 +78,26 @@
                                 <div class="dashboard-header fl-wrap">
                                     <h3>İlan listesi</h3>
                                 </div>
-                                <!-- dashboard-list end-->
+                                @foreach($listings as $listing)
                                 <div class="dashboard-list">
                                     <div class="dashboard-message">
                                         <div class="dashboard-listing-table-image">
                                             <a href="listing-single.html"><img src="{{ asset('main') }}/images/listing/1.jpg" alt=""></a>
                                         </div>
                                         <div class="dashboard-listing-table-text">
-                                            <h4>Event In City Hall</h4>
+                                            <h4>{{ $listing->name }}</h4>
                                             <span class="dashboard-listing-table-address"><i class="fa fa-barcode"></i>
-                                                Kategori:</span>
+                                                Kategori: {{ $listing->category->name }} </span>
                                             <div class="listing-rating card-popup-rainingvis fl-wrap">
                                                 <i class="fa fa-cart-arrow-down"></i>
-                                                Stok durumu:
+                                                @if($listing->delivery_status == 1)
+                                                Stok durumu: Stokta Var!
+                                                @elseif($listing->delivery_status == 2 )
+                                                Stok durumu: Stokta Yok!
+                                                @elseif($listing->delivery_status == 3)
+                                                Stok durumu: Siparişe göre stok oluşturulabilir!
+                                                @endif
+
                                             </div>
                                             <ul class="dashboard-listing-table-opt  fl-wrap">
                                                 <li><a href="#">Edit <i class="fa fa-pencil-square-o"></i></a></li>
@@ -99,6 +106,7 @@
                                         </div>
                                     </div>
                                 </div>
+                                @endforeach
                                 <!-- dashboard-list end-->
                             </div>
                             <!-- pagination-->
