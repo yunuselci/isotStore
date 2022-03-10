@@ -101,7 +101,13 @@
                                             </div>
                                             <ul class="dashboard-listing-table-opt  fl-wrap">
                                                 <li><a href="#">Edit <i class="fa fa-pencil-square-o"></i></a></li>
-                                                <li><a href="#" class="del-btn">Delete <i class="fa fa-trash-o"></i></a></li>
+                                                <li>
+                                                <form action="{{ route('ilanlar.destroy', $listing->id) }}" method="post" id="deleteForm">
+                                                    @csrf
+                                                    @method('DELETE')
+                                                    <a class="del-btn" onclick="myFunction()"> Delete <i class="fa fa-trash-o"></i></a>
+                                                </form>
+                                                </li>
                                             </ul>
                                         </div>
                                     </div>
@@ -128,5 +134,12 @@
         <!-- section end -->
         <div class="limit-box fl-wrap"></div>
     </div>
-
+    <script>
+        function myFunction() {
+            if(confirm('İlanı silmek istediğinizden emin misiniz ?'))
+            {
+                document.getElementById("deleteForm").submit();
+            }
+        }
+    </script>
 @endsection
