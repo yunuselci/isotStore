@@ -78,6 +78,17 @@
                                 <div class="dashboard-header fl-wrap">
                                     <h3>İlan listesi</h3>
                                 </div>
+                                @if ($message = Session::get('success'))
+                                    <div class="notification success fl-wrap">
+                                        <p> {{ $message }}</p>
+                                        <a class="notification-close" href="#"><i class="fa fa-times"></i></a>
+                                    </div>
+                                @elseif($message = Session::get('error'))
+                                    <div class="notification reject fl-wrap">
+                                        <p> {{ $message }}</p>
+                                        <a class="notification-close" href="#"><i class="fa fa-times"></i></a>
+                                    </div>
+                                @endif
                                 @foreach($listings as $listing)
                                 <div class="dashboard-list">
                                     <div class="dashboard-message">
