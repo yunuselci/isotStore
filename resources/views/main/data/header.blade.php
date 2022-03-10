@@ -65,7 +65,7 @@
                         </li>
                     @endisset
                     <li>
-                        <a href=" {{ route('ads') }}">İlanlar</a>
+                        <a href=" {{ route('listings') }}">İlanlar</a>
                     </li>
                     <li>
                         <a href=" {{ route('shops') }}">Mağazalar</a>

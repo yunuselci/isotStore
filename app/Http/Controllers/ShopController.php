@@ -11,7 +11,7 @@ class ShopController extends Controller
 
     public function index()
     {
-        $shops = Shop::with('ads')->get();
+        $shops = Shop::with('listings')->get();
         return view('main.include.shops',compact('shops'));
     }
 
@@ -62,7 +62,7 @@ class ShopController extends Controller
 
     public function show($id)
     {
-        $shop = Shop::with('products')->whereId($id)->get();
+        $shop = Shop::with('listings')->whereId($id)->get();
         if($shop){
             return view('main.include.shop-page',compact('shop'));
         }else{

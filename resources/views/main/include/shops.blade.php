@@ -37,6 +37,7 @@
                             <!-- listing-item -->
                             @isset($shops)
                                 @foreach($shops as $shop)
+                                    @if($shop->status == 1)
                                     <div class="listing-item">
                                         <article class="geodir-category-listing fl-wrap">
                                             <div class="geodir-category-img">
@@ -49,6 +50,7 @@
                                             </div>
                                         </article>
                                     </div>
+                                     @endif
                             @endforeach
 
                         @endisset

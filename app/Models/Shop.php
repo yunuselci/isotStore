@@ -15,24 +15,9 @@ class Shop extends Model
         return $this->belongsTo(User::class);
     }
 
-    public function ads()
+    public function listings()
     {
-        return $this->hasMany(Ad::class);
-    }
-
-    public function catalogs()
-    {
-        return $this->hasMany(Catalog::class);
-    }
-
-    public function certificates()
-    {
-        return $this->hasMany(Certificate::class);
-    }
-
-    public function products()
-    {
-        return $this->hasMany(Product::class);
+        return $this->hasMany(Listing::class);
     }
 
 }

@@ -1,8 +1,8 @@
 <?php
 
-use App\Http\Controllers\AdController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\ListingController;
 use App\Http\Controllers\ShopController;
 use Illuminate\Support\Facades\Route;
 
@@ -19,14 +19,11 @@ Route::get('/kategoriler',[CategoryController::class,'index'])->name('categories
 Route::get('/kategoriler/{seflink}',[CategoryController::class,'seflink'])->name('seflink');
 
 //ads
-Route::get('/ilanlar',[AdController::class,'index'])->name('ads');
+Route::get('/ilanlar',[ListingController::class,'index'])->name('listings');
 
 //shop
 
 Route::get('/magazalar',[ShopController::class,'index'])->name('shops');
-Route::get('/profil/x',function (){
-    return view('main.include.ad-create');
-})->name('x');
 
 Route::middleware(['auth:sanctum', 'verified'])->group(function (){
 
@@ -36,7 +33,7 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function (){
     Route::resource('magazalar', ShopController::class)->except([
         'index'
     ]);
-    Route::resource('ilanlar',AdController::class)->except([
+    Route::resource('ilanlar',ListingController::class)->except([
        'index'
     ]);
 
