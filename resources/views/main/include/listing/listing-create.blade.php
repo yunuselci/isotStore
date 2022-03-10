@@ -12,8 +12,8 @@
                 <!-- profile-edit-wrap -->
                 <div class="profile-edit-wrap">
                     <div class="profile-edit-page-header">
-                        <h2>İlanlarım </h2>
-                        <div class="breadcrumbs"><a href="{{route('dashboard')}}">Profil</a><span>İlanlarım</span></div>
+                        <h2>İlan Oluştur </h2>
+                        <div class="breadcrumbs"><a href="{{route('home')}}">Ana Sayfa</a><a href="{{route('dashboard')}}">Profil</a><span>İlan oluştur</span></div>
                     </div>
                     <div class="row">
                         <div class="col-md-3">
@@ -23,7 +23,7 @@
                                     <div class="user-profile-menu">
                                         <h3>Ana Bölüm</h3>
                                         <ul>
-                                            <li><a href="{{ route('dashboard') }}" class="user-profile-act"><i class="fa fa-user"></i>Kullanıcı paneli</a></li>
+                                            <li><a href="{{ route('dashboard') }}"><i class="fa fa-user"></i>Kullanıcı paneli</a></li>
                                             <li><a href="{{ route('profile.show') }}"><i class="fa fa-edit"></i>Profili düzenle</a></li>
                                         </ul>
                                     </div>
@@ -52,7 +52,7 @@
                                         <h3>Listelemeler</h3>
                                         <ul>
                                             <li><a href="{{ route('ilanlar.show',$value->shops->first()->id) }}"><i class="fa fa-th-list"></i>İlanlarım </a></li>
-                                            <li><a href="dashboard-add-listing.html"><i class="fa fa-plus-square-o"></i>Yenisini Ekle</a></li>
+                                            <li><a href="{{ route('ilanlar.create') }}"  class="user-profile-act"><i class="fa fa-plus-square-o"></i>Yenisini Ekle</a></li>
                                         </ul>
                                     </div>
                                     <!-- user-profile-menu end-->
@@ -69,41 +69,61 @@
                             </div>
                         </div>
                         <div class="col-md-9">
-                            <div class="dashboard-list-box fl-wrap">
-                                <div class="dashboard-header fl-wrap">
-                                    <h3>İlan Listesi</h3>
-                                </div>
-                                <!-- dashboard-list end-->
-                                <div class="dashboard-list">
-                                    <div class="dashboard-message">
-                                        <div class="dashboard-listing-table-image">
-                                            <a href="listing-single.html"><img src="images/all/1.jpg" alt=""></a>
-                                        </div>
-                                        <div class="dashboard-listing-table-text">
-                                            <h4><a href="listing-single.html">Event In City Hall</a></h4>
-                                            <span class="dashboard-listing-table-address"><i class="fa fa-map-marker"></i><a  href="#">USA 27TH Brooklyn NY</a></span>
-                                            <div class="listing-rating card-popup-rainingvis fl-wrap" data-starrating2="5">
-                                                <span>(2 reviews)</span>
+                            <!-- profile-edit-container-->
+                            <div class="profile-edit-container add-list-container">
+                                <div class="custom-form">
+                                    <form action="{{ route('ilanlar.store') }}" method="post" enctype="multipart/form-data">
+                                        @csrf
+                                        <label>Ürün Adı (İlan Adı) <i class="fa fa-text-height"></i></label>
+                                        <input type="text" name="name"/>
+                                        <label>Ürün Açıklaması <i class="fa fa-pencil-square"></i> </label>
+                                        <input type="text" name="description"/>
+                                        <label>Resim:</label>
+                                        <div class="change-photo-btn">
+                                            <div class="photoUpload">
+                                                <span><i class="fa fa-upload"></i> Resim Yükle</span>
+                                                <input type="file" class="upload" name="image">
                                             </div>
-                                            <ul class="dashboard-listing-table-opt  fl-wrap">
-                                                <li><a href="#">Edit <i class="fa fa-pencil-square-o"></i></a></li>
-                                                <li><a href="#" class="del-btn">Delete <i class="fa fa-trash-o"></i></a></li>
-                                            </ul>
                                         </div>
-                                    </div>
+                                        <label>Birim: <i class="fa fa-balance-scale"></i> </label>
+                                        <input type="text" name="unit"/>
+                                        <label>Tipi: <i class="fa fa-map-marker"></i> </label>
+                                        <select class="chosen-select"  name="type">
+                                            <option value="1">Satılık</option>
+                                            <option value="2">Kiralık</option>
+                                        </select>
+                                        <label>Durumu: <i class="fa fa-map-marker"></i> </label>
+                                        <select class="chosen-select"  name="status">
+                                            <option value="1">Sıfır</option>
+                                            <option value="2">İkinci el</option>
+                                        </select>
+                                        <label>Stok Durumu: <i class="fa fa-map-marker"></i> </label>
+                                        <select class="chosen-select"  name="delivery_status">
+                                            <option value="1">Stok mevcut</option>
+                                            <option value="2">Stok yok</option>
+                                            <option value="3">Sipariş durumuna göre stok getirilebilir.</option>
+                                        </select>
+                                        <label>Defolu: <i class="fa fa-map-marker"></i> </label>
+                                        <select class="chosen-select"  name="faulty">
+                                            <option value="1">Hayır</option>
+                                            <option value="2">Defolu ürün</option>
+                                        </select>
+                                        <label>Kategorisi: <i class="fa fa-map-marker"></i> </label>
+                                        <select class="chosen-select"  name="faulty">
+                                            @foreach($categories as $category)
+                                            <option value="{{ $category->id }}">{{ $category->name }}</option>
+                                            @endforeach
+                                        </select>
+                                        <label>Menşei: <i class="fa fa-globe"></i> </label>
+                                        <input type="text" name="origin"/>
+                                    </form>
+
                                 </div>
-                                <!-- dashboard-list end-->
                             </div>
-                            <!-- pagination-->
-                            <div class="pagination">
-                                <a href="#" class="prevposts-link"><i class="fa fa-caret-left"></i></a>
-                                <a href="#">1</a>
-                                <a href="#" class="current-page">2</a>
-                                <a href="#">3</a>
-                                <a href="#">4</a>
-                                <a href="#" class="nextposts-link"><i class="fa fa-caret-right"></i></a>
-                            </div>
+                            <!-- profile-edit-container end-->
+
                         </div>
+
                     </div>
                 </div>
                 <!--profile-edit-wrap end -->
@@ -112,23 +132,5 @@
         </section>
         <!-- section end -->
         <div class="limit-box fl-wrap"></div>
-        <!--section -->
-        <section class="gradient-bg">
-            <div class="cirle-bg">
-                <div class="bg" data-bg="images/bg/circle.png"></div>
-            </div>
-            <div class="container">
-                <div class="join-wrap fl-wrap">
-                    <div class="row">
-                        <div class="col-md-8">
-                            <h3>Do You Have Questions ?</h3>
-                            <p>Lorem ipsum dolor sit amet, harum dolor nec in, usu molestiae at no.</p>
-                        </div>
-                        <div class="col-md-4"><a href="contacts.html" class="join-wrap-btn">Get In Touch <i class="fa fa-envelope-o"></i></a></div>
-                    </div>
-                </div>
-            </div>
-        </section>
-        <!-- section end -->
     </div>
 @endsection

@@ -19,7 +19,7 @@ class ListingController extends Controller
 
     public function create()
     {
-        //
+        return view('main.include.listing.listing-create');
     }
 
 

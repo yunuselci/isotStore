@@ -40,7 +40,9 @@
         @yield('shop-create')
         @yield('listings')
         @yield('listing-create')
+        @yield('listing-edit')
         @yield('listing-page')
+
 
 
     </div>

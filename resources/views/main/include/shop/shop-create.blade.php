@@ -14,7 +14,7 @@
                 <div class="profile-edit-wrap">
                     <div class="profile-edit-page-header">
                         <h2>Mağaza oluştur</h2>
-                        <div class="breadcrumbs"><a href="{{route('dashboard')}}">Profil</a><span>Mağaza Oluştur</span>
+                        <div class="breadcrumbs"><a href="{{route('home')}}">Ana Sayfa</a><a href="{{route('dashboard')}}">Profil</a><span>Mağaza Oluştur</span>
                         </div>
                     </div>
                     <div class="row">
@@ -49,8 +49,8 @@
                                     <div class="user-profile-menu">
                                         <h3>Listelemeler</h3>
                                         <ul>
-                                            <li><a href="dashboard-listing-table.html"><i class="fa fa-th-list"></i>İlanlarım</a></li>
-                                            <li><a href="dashboard-add-listing.html"><i class="fa fa-plus-square-o"></i>Yenisini Ekle</a></li>
+                                            <li><a href="{{ route('ilanlar.show',$value->shops->first()->id) }}"><i class="fa fa-th-list"></i>İlanlarım </a></li>
+                                            <li><a href="{{ route('ilanlar.create') }}"><i class="fa fa-plus-square-o"></i>Yenisini Ekle</a></li>
                                         </ul>
                                     </div>
                                     <!-- user-profile-menu end-->

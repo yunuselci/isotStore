@@ -28,6 +28,8 @@ class ViewServiceProvider extends ServiceProvider
     public function boot()
     {
         View::composer('main.data.header', CategoryComposer::class);
+        View::composer('main.include.listing.listing-create', CategoryComposer::class);
+
         View::composer('main.include.home',CategoryComposer::class);
     }
 }
