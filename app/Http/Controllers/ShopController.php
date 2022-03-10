@@ -12,7 +12,7 @@ class ShopController extends Controller
     public function index()
     {
         $shops = Shop::with('listings')->get();
-        return view('main.include.shops', compact('shops'));
+        return view('main.include.shop.shops', compact('shops'));
     }
 
     public function create()
@@ -60,21 +60,25 @@ class ShopController extends Controller
     public function show($id)
     {
         $shop = Shop::with('listings')->whereId($id)->get();
-        if ($shop) {
-            return view('main.include.shop-page', compact('shop'));
-        } else {
-            abort(404);
+        foreach ($shop as $s){
+            if ($s->status == 1) {
+                return view('main.include.shop.shop-page', compact('shop'));
+            } else {
+                abort(404);
+            }
         }
+
+
 
     }
 
     public function edit($id)
     {
         $shop = Shop::find($id);
-        if ($shop) {
+        if ($shop && $shop->status == 1) {
             $shop = Shop::find($id)->get();
 
-            return view('main.include.shop-edit', compact('shop'));
+            return view('main.include.shop.shop-edit', compact('shop'));
         } else {
             abort(404);
         }

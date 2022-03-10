@@ -3,7 +3,7 @@
     İlanlar - iSotStore
 @endsection
 
-@section('ads')
+@section('listings')
     <!--  content  -->
     <div class="content">
         <!--  section  -->

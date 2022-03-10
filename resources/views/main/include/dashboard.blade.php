@@ -31,10 +31,10 @@
                                     </div>
                                     <!-- user-profile-menu end-->
                                     <!-- user-profile-menu-->
+                                    @foreach(Auth::user()->whereId(Auth::id())->with('shops')->get() as $value)
                                     <div class="user-profile-menu">
                                         <h3>Mağazam</h3>
                                         <ul>
-                                            @foreach(Auth::user()->whereId(Auth::id())->with('shops')->get() as $value)
                                             @if(!is_null($value->shops))
                                                 @if($value->shops->first()->status == 1)
                                             <li><a href="{{ route('magazalar.show', $value->shops->first()->id) }}"><i class="fa fa-shopping-bag"></i> Mağazam </a></li>
@@ -45,18 +45,21 @@
                                             @else
                                             <li><a href="{{ route('magazalar.create') }}"><i class="fa fa-shopping-bag"></i>Mağaza oluştur</a></li>
                                             @endif
-                                            @endforeach
                                         </ul>
                                     </div>
                                     <!-- user-profile-menu end-->
                                     <!-- user-profile-menu-->
-                                    <div class="user-profile-menu">
+                                        @if(!is_null($value->shops) && $value->shops->first()->status == 1)
+                                            <div class="user-profile-menu">
                                         <h3>Listelemeler</h3>
                                         <ul>
                                             <li><a href="/profil/x"><i class="fa fa-th-list"></i>İlanlarım </a></li>
                                             <li><a href="dashboard-add-listing.html"><i class="fa fa-plus-square-o"></i>Yenisini Ekle</a></li>
                                         </ul>
                                     </div>
+                                    @endif
+
+                                @endforeach
                                     <!-- user-profile-menu end-->
                                     <form method="POST" action="{{ route('logout') }}">
                                         @csrf
