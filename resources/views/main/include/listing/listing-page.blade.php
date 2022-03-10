@@ -114,16 +114,17 @@
                                                 <li><a href="#">Edit <i class="fa fa-pencil-square-o"></i></a></li>
                                                 <li>
                                                 <form action="{{ route('ilanlar.destroy', $listing->id) }}" method="post" id="deleteForm">
+                                                    {{ $listing->id }}
                                                     @csrf
                                                     @method('DELETE')
-                                                    <a class="del-btn" onclick="myFunction()"> Delete <i class="fa fa-trash-o"></i></a>
+                                                    <a class="del-btn" onclick="myFunction({{ $listing->id }})"> Delete <i class="fa fa-trash-o"></i></a>
                                                 </form>
                                                 </li>
                                             </ul>
                                         </div>
                                     </div>
                                 </div>
-                                @endforeach
+                                 @endforeach
                                 <!-- dashboard-list end-->
                             </div>
                             <!-- pagination-->
@@ -146,7 +147,11 @@
         <div class="limit-box fl-wrap"></div>
     </div>
     <script>
-        function myFunction() {
+        function myFunction(id) {
+            var url = '{{ route('ilanlar.destroy', ":id") }}';
+            url = url.replace(':id', id);
+            document.getElementById("deleteForm").action = url;
+
             if(confirm('İlanı silmek istediğinizden emin misiniz ?'))
             {
                 document.getElementById("deleteForm").submit();
