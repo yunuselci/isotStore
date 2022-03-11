@@ -76,6 +76,28 @@
                         <div class="col-md-9">
                             <!-- profile-edit-container-->
                             <div class="profile-edit-container add-list-container">
+                                @if ($message = Session::get('success'))
+                                    <div class="notification success fl-wrap">
+                                        <p> {{ $message }}</p>
+                                        <a class="notification-close" href="#"><i class="fa fa-times"></i></a>
+                                    </div>
+                                @elseif($message = Session::get('error'))
+                                    <div class="notification reject fl-wrap">
+                                        <p> {{ $message }}</p>
+                                        <a class="notification-close" href="#"><i class="fa fa-times"></i></a>
+                                    </div>
+                                @endif
+                                @if ($errors->any())
+                                    <div class="notification reject fl-wrap">
+                                        <ul>
+                                            @foreach ($errors->all() as $error)
+                                                <li>{{ $error }}</li>
+                                            @endforeach
+                                        </ul>
+                                        <a class="notification-close" href="#"><i class="fa fa-times"></i></a>
+
+                                    </div>
+                                @endif
                                 <div class="custom-form">
                                     <form action="{{ route('magazalar.store') }}" method="post" enctype="multipart/form-data">
                                         @csrf

@@ -29,6 +29,7 @@ class ViewServiceProvider extends ServiceProvider
     {
         View::composer('main.data.header', CategoryComposer::class);
         View::composer('main.include.listing.listing-create', CategoryComposer::class);
+        View::composer('main.include.listing.listing-edit', CategoryComposer::class);
 
         View::composer('main.include.home',CategoryComposer::class);
     }

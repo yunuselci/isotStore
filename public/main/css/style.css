@@ -248,6 +248,10 @@ blockquote p {
 .shapes-bg-big:before{
 	background-image:url(../images/bg/shapes-big.png);
 }
+.respimgsmall{
+    width:25%;
+    height:auto;
+}
 .respimg {
 	width:100%;
 	height:auto;

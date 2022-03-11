@@ -76,13 +76,50 @@ class ListingController extends Controller
 
     public function edit($id)
     {
-        //
+        $listing = Listing::find($id);
+        if($listing){
+            $listing = Listing::whereId($id)->get();
+            return view('main.include.listing.listing-edit', compact('listing'));
+        }else{
+            abort(404);
+        }
     }
 
 
-    public function update(Request $request, $id)
+    public function update(ListPostRequest $request, $id)
     {
-        //
+        $userId = auth()->id();
+        $shop = Shop::whereUserId($userId)->first();
+        $seflink = Str::slug($request->name);
+
+        if (!is_null($request->image)) {
+            $imageName = "iSotStore_" . rand(0, 10000) . "." . $request->image->getClientOriginalExtension();
+            $request->image->move(public_path('main/images/listing'), $imageName);
+        } else {
+            $imageName = Listing::find($id)->image;
+        }
+        $isListing = Listing::whereId($id);
+        if($isListing){
+             Listing::whereId($id)->update([
+                'name' => $request->name,
+                'description' => $request->description,
+                'image'=> $imageName,
+                'unit' => $request->unit,
+                'type'=> $request->type,
+                'status' => $request->status,
+                'delivery_status' => $request->delivery_status,
+                'faulty' => $request->faulty,
+                'origin'=> $request->origin,
+                'seflink'=> $seflink,
+                'shop_id' => $shop->id,
+                'category_id'=> $request->category_id,
+            ]);
+             return redirect()->route('ilanlar.edit',$id)->with('success','İlan bilgileri başarıyla güncellendi');
+        }else{
+            return redirect()->route('ilanlar.edit',$id)->with('error','Bir hata meydana geldi');
+        }
+
+
     }
 
 

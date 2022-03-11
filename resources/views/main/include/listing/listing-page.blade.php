@@ -111,7 +111,7 @@
 
                                             </div>
                                             <ul class="dashboard-listing-table-opt  fl-wrap">
-                                                <li><a href="#">Edit <i class="fa fa-pencil-square-o"></i></a></li>
+                                                <li><a href="{{ route('ilanlar.edit', $listing->id) }}">Edit <i class="fa fa-pencil-square-o"></i></a></li>
                                                 <li>
                                                 <form action="{{ route('ilanlar.destroy', $listing->id) }}" method="post" id="deleteForm">
                                                     @csrf
