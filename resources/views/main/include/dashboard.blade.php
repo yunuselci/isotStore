@@ -14,7 +14,7 @@
                 <div class="profile-edit-wrap">
                     <div class="profile-edit-page-header">
                         <h2>Profil Yönetimi</h2>
-                        <div class="breadcrumbs"><a href="{{route('home')}}">Ana Sayfa</a><a href=" {{route('dashboard')}}">Profil</a></div>
+                        <div class="breadcrumbs"><a href="{{route('home')}}">Ana Sayfa</a><span>Profil</span></div>
 
                     </div>
                     <div class="row">
@@ -103,15 +103,83 @@
                                 @endif
                                 <!-- statistic-container-->
                                 <div class="statistic-container fl-wrap">
-                                    <!-- statistic-item-wrap-->
-                                    <div class="statistic-item-wrap">
-                                        <div class="statistic-item gradient-bg fl-wrap">
-                                            <i class="fa fa-map-marker"></i>
-                                            <div class="statistic-item-numder">21</div>
-                                            <h5>Active Listings</h5>
+                                    <div class="dashboard-list-box fl-wrap activities">
+                                        <div class="dashboard-header fl-wrap">
+                                            <h3>Recent Activities ( Bu kısımı geliştirmedim henüz )</h3>
                                         </div>
+                                        <!-- dashboard-list end-->
+                                        <div class="dashboard-list">
+                                            <div class="dashboard-message">
+                                                <span class="new-dashboard-item"><i class="fa fa-times"></i></span>
+
+                                                <div class="dashboard-message-text">
+                                                    <p><i class="fa fa-check"></i> Your listing <a href="#">Luxury Restourant</a> has been approved! </p>
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- dashboard-list end-->
+                                        <!-- dashboard-list end-->
+                                        <div class="dashboard-list">
+                                            <div class="dashboard-message">
+                                                <span class="new-dashboard-item"><i class="fa fa-times"></i></span>
+
+                                                <div class="dashboard-message-text">
+                                                    <p><i class="fa fa-heart"></i>Someone bookmarked your <a href="#">Event In City Mol</a> listing!</p>
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- dashboard-list end-->
+                                        <!-- dashboard-list end-->
+                                        <div class="dashboard-list">
+                                            <div class="dashboard-message">
+                                                <span class="new-dashboard-item"><i class="fa fa-times"></i></span>
+
+                                                <div class="dashboard-message-text">
+                                                    <p><i class="fa fa-comments-o"></i> Someone left a review on <a href="#">Gym in the Center</a> listing!</p>
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- dashboard-list end-->
+                                        <!-- dashboard-list end-->
+                                        <div class="dashboard-list">
+                                            <div class="dashboard-message">
+                                                <span class="new-dashboard-item"><i class="fa fa-times"></i></span>
+
+                                                <div class="dashboard-message-text">
+                                                    <p><i class="fa fa-check"></i> Your listing <a href="#">Luxury Restourant</a> has been approved! </p>
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- dashboard-list end-->
+                                        <!-- dashboard-list end-->
+                                        <div class="dashboard-list">
+                                            <div class="dashboard-message">
+                                                <span class="new-dashboard-item"><i class="fa fa-times"></i></span>
+
+                                                <div class="dashboard-message-text">
+                                                    <p><i class="fa fa-heart"></i>Someone bookmarked your <a href="#">Event In City Mol</a> listing!</p>
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- dashboard-list end-->
+                                        <!-- dashboard-list end-->
+                                        <div class="dashboard-list">
+                                            <div class="dashboard-message">
+                                                <span class="new-dashboard-item"><i class="fa fa-times"></i></span>
+
+                                                <div class="dashboard-message-text">
+                                                    <p><i class="fa fa-comments-o"></i> Someone left a review on <a href="#">Gym in the Center</a> listing!</p>
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- dashboard-list end-->
                                     </div>
-                                    <!-- statistic-item-wrap end-->
                                 </div>
                                 <!-- statistic-container end-->
                             </div>
