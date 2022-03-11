@@ -32,6 +32,7 @@
 
         @yield('master')
         @yield('categories')
+        @yield('category-page')
         @yield('dashboard')
         @yield('show')
         @yield('shops')

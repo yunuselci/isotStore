@@ -46,16 +46,16 @@
             <nav>
                 <ul>
                     <li>
-                        <a href="{{ route('home') }}" class="act-link">Anasayfa</a>
+                        <a href="{{ route('home') }}" class="{{ Route::currentRouteName() === 'home' ? 'act-link' : '' }}">Anasayfa</a>
                     </li>
                     @isset($categories)
                         <li>
-                            <a href=" {{ route('categories') }}"> Kategoriler <i class="fa fa-caret-down"></i></a>
+                            <a href=" {{ route('categories') }}" class="{{ Route::currentRouteName() === 'categories' ? 'act-link' : '' }}"> Kategoriler <i class="fa fa-caret-down"></i></a>
                             <!--second level -->
                             <ul>
                                 <div class="nav-scroll" id="style-pinar">
                                     @foreach ( $categories as $category )
-                                        <li><a href="{{ route('categorySeflink',$category->seflink) }}">{{ $category->name }}</a>
+                                        <li><a href="{{ route('categoryDetail',$category->seflink) }}">{{ $category->name }}</a>
                                         </li>
                                     @endforeach
                                 </div>
@@ -64,10 +64,10 @@
                         </li>
                     @endisset
                     <li>
-                        <a href=" {{ route('listings') }}">İlanlar</a>
+                        <a href=" {{ route('listings') }}" class="{{ Route::currentRouteName() === 'listings' ? 'act-link' : '' }}">İlanlar</a>
                     </li>
                     <li>
-                        <a href=" {{ route('shops') }}">Mağazalar</a>
+                        <a href=" {{ route('shops') }}" class="{{ Route::currentRouteName() === 'shops' ? 'act-link' : '' }}">Mağazalar</a>
                     </li>
                 </ul>
             </nav>

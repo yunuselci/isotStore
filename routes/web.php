@@ -16,7 +16,7 @@ Route::get('/',[HomeController::class,'index'])->name('home');
 
 //categories
 Route::get('/kategoriler',[CategoryController::class,'index'])->name('categories');
-Route::get('/kategoriler/{seflink}',[CategoryController::class,'seflink'])->name('categorySeflink');
+Route::get('/kategoriler/{seflink}',[CategoryController::class,'detail'])->name('categoryDetail');
 
 //ads
 Route::get('/ilanlar',[ListingController::class,'index'])->name('listings');

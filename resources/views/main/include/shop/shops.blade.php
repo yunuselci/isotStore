@@ -18,17 +18,7 @@
                         <div class="listsearch-input-wrap fl-wrap">
                             <div class="listsearch-input-item">
                                 <i class="mbri-key single-i"></i>
-                                <input type="text" placeholder="İlan Adı / Kodu" value=""/>
-                            </div>
-                            <div class="listsearch-input-item">
-                                <select data-placeholder="Location" class="chosen-select">
-                                    <option>Konum / Bölge</option>
-                                    <option>Bronx</option>
-                                    <option>Brooklyn</option>
-                                    <option>Manhattan</option>
-                                    <option>Queens</option>
-                                    <option>Staten Island</option>
-                                </select>
+                                <input type="text" placeholder="Mağaza Adı / Kodu" value=""/>
                             </div>
                             <button class="button fs-map-btn">Ara</button>
                         </div>
@@ -44,9 +34,12 @@
                                                 <img src="{{ asset( 'main/images/shop/'. $shop->image ) }}"
                                                      alt="">
                                                 <div class="overlay"></div>
+                                                <div class="list-post-counter"><span> Mağaza Kodu:{{ $shop->id }}</span></div>
+
                                             </div>
                                             <div class="geodir-category-content fl-wrap">
                                                 <h3>{{ $shop->name }}</a></h3>
+                                                <p>İlan Sayısı: {{ $shop->listings->count() }} <span class="fa fa-shopping-basket"></span> </p>
                                             </div>
                                         </article>
                                     </div>

@@ -13,9 +13,9 @@ class CategoryController extends Controller
         return view('main.include.category.categories',compact('categories'));
     }
 
-    public function seflink($seflink)
+    public function detail($seflink)
     {
-
-        return view('main.include.category.category-page',compact('seflink'));
+        $categories = Category::with('listings')->where('seflink',$seflink)->get();
+        return view('main.include.category.category-page',compact('categories'));
     }
 }

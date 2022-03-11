@@ -20,16 +20,6 @@
                                 <i class="mbri-key single-i"></i>
                                 <input type="text" placeholder="İlan Adı / Kodu" value=""/>
                             </div>
-                            <div class="listsearch-input-item">
-                                <select data-placeholder="Location" class="chosen-select">
-                                    <option>Konum / Bölge</option>
-                                    <option>Bronx</option>
-                                    <option>Brooklyn</option>
-                                    <option>Manhattan</option>
-                                    <option>Queens</option>
-                                    <option>Staten Island</option>
-                                </select>
-                            </div>
                             <button class="button fs-map-btn">Ara</button>
                         </div>
                         <!-- list-main-wrap-->
@@ -49,7 +39,7 @@
                                             <div class="geodir-category-content fl-wrap">
                                                 <h3><a href="{{ route('listingDetail', $listing->seflink) }}">{{ $listing->name }}</a></h3>
                                                 <p>Ürün Tipi: @if($listing->type==1) Satılık @else Kiralık @endif <span class="fa fa-shopping-bag"></span> </p>
-                                                <p>Ürün Kategorisi: <a href="{{ route('categorySeflink', $listing->category->seflink) }}">{{ $listing->category->name }} </a> </p>
+                                                <p>Ürün Kategorisi: <a href="{{ route('categoryDetail', $listing->category->seflink) }}">{{ $listing->category->name }} </a> </p>
                                             </div>
                                         </article>
                                     </div>

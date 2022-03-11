@@ -11,6 +11,28 @@
         <div class="bg"  data-bg="{{ asset('main') }}/images/home.jpg" data-scrollax="properties: { translateY: '200px' }"></div>
         <div class="overlay"></div>
         <div class="hero-section-wrap fl-wrap">
+            @if ($message = Session::get('success'))
+                <div class="notification success fl-wrap">
+                    <p> {{ $message }}</p>
+                    <a class="notification-close" href="#"><i class="fa fa-times"></i></a>
+                </div>
+            @elseif($message = Session::get('error'))
+                <div class="notification reject fl-wrap">
+                    <p> {{ $message }}</p>
+                    <a class="notification-close" href="#"><i class="fa fa-times"></i></a>
+                </div>
+            @endif
+            @if ($errors->any())
+                <div class="notification reject fl-wrap">
+                    <ul>
+                        @foreach ($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
+                    <a class="notification-close" href="#"><i class="fa fa-times"></i></a>
+
+                </div>
+            @endif
             <div class="container">
                 <div class="intro-item fl-wrap">
                     <h2>Türkiye’nin Lider Stok Platformu</h2>
