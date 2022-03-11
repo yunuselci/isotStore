@@ -1,6 +1,6 @@
 @extends('main.theme')
 @section('title')
-    {{ $seflink }} - iSotStore
+    {{ $listing->seflink }} - iSotStore
 @endsection
 
 @section('listing-detail')
@@ -17,38 +17,22 @@
                                     <div class="single-slider-wrapper fl-wrap">
                                         <div class="single-slider fl-wrap">
                                             <div class="slick-slide-item"><img
-                                                    src="{{ asset('main') }}/images/all/1.jpg" alt=""></div>
+                                                    src="{{ asset('main/images/listing/'. $listing->image ) }}" alt=""></div>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="list-single-main-item fl-wrap">
                                     <div class="list-single-main-item-title fl-wrap">
-                                        <h3>Aliquam erat volutpat. Curabitur convallis.</h3>
+                                        <h3>{{ $listing->name }}</h3>
                                     </div>
-                                    <p>
-                                        Vestibulum orci felis, ullamcorper non condimentum non, ultrices ac nunc. Mauris
-                                        non ligula suscipit, vulputate mi accumsan, dapibus felis. Nullam sed sapien
-                                        dui. Nulla auctor sit amet sem non porta. Integer iaculis tellus nulla, quis
-                                        imperdiet magna venenatis vitae..
-                                    </p>
-                                    <p>Ut nec hinc dolor possim. An eros argumentum vel, elit diceret duo eu, quo et
-                                        aliquid ornatus delicatissimi. Cu nam tale ferri utroque, eu habemus albucius
-                                        mel, cu vidit possit ornatus eum. Eu ius postulant salutatus definitionem,
-                                        explicari. Graeci viderer qui ut, at habeo facer solet usu. Pri choro pertinax
-                                        indoctum ne, ad partiendo persecuti forensibus est.</p>
-                                    <blockquote>
-                                        <p>Vestibulum id ligula porta felis euismod semper. Sed posuere consectetur est
-                                            at lobortis. Aenean eu leo quam. Pellentesque ornare sem lacinia quam
-                                            venenatis vestibulum. Duis mollis, est non commodo luctus, nisi erat
-                                            porttitor ligula, eget lacinia odio sem nec elit. Donec ullamcorper nulla
-                                            non metus auctor fringilla. Vestibulum id ligula porta felis euismod
-                                            semper.</p>
-                                    </blockquote>
-                                    <p>Ut nec hinc dolor possim. An eros argumentum vel, elit diceret duo eu, quo et
-                                        aliquid ornatus delicatissimi. Cu nam tale ferri utroque, eu habemus albucius
-                                        mel, cu vidit possit ornatus eum. Eu ius postulant salutatus definitionem, an e
-                                        trud erroribus explicari. Graeci viderer qui ut, at habeo facer solet usu. Pri
-                                        choro pertinax indoctum ne, ad partiendo persecuti forensibus est.</p>
+                                    <p>Ürün Açıklaması: {{ $listing->description }}</p>
+                                    <p>Birim: {{ $listing->unit }}</p>
+                                    <p>Tipi: @if($listing->type==1) Satılık @else Kiralık @endif</p>
+                                    <p>Durumu: @if($listing->status==1) Sıfır @else İkinci El @endif</p>
+                                    <p>Teslim Durumu: @if($listing->delivery_status==1) Stokta var @elseif($listing->delivery_status==2) Stokta yok @else Sipariş durumuna göre stok oluşturulabilir. @endif</p>
+                                    <p>Defolu: @if($listing->faulty==1) Hayır @else Defolu Ürün @endif</p>
+                                    <p>Menşei: {{$listing->origin}}</p>
+
                                 </div>
                             </article>
                             <!-- article end -->
@@ -60,20 +44,18 @@
                             <!--box-widget-item -->
                             <div class="box-widget-item fl-wrap">
                                 <div class="box-widget-item-header">
-                                    <h3>About Athor : </h3>
+                                    <h3>Tedarikçi Mağaza : </h3>
                                 </div>
                                 <div class="box-widget list-author-widget">
                                     <div class="list-author-widget-header shapes-bg-small  color-bg fl-wrap">
                                         <span class="list-author-widget-link"><a
-                                                href="author-single.html">Alisa Noory</a></span>
-                                        <img src="{{ asset('main') }}/images/avatar/1.jpg" alt="">
+                                                href="author-single.html"></a>{{ $listing->shops->name }}</span>
+                                        <img src="{{ asset('main/images/shop/'. $listing->shops->image ) }}" alt="">
                                     </div>
                                     <div class="box-widget-content">
                                         <div class="list-author-widget-text">
                                             <div class="list-author-widget-contacts">
-                                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas in
-                                                    pulvinar neque. Nulla finibus lobortis pulvinar. Donec a consectetur
-                                                    nulla.</p>
+                                                <p>{{ $listing->shops->address }}</p>
                                             </div>
                                         </div>
                                     </div>

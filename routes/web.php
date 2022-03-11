@@ -20,7 +20,7 @@ Route::get('/kategoriler/{seflink}',[CategoryController::class,'seflink'])->name
 
 //ads
 Route::get('/ilanlar',[ListingController::class,'index'])->name('listings');
-Route::get('/ilan/{seflink}',[ListingController::class,'seflink'])->name('listingSeflink');
+Route::get('/ilan/{seflink}',[ListingController::class,'detail'])->name('listingDetail');
 
 //shop
 

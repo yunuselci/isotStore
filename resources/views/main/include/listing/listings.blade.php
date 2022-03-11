@@ -47,7 +47,7 @@
 
                                             </div>
                                             <div class="geodir-category-content fl-wrap">
-                                                <h3><a href="{{ route('listingSeflink', $listing->seflink) }}">{{ $listing->name }}</a></h3>
+                                                <h3><a href="{{ route('listingDetail', $listing->seflink) }}">{{ $listing->name }}</a></h3>
                                                 <p>Ürün Tipi: @if($listing->type==1) Satılık @else Kiralık @endif <span class="fa fa-shopping-bag"></span> </p>
                                                 <p>Ürün Kategorisi: <a href="{{ route('categorySeflink', $listing->category->seflink) }}">{{ $listing->category->name }} </a> </p>
                                             </div>

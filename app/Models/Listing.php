@@ -16,6 +16,6 @@ class Listing extends Model
     }
     public function shops()
     {
-        return $this->belongsTo(Shop::class);
+        return $this->belongsTo(Shop::class,'shop_id','id');
     }
 }

@@ -17,7 +17,7 @@ class Shop extends Model
 
     public function listings()
     {
-        return $this->hasMany(Listing::class);
+        return $this->hasMany(Listing::class, 'shop_id','id');
     }
 
 }

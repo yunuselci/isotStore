@@ -93,7 +93,7 @@
                                 <div class="dashboard-list">
                                     <div class="dashboard-message">
                                         <div class="dashboard-listing-table-image">
-                                            <a href="listing-single.html"><img src="{{ asset('main') }}/images/listing/1.jpg" alt=""></a>
+                                            <a href="{{ route('listingDetail', $listing->seflink) }}"><img src="{{ asset('main/images/listing/'. $listing->image ) }}" alt=""></a>
                                         </div>
                                         <div class="dashboard-listing-table-text">
                                             <h4>{{ $listing->name }}</h4>
