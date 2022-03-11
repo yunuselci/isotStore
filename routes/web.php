@@ -26,7 +26,7 @@ Route::get('/ilan/{seflink}',[ListingController::class,'detail'])->name('listing
 //shop
 
 Route::get('/magazalar',[ShopController::class,'index'])->name('shops');
-Route::get('/magazalar/{id}',[ShopController::class,'show'])->name('magazalar.show');
+Route::get('/magaza/{id}',[ShopController::class,'show'])->name('magazalar.show');
 
 Route::middleware(['auth:sanctum', 'verified'])->group(function (){
 
@@ -34,7 +34,7 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function (){
         return view('main.include.dashboard');
     })->name('dashboard');
     Route::resource('magazalar', ShopController::class)->except([
-        'index','show'
+        'index'
     ]);
     Route::resource('ilanlar',ListingController::class)->except([
        'index'
