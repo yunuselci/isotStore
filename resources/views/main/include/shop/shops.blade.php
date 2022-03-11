@@ -38,7 +38,7 @@
 
                                             </div>
                                             <div class="geodir-category-content fl-wrap">
-                                                <h3>{{ $shop->name }}</a></h3>
+                                                <h3><a href="{{ route('magazalar.show', $shop->id) }}">{{ $shop->name }}</a></h3>
                                                 <p>İlan Sayısı: {{ $shop->listings->count() }} <span class="fa fa-shopping-basket"></span> </p>
                                             </div>
                                         </article>

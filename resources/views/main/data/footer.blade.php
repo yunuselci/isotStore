@@ -12,7 +12,7 @@
                         <span class="process-count">01 . </span>
                         <div class="time-line-icon"><i class="fa fa-map-o"></i></div>
                         <h4> Mağazanı Oluştur</h4>
-                        <p>STOKYA mağazanıza kendi logonuzu, ürün görsellerinizi ve ürünleriniz ile ilgili açıklayıcı bilgileri kaydedin.</p>
+                        <p>iSotStore mağazanıza kendi logonuzu, ürün görsellerinizi ve ürünleriniz ile ilgili açıklayıcı bilgileri kaydedin.</p>
                     </div>
                     <span class="pr-dec"></span>
                 </li>
@@ -21,7 +21,7 @@
                         <span class="process-count">02 .</span>
                         <div class="time-line-icon"><i class="fa fa-envelope-open-o"></i></div>
                         <h4> Ücretsiz İlan Ver</h4>
-                        <p>STOKYA mağazanızda, stoktaki ürünlerinizi listeleyip mağaza sayfanızda ürünlerinizi listelemeye başlayın.</p>
+                        <p>iSotStore mağazanızda, stoktaki ürünlerinizi listeleyip mağaza sayfanızda ürünlerinizi listelemeye başlayın.</p>
                     </div>
                     <span class="pr-dec"></span>
                 </li>
