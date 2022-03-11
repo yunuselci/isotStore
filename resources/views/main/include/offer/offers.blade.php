@@ -12,8 +12,8 @@
                 <!-- profile-edit-wrap -->
                 <div class="profile-edit-wrap">
                     <div class="profile-edit-page-header">
-                        <h2>Messages </h2>
-                        <div class="breadcrumbs"><a href="#">Home</a><a href="#">Dasboard</a><span>Messages</span></div>
+                        <h2>Teklifler </h2>
+                        <div class="breadcrumbs"><a href="{{route('home')}}">Ana Sayfa</a><a href="{{route('dashboard')}}">Profil</a><span>Teklifler</span></div>
                     </div>
                     <div class="row">
                         <div class="col-md-3">
@@ -37,6 +37,7 @@
                                                     @if($value->shops->first()->status == 1)
                                                         <li><a href="{{ route('magazalar.show', $value->shops->first()->id) }}"><i class="fa fa-shopping-bag"></i> Mağazam </a></li>
                                                         <li><a href="{{ route('teklifler.show', $value->shops->first()->id) }}"  class="user-profile-act"><i class="fa fa-envelope-o"></i> Teklifler </a></li>
+
                                                         <li><a href="{{ route('magazalar.edit',$value->shops->first()->id) }}"><i class="fa fa-edit"></i>Mağaza düzenle</a></li>
                                                     @else
                                                         <li><a class="user-profile-act"><i class="fa fa-warning"></i>Onay bekliyor</a></li>
@@ -76,80 +77,26 @@
                         <div class="col-md-9">
                             <div class="dashboard-list-box fl-wrap">
                                 <div class="dashboard-header fl-wrap">
-                                    <h3>Indox</h3>
+                                    <h3>Gelen Kutusu</h3>
                                 </div>
-                                <!-- dashboard-list end-->
+                                @foreach($offers as $offer)
                                 <div class="dashboard-list">
                                     <div class="dashboard-message">
-                                        <span class="new-dashboard-item">New</span>
+                                        <span class="new-dashboard-item">@if($offer->status == 2) Yeni @endif</span>
                                         <div class="dashboard-message-avatar">
-                                            <img src="images/avatar/1.jpg" alt="">
+                                            <img src="{{ asset('main') }}/images/avatar/1.jpg" alt="">
                                         </div>
                                         <div class="dashboard-message-text">
-                                            <h4>Andy Smith - <span>27 December 2018</span></h4>
-                                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc posuere convallis purus non cursus. Cras metus neque, gravida sodales massa ut. </p>
-                                            <span class="reply-mail clearfix">Reply : <a  class="dashboard-message-user-mail" href="mailto:yourmail@domain.com" target="_top">yourmail@domain.com</a></span>
+                                            <h4>{{ $offer->user_name }} - <span> {{ $offer->created_at }}</span></h4>
+                                            <p> {{ $offer->description }}</p>
+                                            <span class="reply-mail clearfix">Mail Yoluyla Cevapla : <a  class="dashboard-message-user-mail" href="mailto:{{ $offer->user_email }}" target="_top">{{ $offer->user_email }}</a></span>
+                                            <span class="reply-mail clearfix">Whatsapp Üzerinden Ulaş : <a  class="dashboard-message-user-mail" href="https://api.WhatsApp.com/send?phone={{ $offer->user_phone }}" target="_blank">{{ $offer->user_phone }}</a></span>
+
+
                                         </div>
                                     </div>
                                 </div>
-                                <!-- dashboard-list end-->
-                                <!-- dashboard-list end-->
-                                <div class="dashboard-list">
-                                    <div class="dashboard-message">
-                                        <span class="new-dashboard-item">New</span>
-                                        <div class="dashboard-message-avatar">
-                                            <img src="images/avatar/avatar-bg.png" alt="">
-                                        </div>
-                                        <div class="dashboard-message-text">
-                                            <h4>Andy Smith - <span>27 December 2018</span></h4>
-                                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc posuere convallis purus non cursus. Cras metus neque, gravida sodales massa ut. </p>
-                                            <span class="reply-mail clearfix">Reply : <a  class="dashboard-message-user-mail" href="mailto:yourmail@domain.com" target="_top">yourmail@domain.com</a></span>
-                                        </div>
-                                    </div>
-                                </div>
-                                <!-- dashboard-list end-->
-                                <!-- dashboard-list end-->
-                                <div class="dashboard-list">
-                                    <div class="dashboard-message">
-                                        <div class="dashboard-message-avatar">
-                                            <img src="images/avatar/1.jpg" alt="">
-                                        </div>
-                                        <div class="dashboard-message-text">
-                                            <h4>Andy Smith - <span>27 December 2018</span></h4>
-                                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc posuere convallis purus non cursus. Cras metus neque, gravida sodales massa ut. </p>
-                                            <span class="reply-mail clearfix">Reply : <a  class="dashboard-message-user-mail" href="mailto:yourmail@domain.com" target="_top">yourmail@domain.com</a></span>
-                                        </div>
-                                    </div>
-                                </div>
-                                <!-- dashboard-list end-->
-                                <!-- dashboard-list end-->
-                                <div class="dashboard-list">
-                                    <div class="dashboard-message">
-                                        <div class="dashboard-message-avatar">
-                                            <img src="images/avatar/avatar-bg.png" alt="">
-                                        </div>
-                                        <div class="dashboard-message-text">
-                                            <h4>Andy Smith - <span>27 December 2018</span></h4>
-                                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc posuere convallis purus non cursus. Cras metus neque, gravida sodales massa ut. </p>
-                                            <span class="reply-mail clearfix">Reply : <a  class="dashboard-message-user-mail" href="mailto:yourmail@domain.com" target="_top">yourmail@domain.com</a></span>
-                                        </div>
-                                    </div>
-                                </div>
-                                <!-- dashboard-list end-->
-                                <!-- dashboard-list end-->
-                                <div class="dashboard-list">
-                                    <div class="dashboard-message">
-                                        <div class="dashboard-message-avatar">
-                                            <img src="images/avatar/1.jpg" alt="">
-                                        </div>
-                                        <div class="dashboard-message-text">
-                                            <h4>Andy Smith - <span>27 December 2018</span></h4>
-                                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc posuere convallis purus non cursus. Cras metus neque, gravida sodales massa ut. </p>
-                                            <span class="reply-mail clearfix">Reply : <a  class="dashboard-message-user-mail" href="mailto:yourmail@domain.com" target="_top">yourmail@domain.com</a></span>
-                                        </div>
-                                    </div>
-                                </div>
-                                <!-- dashboard-list end-->
+                                @endforeach
                             </div>
                             <!-- pagination-->
                             <div class="pagination">
