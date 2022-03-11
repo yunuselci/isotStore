@@ -12,6 +12,7 @@
                 <div class="shapes-bg-big"></div>
                 <div class="container">
                     <div class="section-title center-align">
+                        <div class="breadcrumbs fl-wrap"><a href="{{ route('home') }}">Anasayfa</a><a href="{{ route('shops') }}">Mağazalar</a><span>Mağaza Profili</span></div>
 
                         <h2><span>Mağaza : {{ $s->name }}</span></h2>
                         <div class="user-profile-avatar"><img src="{{ asset( 'main/images/shop/'. $s->image ) }}"
@@ -41,7 +42,7 @@
                             <!-- list-main-wrap-->
                             <div class="list-main-wrap fl-wrap card-listing ">
                                 <!-- listing-item -->
-                                @if(\PHPUnit\Framework\isEmpty($s->listings))
+                                @if(!($s->listings->count()))
                                     <div class="listing-item">
                                         <article class="geodir-category-listing fl-wrap">
                                             <div class="geodir-category-content fl-wrap">
@@ -55,11 +56,15 @@
                                             <article class="geodir-category-listing fl-wrap">
                                                 <div class="geodir-category-img">
                                                     <img src="{{ asset( 'main/images/listing/'. $listing->image ) }}"
-                                                         alt="">
+                                                         alt="{{ $listing->name }}">
                                                     <div class="overlay"></div>
+                                                    <div class="list-post-counter"><span> Ürün Kodu:{{ $listing->id }}</span></div>
+
                                                 </div>
                                                 <div class="geodir-category-content fl-wrap">
-                                                    <h3>{{ $listing->name }}</a></h3>
+                                                    <h3><a href="{{ route('listingDetail', $listing->seflink) }}">{{ $listing->name }}</a></h3>
+                                                    <p>Ürün Tipi: @if($listing->type==1) Satılık @else Kiralık @endif <span class="fa fa-shopping-bag"></span> </p>
+                                                    <p>Ürün Kategorisi: <a href="{{ route('categoryDetail', $listing->category->seflink) }}">{{ $listing->category->name }} </a> </p>
                                                 </div>
                                             </article>
                                         </div>

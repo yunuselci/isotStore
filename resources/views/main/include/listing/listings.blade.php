@@ -31,7 +31,7 @@
                                         <article class="geodir-category-listing fl-wrap">
                                             <div class="geodir-category-img">
                                                 <img src="{{ asset( 'main/images/listing/'. $listing->image ) }}"
-                                                     alt="{{ $listing->name }}" height="50" width="50">
+                                                     alt="{{ $listing->name }}">
                                                 <div class="overlay"></div>
                                                 <div class="list-post-counter"><span> Ürün Kodu:{{ $listing->id }}</span></div>
 
