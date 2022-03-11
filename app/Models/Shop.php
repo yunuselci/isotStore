@@ -20,4 +20,9 @@ class Shop extends Model
         return $this->hasMany(Listing::class, 'shop_id','id');
     }
 
+    public function offers()
+    {
+        return $this->hasMany(Offer::class, 'shop_id','id');
+    }
+
 }

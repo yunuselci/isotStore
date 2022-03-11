@@ -3,6 +3,7 @@
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ListingController;
+use App\Http\Controllers\OfferController;
 use App\Http\Controllers\ShopController;
 use Illuminate\Support\Facades\Route;
 
@@ -38,6 +39,7 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function (){
     Route::resource('ilanlar',ListingController::class)->except([
        'index'
     ]);
+    Route::resource('teklifler', OfferController::class);
 
 
 });

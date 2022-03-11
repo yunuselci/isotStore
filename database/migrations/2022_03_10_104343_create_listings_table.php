@@ -27,11 +27,12 @@ return new class extends Migration
             $table->string('seflink', 255);
             $table->unsignedBigInteger('shop_id');
             $table->unsignedBigInteger('category_id');
-            $table->timestamps();
             $table->foreign('shop_id')->references('id')
                 ->on('shops')->onDelete('cascade');
             $table->foreign('category_id')->references('id')
                 ->on('categories')->onDelete('cascade');
+            $table->timestamps();
+
         });
     }
 
