@@ -7,6 +7,8 @@ use App\Models\Listing;
 use App\Models\Shop;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Str;
+
 
 class ListingController extends Controller
 {
@@ -23,11 +25,17 @@ class ListingController extends Controller
         return view('main.include.listing.listing-create');
     }
 
+    public function seflink($seflink)
+    {
+        return view('main.include.listing.listing-detail', compact('seflink'));
+    }
 
     public function store(ListPostRequest $request)
     {
         $userId = auth()->id();
         $shop = Shop::whereUserId($userId)->first();
+        $seflink = Str::slug($request->name);
+
         if (!is_null($request->image)) {
             $imageName = "iSotStore_" . rand(0, 10000) . "." . $request->image->getClientOriginalExtension();
             $request->image->move(public_path('main/images/listing'), $imageName);
@@ -44,8 +52,9 @@ class ListingController extends Controller
             'delivery_status' => $request->delivery_status,
             'faulty' => $request->faulty,
             'origin'=> $request->origin,
+            'seflink'=> $seflink,
             'shop_id' => $shop->id,
-            'category_id'=> $request->category_id
+            'category_id'=> $request->category_id,
         ]);
         if($listing)
         {

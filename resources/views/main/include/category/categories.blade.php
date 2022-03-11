@@ -22,7 +22,7 @@
                                     <div class="overlay"></div>
                                 </div>
                                 <div class="geodir-category-content fl-wrap">
-                                    <h3><a href="/kategoriler/{{ $category->seflink }}">{{ $category->name }}</a></h3>
+                                    <h3><a href="{{ route('categorySeflink', $category->seflink) }}">{{ $category->name }}</a></h3>
                                 </div>
                             </article>
                         </div>

@@ -79,7 +79,28 @@
                                 <div class="profile-edit-header fl-wrap" style="margin-top:30px">
                                     <h4>Merhaba , <span> {{ Auth::user()->name }}</span></h4>
                                 </div>
+                                @if ($message = Session::get('success'))
+                                    <div class="notification success fl-wrap">
+                                        <p> {{ $message }}</p>
+                                        <a class="notification-close" href="#"><i class="fa fa-times"></i></a>
+                                    </div>
+                                @elseif($message = Session::get('error'))
+                                    <div class="notification reject fl-wrap">
+                                        <p> {{ $message }}</p>
+                                        <a class="notification-close" href="#"><i class="fa fa-times"></i></a>
+                                    </div>
+                                @endif
+                                @if ($errors->any())
+                                    <div class="notification reject fl-wrap">
+                                        <ul>
+                                            @foreach ($errors->all() as $error)
+                                                <li>{{ $error }}</li>
+                                            @endforeach
+                                        </ul>
+                                        <a class="notification-close" href="#"><i class="fa fa-times"></i></a>
 
+                                    </div>
+                                @endif
                                 <!-- statistic-container-->
                                 <div class="statistic-container fl-wrap">
                                     <!-- statistic-item-wrap-->

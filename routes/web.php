@@ -16,10 +16,12 @@ Route::get('/',[HomeController::class,'index'])->name('home');
 
 //categories
 Route::get('/kategoriler',[CategoryController::class,'index'])->name('categories');
-Route::get('/kategoriler/{seflink}',[CategoryController::class,'seflink'])->name('seflink');
+Route::get('/kategoriler/{seflink}',[CategoryController::class,'seflink'])->name('categorySeflink');
 
 //ads
 Route::get('/ilanlar',[ListingController::class,'index'])->name('listings');
+Route::get('/ilan/{seflink}',[ListingController::class,'seflink'])->name('listingSeflink');
+
 //shop
 
 Route::get('/magazalar',[ShopController::class,'index'])->name('shops');

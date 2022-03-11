@@ -24,7 +24,7 @@ class ShopController extends Controller
                 return redirect()->route('dashboard')->with('error', 'Mevcut mağaza açma talebiniz bulunmaktadır, yönetici onayı bekleniyor.');
             }
         }
-        return view('main.include.shop-create');
+        return view('main.include.shop.shop-create');
     }
 
     public function store(ShopPostRequest $request)

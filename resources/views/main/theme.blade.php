@@ -42,6 +42,7 @@
         @yield('listing-create')
         @yield('listing-edit')
         @yield('listing-page')
+        @yield('listing-detail')
 
 
 

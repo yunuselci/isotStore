@@ -56,7 +56,7 @@
                             <ul>
                                 <div class="nav-scroll" id="style-pinar">
                                     @foreach ( $categories as $category )
-                                        <li><a href="kategoriler/{{ $category->seflink }}">{{ $category->name }}</a>
+                                        <li><a href="{{ route('categorySeflink',$category->seflink) }}">{{ $category->name }}</a>
                                         </li>
                                     @endforeach
                                 </div>

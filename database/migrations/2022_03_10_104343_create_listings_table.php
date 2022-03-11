@@ -24,6 +24,7 @@ return new class extends Migration
             $table->enum('delivery_status',[1,2,3])->default(1); //1 = In stock, 2 = No stock, 3= Stock can be available by the order
             $table->enum('faulty',[1,2])->default(1); //1 = No faulty, 2= Defective listing
             $table->string('origin',45);
+            $table->string('seflink', 255);
             $table->unsignedBigInteger('shop_id');
             $table->unsignedBigInteger('category_id');
             $table->timestamps();
