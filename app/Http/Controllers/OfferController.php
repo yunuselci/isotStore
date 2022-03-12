@@ -33,12 +33,12 @@ class OfferController extends Controller
                 'description' => $request->description,
                 'shop_id' => $request->shop_id,
             ]);
-            return redirect()->route('listingDetail',$request->listingSeflink)->with('success', 'Teklif isteğiniz başarıyla gönderildi.');
+            return redirect()->back()->with('success', 'Teklif isteğiniz başarıyla gönderildi.');
 
         } catch (Exception $e) {
 
-            report($e);
-            return redirect()->route('listingDetail',$request->listingSeflink)->with('error', 'Teklif isteğiniz gönderilirken bir hata meydana geldi.');
+            logger()->info($e);
+            return redirect()->back()->with('error', 'Teklif isteğiniz gönderilirken bir hata meydana geldi.');
 
         }
     }
@@ -57,8 +57,24 @@ class OfferController extends Controller
     }
 
 
-    public function update(Request $request, Offer $offer)
+    public function update(OfferPostRequest $request, $id)
     {
+        try {
+            Offer::whereId($id)->update([
+                'user_name' => $request->user_name,
+                'user_phone' => $request->user_phone,
+                'user_email' => $request->user_email,
+                'description' => $request->description,
+                'status' => $request->status,
+                'shop_id' => $request->shop_id,
+            ]);
+            return redirect()->back()->with('success', 'Teklifi okundu olarak işaretlendiz.');
+        }
+        catch (Exception $e){
+            logger()->info($e);
+            return redirect()->back()->with('error', 'Bir hata meydana geldi.');
+
+        }
 
     }
 

@@ -108,8 +108,6 @@
                                                         <input type="email" name="user_email" placeholder="E-Posta Adresi *" value="{{ Auth::user()->email }}"/>
                                                         <textarea name="description" cols="40" rows="3" placeholder="Mesajınız:"></textarea>
                                                         <input type="hidden" name="shop_id" value="{{$listing->shops->id}}">
-                                                        <input type="hidden" name="listingSeflink" value="{{$listing->seflink}}">
-
                                                     </fieldset>
                                                     <button class="btn  big-btn  color-bg flat-btn">Teklif Al<i class="fa fa-angle-right"></i></button>
                                                 </form>

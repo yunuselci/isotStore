@@ -13,7 +13,7 @@
                 <div class="profile-edit-wrap">
                     <div class="profile-edit-page-header">
                         <h2>Teklifler </h2>
-                        <div class="breadcrumbs"><a href="{{route('home')}}">Ana Sayfa</a><a href="{{route('dashboard')}}">Profil</a><span>Teklifler</span></div>
+                        <div class="breadcrumbs"><a href="{{route('home')}}">Ana Sayfa</a><a href="{{route('dashboard')}}">Mağaza</a><span>Teklifler</span></div>
                     </div>
                     <div class="row">
                         <div class="col-md-3">
@@ -26,10 +26,34 @@
                                 <div class="dashboard-header fl-wrap">
                                     <h3>Gelen Kutusu</h3>
                                 </div>
+                                @if ($message = Session::get('success'))
+                                    <div class="notification success fl-wrap">
+                                        <p> {{ $message }}</p>
+                                        <a class="notification-close" href="#"><i class="fa fa-times"></i></a>
+                                    </div>
+                                @elseif($message = Session::get('error'))
+                                    <div class="notification reject fl-wrap">
+                                        <p> {{ $message }}</p>
+                                        <a class="notification-close" href="#"><i class="fa fa-times"></i></a>
+                                    </div>
+                                @endif
+                                @if ($errors->any())
+                                    <div class="notification reject fl-wrap">
+                                        <ul>
+                                            @foreach ($errors->all() as $error)
+                                                <li>{{ $error }}</li>
+                                            @endforeach
+                                        </ul>
+                                        <a class="notification-close" href="#"><i class="fa fa-times"></i></a>
+
+                                    </div>
+                                @endif
                                 @foreach($offers as $offer)
                                 <div class="dashboard-list">
                                     <div class="dashboard-message">
-                                        <span class="new-dashboard-item">@if($offer->status == 2) Yeni @endif</span>
+                                        @if($offer->status == 2)
+                                        <span class="new-dashboard-item"> Yeni </span>
+                                        @endif
                                         <div class="dashboard-message-avatar">
                                             <img src="{{ asset('main') }}/images/avatar/1.jpg" alt="">
                                         </div>
@@ -38,8 +62,17 @@
                                             <p> {{ $offer->description }}</p>
                                             <span class="reply-mail clearfix">Mail Yoluyla Cevapla : <a  class="dashboard-message-user-mail" href="mailto:{{ $offer->user_email }}" target="_top">{{ $offer->user_email }}</a></span>
                                             <span class="reply-mail clearfix">Whatsapp Üzerinden Ulaş : <a  class="dashboard-message-user-mail" href="https://api.WhatsApp.com/send?phone={{ $offer->user_phone }}" target="_blank">{{ $offer->user_phone }}</a></span>
-
-
+                                            <form action="{{ route('teklifler.update', $offer->id) }}" method="post" id="updateForm">
+                                                @csrf
+                                                @method('PUT')
+                                                <input type="hidden" name="user_name" value="{{ $offer->user_name }}">
+                                                <input type="hidden" name="user_phone" value="{{ $offer->user_phone }}">
+                                                <input type="hidden" name="user_email" value="{{ $offer->user_email }}">
+                                                <input type="hidden" name="description" value="{{ $offer->description }}">
+                                                <input type="hidden" name="status" value="1">
+                                                <input type="hidden" name="shop_id" value="{{ $offer->shop_id }}">
+                                                <a class="btn circle-btn color-bg flat-btn" onclick="myFunction({{ $offer->id }})">Okundu<i class="fa fa-check-square-o"></i></a>
+                                            </form>
                                         </div>
                                     </div>
                                 </div>
@@ -65,4 +98,16 @@
         <div class="limit-box fl-wrap"></div>
 
     </div>
+    <script>
+        function myFunction(id) {
+            var url = '{{ route('teklifler.update', ":id") }}';
+            url = url.replace(':id', id);
+            document.getElementById("updateForm").action = url;
+
+            if(confirm('Teklife geri dönüş yapıldı mı ?'))
+            {
+                document.getElementById("updateForm").submit();
+            }
+        }
+    </script>
 @endsection

@@ -74,9 +74,10 @@ class ShopController extends Controller
     public function edit($id)
     {
         $shop = Shop::find($id);
-        if ($shop && $shop->status == 1) {
-            $shop = Shop::find($id)->get();
+        $userId = auth()->id();
 
+        if ($shop && $shop->status == 1) {
+            $shop = Shop::find($id)->whereUserId($userId)->get();
             return view('main.include.shop.shop-edit', compact('shop'));
         } else {
             abort(404);
