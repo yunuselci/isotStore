@@ -73,13 +73,15 @@
                             <!-- listing-item end-->
                                 <div class="clearfix"></div>
                                 <!-- pagination-->
-                                <div class="pagination">
-                                    <a href="#" class="prevposts-link"><i class="fa fa-caret-left"></i></a>
-                                    <a href="#" class="current-page">1</a>
-                                    <a href="#">2</a>
-                                    <a href="#">3</a>
-                                    <a href="#" class="nextposts-link"><i class="fa fa-caret-right"></i></a>
-                                </div>
+                                @if($shop->lastPage()>1)
+                                    <div class="pagination">
+                                        <a href="{{ $shop->previousPageUrl() }}" class="prevposts-link"><i class="fa fa-caret-left"></i></a>
+                                        @for($i = 1; $i<=$shop->lastPage(); $i++)
+                                            <a href="{{ $shop->url($i) }}" @if($shop->currentPage()==$i) class="current-page" @endif>{{ $i }}</a>
+                                        @endfor
+                                        <a href="{{ $shop->nextPageUrl() }}" class="nextposts-link"><i class="fa fa-caret-right"></i></a>
+                                    </div>
+                                @endif
                             </div>
                             <!-- list-main-wrap end-->
                         </div>

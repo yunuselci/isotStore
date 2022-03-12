@@ -15,7 +15,7 @@ class ListingController extends Controller
 
     public function index()
     {
-        $listings = Listing::all();
+        $listings = Listing::paginate(9);
         return view('main.include.listing.listings', compact('listings'));
     }
 
@@ -69,7 +69,9 @@ class ListingController extends Controller
 
     public function show($id)
     {
-        $listings = Listing::whereShopId($id)->with('category')->get();
+        $userShop = Auth::user()->whereId(Auth::id())->with('shops')->first();
+
+        $listings = Listing::whereShopId($userShop->shops->id)->with('category')->paginate(3);
         return view('main.include.listing.listing-page',compact('listings'));
     }
 

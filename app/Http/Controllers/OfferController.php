@@ -7,6 +7,7 @@ use App\Models\Offer;
 use App\Models\Shop;
 use Exception;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class OfferController extends Controller
 {
@@ -46,7 +47,8 @@ class OfferController extends Controller
 
     public function show($id)
     {
-        $offers = Offer::with('shops')->where('shop_id', $id)->paginate(3);
+        $userShop = Auth::user()->whereId(Auth::id())->with('shops')->first();
+        $offers = Offer::with('shops')->where('shop_id', $userShop->shops->id)->paginate(3);
         return view('main.include.offer.offers', compact('offers'));
     }
 

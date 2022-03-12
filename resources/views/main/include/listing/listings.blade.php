@@ -47,6 +47,15 @@
                         @endisset
                         <!-- listing-item end-->
                         </div>
+                        @if($listings->lastPage()>1)
+                            <div class="pagination">
+                                <a href="{{ $listings->previousPageUrl() }}" class="prevposts-link"><i class="fa fa-caret-left"></i></a>
+                                @for($i = 1; $i<=$listings->lastPage(); $i++)
+                                    <a href="{{ $listings->url($i) }}" @if($listings->currentPage()==$i) class="current-page" @endif>{{ $i }}</a>
+                                @endfor
+                                <a href="{{ $listings->nextPageUrl() }}" class="nextposts-link"><i class="fa fa-caret-right"></i></a>
+                            </div>
+                        @endif
                         <!-- list-main-wrap end-->
                     </div>
                 </div>

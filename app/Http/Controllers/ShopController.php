@@ -4,13 +4,14 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\ShopPostRequest;
 use App\Models\Shop;
+use Illuminate\Support\Facades\Auth;
 
 class ShopController extends Controller
 {
 
     public function index()
     {
-        $shops = Shop::with('listings')->get();
+        $shops = Shop::with('listings')->paginate(9);
         return view('main.include.shop.shops', compact('shops'));
     }
 
@@ -58,7 +59,9 @@ class ShopController extends Controller
 
     public function show($id)
     {
-        $shop = Shop::with('listings')->whereId($id)->get();
+        $userShop = Auth::user()->whereId(Auth::id())->with('shops')->first();
+
+        $shop = Shop::with('listings')->whereId($userShop->shops->id)->paginate(5);
         foreach ($shop as $s){
             if ($s->status == 1) {
                 return view('main.include.shop.shop-page', compact('shop'));

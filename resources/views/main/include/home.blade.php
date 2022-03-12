@@ -123,7 +123,7 @@
 
                             <div class="slick-slide-item">
                                 <!-- listing-item -->
-                                @if($shop->status == 2)
+                                @if($shop->status == 1)
                                     <div class="listing-item">
                                         <article class="geodir-category-listing fl-wrap">
                                             <div class="geodir-category-img">
@@ -171,8 +171,16 @@
 
                 </div>
                 <!--listing-carousel end-->
-                <div class="swiper-button-prev sw-btn"><i class="fa fa-long-arrow-left"></i></div>
-                <div class="swiper-button-next sw-btn"><i class="fa fa-long-arrow-right"></i></div>
+                @if($shops->lastPage()>1)
+                    <div class="pagination">
+                        <a href="{{ $shops->previousPageUrl() }}" class="prevposts-link"><i class="fa fa-caret-left"></i></a>
+                        @for($i = 1; $i<=$shops->lastPage(); $i++)
+                            <a href="{{ $shops->url($i) }}" @if($shops->currentPage()==$i) class="current-page" @endif>{{ $i }}</a>
+                        @endfor
+                        <a href="{{ $shops->nextPageUrl() }}" class="nextposts-link"><i class="fa fa-caret-right"></i></a>
+                    </div>
+                @endif
+
             </div>
             <!--  carousel end-->
         </section>
