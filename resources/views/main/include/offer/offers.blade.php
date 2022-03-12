@@ -79,14 +79,15 @@
                                 @endforeach
                             </div>
                             <!-- pagination-->
+                            @if($offers->lastPage()>1)
                             <div class="pagination">
-                                <a href="#" class="prevposts-link"><i class="fa fa-caret-left"></i></a>
-                                <a href="#">1</a>
-                                <a href="#" class="current-page">2</a>
-                                <a href="#">3</a>
-                                <a href="#">4</a>
-                                <a href="#" class="nextposts-link"><i class="fa fa-caret-right"></i></a>
+                                <a href="{{ $offers->previousPageUrl() }}" class="prevposts-link"><i class="fa fa-caret-left"></i></a>
+                                @for($i = 1; $i<=$offers->lastPage(); $i++)
+                                <a href="{{ $offers->url($i) }}" @if($offers->currentPage()==$i) class="current-page" @endif>{{ $i }}</a>
+                                @endfor
+                                <a href="{{ $offers->nextPageUrl() }}" class="nextposts-link"><i class="fa fa-caret-right"></i></a>
                             </div>
+                            @endif
                         </div>
                     </div>
                 </div>

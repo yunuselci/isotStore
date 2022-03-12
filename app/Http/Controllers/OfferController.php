@@ -46,7 +46,7 @@ class OfferController extends Controller
 
     public function show($id)
     {
-        $offers = Offer::with('shops')->where('shop_id', $id)->get();
+        $offers = Offer::with('shops')->where('shop_id', $id)->paginate(3);
         return view('main.include.offer.offers', compact('offers'));
     }
 
