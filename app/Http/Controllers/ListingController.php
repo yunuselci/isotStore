@@ -27,8 +27,13 @@ class ListingController extends Controller
 
     public function detail($seflink)
     {
+
         $listing = Listing::with('shops')->where('seflink', $seflink)->first();
-        return view('main.include.listing.listing-detail', compact('listing'));
+        if($listing){
+            return view('main.include.listing.listing-detail', compact('listing'));
+        }else{
+            abort(404);
+        }
     }
 
     public function store(ListPostRequest $request)
