@@ -32,7 +32,6 @@ Route::get('/magaza/{id}',[ShopController::class,'show'])->name('magazalar.show'
 
 
 
-
 Route::middleware(['auth:sanctum', 'verified'])->group(function (){
 
     Route::get('/profil',function (){
