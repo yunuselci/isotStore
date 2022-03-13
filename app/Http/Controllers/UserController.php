@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class UserController extends Controller
 {
@@ -15,6 +16,20 @@ class UserController extends Controller
     public function index()
     {
         //
+    }
+
+    public function beAdmin($id)
+    {
+        try {
+            User::whereId($id)->update(['role'=>3]);
+            return redirect()->route('dashboard')->with('success','Admin oldunuz.');
+
+        }catch (Exception $exception){
+            logger()->log($exception);
+            return redirect()->route('dashboard')->with('success','Bir hata meydana geldi.');
+
+        }
+
     }
 
     /**

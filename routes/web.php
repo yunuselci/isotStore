@@ -5,6 +5,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ListingController;
 use App\Http\Controllers\OfferController;
 use App\Http\Controllers\ShopController;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
 
@@ -41,11 +42,11 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function (){
     Route::get('admin/magazalar', [ShopController::class,'adminShopList'])->name('adminShopList');
     Route::put('admin/magazalar/{id}', [ShopController::class,'shopStatusUpdate'])->name('adminShopStatusUpdate');
     Route::delete('admin/magazalar/{id}', [ShopController::class,'destroy'])->name('adminShopDelete');
-
+    Route::put('profil/admin/{id}',[UserController::class,'beAdmin'])->name('beAdmin');
 
 
     Route::resource('ilanlar',ListingController::class)->except([
-       'index','destroy'
+       'index'
     ]);
     Route::resource('teklifler', OfferController::class);
 

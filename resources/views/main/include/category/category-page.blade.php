@@ -32,6 +32,7 @@
                                     </div>
                                 @else
                                     @foreach($category->listings as $listing)
+                                        @if(\App\Models\Shop::whereId($listing->shop_id)->pluck('status')->first() == 1)
                                         <div class="listing-item">
                                             <article class="geodir-category-listing fl-wrap">
                                                 <div class="geodir-category-img">
@@ -54,6 +55,7 @@
                                                 </div>
                                             </article>
                                         </div>
+                                        @endif
                                 @endforeach
                             @endif
                         @endforeach

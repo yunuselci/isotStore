@@ -9,6 +9,7 @@
         <section class="gray-section" id="sec1">
             <div class="container">
                 <div class="row">
+                    @if($listing->shops->status == 1)
                     <div class="col-md-8">
                         <div class="list-single-main-wrapper fl-wrap" id="sec2">
                             <!-- article> -->
@@ -126,6 +127,9 @@
                         </div>
                     </div>
                     <!--box-widget-wrap end -->
+                    @else
+                        Görüntülemeye çalıştığınız ilanın mağazası kapatıldığından ilanı görüntüleyemiyoruz.
+                    @endif
                 </div>
             </div>
         </section>

@@ -48,8 +48,13 @@ class OfferController extends Controller
     public function show($id)
     {
         $userShop = Auth::user()->whereId(Auth::id())->with('shops')->first();
-        $offers = Offer::with('shops')->where('shop_id', $userShop->shops->id)->paginate(3);
-        return view('main.include.offer.offers', compact('offers'));
+        if($userShop->shops->status==1){
+            $offers = Offer::with('shops')->where('shop_id', $userShop->shops->id)->paginate(3);
+            return view('main.include.offer.offers', compact('offers'));
+        }else{
+            abort(404);
+        }
+
     }
 
 
