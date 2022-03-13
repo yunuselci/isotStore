@@ -52,7 +52,7 @@
                                 @endif
 
                             </div>
-                            @if(Auth::user()->role ==3)
+                            @if(Auth::user()->role ==2)
                             <div class="dashboard-list-box fl-wrap activities">
                                 <div class="dashboard-header fl-wrap">
                                     <h3>Moneo özel box</h3>

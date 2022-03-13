@@ -38,7 +38,6 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function (){
         'index'
     ]);
     //Admin
-    Route::get('admin/magazalar', [ShopController::class,'adminList'])->name('adminShopList');
     Route::get('admin/magazalar', [ShopController::class,'adminShopList'])->name('adminShopList');
     Route::put('admin/magazalar/{id}', [ShopController::class,'shopStatusUpdate'])->name('adminShopStatusUpdate');
     Route::delete('admin/magazalar/{id}', [ShopController::class,'destroy'])->name('adminShopDelete');

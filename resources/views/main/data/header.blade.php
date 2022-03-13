@@ -5,7 +5,6 @@
             <a href="{{route('home')}}"><img src="{{ asset('main') }}/images/logo.png" alt=""></a>
         </div>
         <div class="show-search-button"><i class="fa fa-search"></i> <span>Search</span></div>
-        <a href="dashboard-add-listing.html" class="add-list">Ürün Listele <span><i class="fa fa-plus"></i></span></a>
         @if (Route::has('login'))
             @auth
                 <div class="header-user-menu">

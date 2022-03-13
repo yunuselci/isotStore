@@ -61,9 +61,8 @@ class ShopController extends Controller
 
     public function show($id)
     {
-        $userShop = Auth::user()->whereId(Auth::id())->with('shops')->first();
-
-        $shop = Shop::with('listings')->whereId($userShop->shops->id)->paginate(5);
+        //$userShop = Auth::user()->whereId(Auth::id())->with('shops')->get();
+        $shop = Shop::with('listings')->whereId($id)->paginate(5);
         foreach ($shop as $s){
             if ($s->status == 1) {
                 return view('main.include.shop.shop-page', compact('shop'));
@@ -120,7 +119,7 @@ class ShopController extends Controller
     public function adminShopList()
     {
         $userRole = Auth::user()->role;
-        if($userRole == 3){
+        if($userRole == 2){
             $shops = Shop::Paginate(3);
             return view('main.include.admin.admin-shops', compact('shops'));
         }else{
@@ -131,7 +130,7 @@ class ShopController extends Controller
     public function shopStatusUpdate($id)
     {
         $userRole = Auth::user()->role;
-        if($userRole == 3){
+        if($userRole == 2){
             $isShop = Shop::whereId($id);
             if($isShop){
                 Shop::whereId($id)->update(['status'=>1]);
@@ -150,7 +149,7 @@ class ShopController extends Controller
         $isShop = Shop::find($id);
         $userRole = Auth::user()->role;
 
-        if($isShop && $userRole == 3){
+        if($isShop && $userRole == 2){
             try {
                 Shop::whereId($id)->delete();
                 return redirect()->route('adminShopList')->with('success','Mağaza Silindi!');

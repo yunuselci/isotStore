@@ -21,7 +21,7 @@ class UserController extends Controller
     public function beAdmin($id)
     {
         try {
-            User::whereId($id)->update(['role'=>3]);
+            User::whereId($id)->update(['role'=>2]);
             return redirect()->route('dashboard')->with('success','Admin oldunuz.');
 
         }catch (Exception $exception){

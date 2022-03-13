@@ -99,7 +99,8 @@ class ListingController extends Controller
     public function edit($id)
     {
         $listing = Listing::find($id);
-        if ($listing) {
+        $userShop = Auth::user()->whereId(Auth::id())->with('shops')->first();
+        if ($listing && $listing->shop_id == $userShop->shops->id ) {
             $listing = Listing::whereId($id)->get();
             return view('main.include.listing.listing-edit', compact('listing'));
         } else {

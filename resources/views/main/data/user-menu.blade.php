@@ -14,6 +14,7 @@
         </div>
         <!-- user-profile-menu end-->
         <!-- user-profile-menu-->
+        @if(Auth::user()->role==2)
         <div class="user-profile-menu">
             <h3>Admin Yönetim</h3>
             <ul>
@@ -22,6 +23,7 @@
                             class="fa fa-user"></i>Mağazalar </a></li>
             </ul>
         </div>
+        @endif
         <!-- user-profile-menu end-->
         <!-- user-profile-menu-->
         <div class="user-profile-menu">
