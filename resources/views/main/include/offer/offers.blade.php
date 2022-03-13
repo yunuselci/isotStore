@@ -55,7 +55,7 @@
                                         <span class="new-dashboard-item"> Yeni </span>
                                         @endif
                                         <div class="dashboard-message-avatar">
-                                            <img src="{{ asset('main') }}/images/avatar/1.jpg" alt="">
+                                            <img src="{{ asset( 'main/images/shop/'. \App\Models\Shop::whereId($offer->shop_id)->pluck('image')->first() ) }}" alt="">
                                         </div>
                                         <div class="dashboard-message-text">
                                             <h4>{{ $offer->user_name }} - <span> {{ $offer->created_at->toFormattedDateString() }}</span></h4>
