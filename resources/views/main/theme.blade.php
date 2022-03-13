@@ -45,6 +45,7 @@
         @yield('listing-page')
         @yield('listing-detail')
         @yield('offers')
+        @yield('admin-shops')
 
 
 

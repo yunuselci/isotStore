@@ -11,9 +11,11 @@ class ShopController extends Controller
 
     public function index()
     {
+
         $shops = Shop::with('listings')->paginate(9);
         return view('main.include.shop.shops', compact('shops'));
     }
+
 
     public function create()
     {
@@ -115,9 +117,48 @@ class ShopController extends Controller
         }
 
     }
-
-    public function destroy(Shop $shop)
+    public function adminShopList()
     {
-        //
+        $userRole = Auth::user()->role;
+        if($userRole == 3){
+            $shops = Shop::Paginate(3);
+            return view('main.include.admin.admin-shops', compact('shops'));
+        }else{
+            return redirect()->route('dashboard')->with('error', 'Bu sayfayı görüntülemek için yetkiniz bulunmamaktadır.');
+        }
+    }
+
+    public function shopStatusUpdate($id)
+    {
+        $userRole = Auth::user()->role;
+        if($userRole == 3){
+            $isShop = Shop::whereId($id);
+            if($isShop){
+                Shop::whereId($id)->update(['status'=>1]);
+                return redirect()->route('adminShopList')->with('success', 'Mağaza Onaylandı!.');
+            }else{
+                return redirect()->route('adminShopList')->with('error', 'Seçtiğiniz mağaza bulunamadı.');
+            }
+        }else{
+            return redirect()->route('dashboard')->with('error', 'Bu sayfayı görüntülemek için yetkiniz bulunmamaktadır.');
+        }
+    }
+
+
+    public function destroy($id)
+    {
+        $isShop = Shop::find($id);
+        $userRole = Auth::user()->role;
+
+        if($isShop && $userRole == 3){
+            try {
+                Shop::whereId($id)->delete();
+                return redirect()->route('adminShopList')->with('success','Mağaza Silindi!');
+            }catch (Exception $exception){
+                logger()->log($exception);
+                return redirect()->route('adminShopList')->with('error','Mağaza Silinemedi!');
+            }
+        }
+
     }
 }

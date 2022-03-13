@@ -15,19 +15,28 @@
         <!-- user-profile-menu end-->
         <!-- user-profile-menu-->
         <div class="user-profile-menu">
+            <h3>Admin Yönetim</h3>
+            <ul>
+                <li><a href="{{ route('adminShopList') }}"
+                       class="{{ Route::currentRouteName() === 'adminShopList' ? 'user-profile-act' : '' }}"><i
+                            class="fa fa-user"></i>Mağazalar </a></li>
+            </ul>
+        </div>
+        <!-- user-profile-menu end-->
+        <!-- user-profile-menu-->
+        <div class="user-profile-menu">
             <h3>Mağazam</h3>
             <ul>
                 @foreach(Auth::user()->whereId(Auth::id())->with('shops')->get() as $value)
                     @if(!is_null($value->shops))
-                        @if($value->shops->first()->status == 1)
-                            <li><a href="{{ route('magazalar.show', $value->shops->first()->id) }}"
+                        @if($value->shops->status == 1)
+                            <li><a href="{{ route('magazalar.show', $value->shops->id) }}"
                                    class="{{ Route::currentRouteName() === 'magazalar.show' ? 'user-profile-act' : '' }}"><i
                                         class="fa fa-shopping-bag"></i> Mağazam </a></li>
-                            <li><a href="{{ route('teklifler.show',$value->shops->first()->id ) }}"
+                            <li><a href="{{ route('teklifler.show',$value->shops->id ) }}"
                                    class="{{ Route::currentRouteName() === 'teklifler.show' ? 'user-profile-act' : '' }}"><i
                                         class="fa fa-envelope-o"></i> Teklifler</a></li>
-
-                            <li><a href="{{ route('magazalar.edit',$value->shops->first()->id) }}"
+                            <li><a href="{{ route('magazalar.edit',$value->shops->id) }}"
                                    class="{{ Route::currentRouteName() === 'magazalar.edit' ? 'user-profile-act' : '' }}"><i
                                         class="fa fa-edit"></i>Mağaza düzenle</a></li>
                         @else
@@ -43,10 +52,12 @@
         </div>
         <!-- user-profile-menu end-->
         <!-- user-profile-menu-->
-        <div class="user-profile-menu">
+        @if(!is_null($value->shops))
+            @if($value->shops->status == 1)
+            <div class="user-profile-menu">
             <h3>Listelemeler</h3>
             <ul>
-                <li><a href="{{ route('ilanlar.show',$value->shops->first()->id) }}"
+                <li><a href="{{ route('ilanlar.show',$value->shops->id) }}"
                        class="{{ Route::currentRouteName() === 'ilanlar.show' ? 'user-profile-act' : '' }}"><i
                             class="fa fa-th-list"></i>İlanlarım </a></li>
                 <li><a href="{{ route('ilanlar.create') }}"
@@ -54,6 +65,8 @@
                             class="fa fa-plus-square-o"></i>Yenisini Ekle</a></li>
             </ul>
         </div>
+            @endif
+        @endif
         <!-- user-profile-menu end-->
         <form method="POST" action="{{ route('logout') }}">
             @csrf

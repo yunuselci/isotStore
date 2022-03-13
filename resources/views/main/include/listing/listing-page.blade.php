@@ -60,12 +60,12 @@
 
                                             </div>
                                             <ul class="dashboard-listing-table-opt  fl-wrap">
-                                                <li><a href="{{ route('ilanlar.edit', $listing->id) }}">Edit <i class="fa fa-pencil-square-o"></i></a></li>
+                                                <li><a href="{{ route('ilanlar.edit', $listing->id) }}"> Düzenle <i class="fa fa-pencil-square-o"></i></a></li>
                                                 <li>
                                                 <form action="{{ route('ilanlar.destroy', $listing->id) }}" method="post" id="deleteForm">
                                                     @csrf
                                                     @method('DELETE')
-                                                    <a class="del-btn" onclick="myFunction({{ $listing->id }})"> Delete <i class="fa fa-trash-o"></i></a>
+                                                    <a class="del-btn" onclick="myFunction({{ $listing->id }})"> Sil <i class="fa fa-trash-o"></i></a>
                                                 </form>
                                                 </li>
                                             </ul>
