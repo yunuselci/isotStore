@@ -8,4 +8,21 @@ use Illuminate\Database\Eloquent\Model;
 class Shop extends Model
 {
     use HasFactory;
+    protected $guarded=[];
+
+    public function users()
+    {
+        return $this->belongsTo(User::class);
+    }
+
+    public function listings()
+    {
+        return $this->hasMany(Listing::class, 'shop_id','id');
+    }
+
+    public function offers()
+    {
+        return $this->hasMany(Offer::class, 'shop_id','id');
+    }
+
 }

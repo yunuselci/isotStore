@@ -15,7 +15,18 @@ return new class extends Migration
     {
         Schema::create('shops', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('user_id');
+            $table->string('name',255);
+            $table->string('email',55);
+            $table->string('phone',55);
+            $table->string('address',255);
+            $table->string('image',255)->nullable()->default('default_shop_image.jpg');
+            $table->text('about')->nullable();
+            $table->enum('status',[1,2])->nullable()->default(2); //1 = Verificated , 2 = Not Verificated
+
             $table->timestamps();
+            $table->foreign('user_id')->references('id')
+                ->on('users')->onDelete('cascade');
         });
     }
 
