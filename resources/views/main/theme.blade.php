@@ -47,6 +47,7 @@
         @yield('listing-detail')
         @yield('offers')
         @yield('admin-shops')
+        @yield('404')
 
 
 
