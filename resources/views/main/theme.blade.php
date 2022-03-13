@@ -34,6 +34,7 @@
         @yield('categories')
         @yield('category-page')
         @yield('dashboard')
+        @yield('update-password')
         @yield('show')
         @yield('shops')
         @yield('shop-page')

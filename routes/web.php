@@ -29,11 +29,20 @@ Route::get('/ilan/{seflink}',[ListingController::class,'detail'])->name('listing
 Route::get('/magazalar',[ShopController::class,'index'])->name('shops');
 Route::get('/magaza/{id}',[ShopController::class,'show'])->name('magazalar.show');
 
+
+
+
+
 Route::middleware(['auth:sanctum', 'verified'])->group(function (){
 
     Route::get('/profil',function (){
-        return view('main.include.dashboard');
+        return view('main.include.profile.dashboard');
     })->name('dashboard');
+
+    Route::get('/profil/sifre-degis',function (){
+        return view('main.include.profile.update-password');
+    })->name('passwordUpdate');
+
     Route::resource('magazalar', ShopController::class)->except([
         'index'
     ]);

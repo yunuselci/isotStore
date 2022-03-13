@@ -10,6 +10,9 @@
                 <li><a href="{{ route('profile.show') }}"
                        class="{{ Route::currentRouteName() === 'profile.show' ? 'user-profile-act' : '' }}"><i
                             class="fa fa-edit"></i>Profili düzenle</a></li>
+                <li><a href="{{ route('passwordUpdate') }}"
+                       class="{{ Route::currentRouteName() === 'passwordUpdate' ? 'user-profile-act' : '' }}"><i
+                            class="fa fa-key"></i>Şifreyi güncelle</a></li>
             </ul>
         </div>
         <!-- user-profile-menu end-->
