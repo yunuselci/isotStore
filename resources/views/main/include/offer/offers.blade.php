@@ -13,7 +13,7 @@
                 <div class="profile-edit-wrap">
                     <div class="profile-edit-page-header">
                         <h2>Teklifler </h2>
-                        <div class="breadcrumbs"><a href="{{route('home')}}">Ana Sayfa</a><a href="{{route('dashboard')}}">Mağaza</a><span>Teklifler</span></div>
+                        <div class="breadcrumbs"><a href="{{route('home')}}">Ana Sayfa</a><a href="{{route('dashboard')}}">Profil</a><span>Teklifler</span></div>
                     </div>
                     <div class="row">
                         <div class="col-md-3">
@@ -23,9 +23,6 @@
 
                         <div class="col-md-9">
                             <div class="dashboard-list-box fl-wrap">
-                                <div class="dashboard-header fl-wrap">
-                                    <h3>Gelen Kutusu</h3>
-                                </div>
                                 @if ($message = Session::get('success'))
                                     <div class="notification success fl-wrap">
                                         <p> {{ $message }}</p>
@@ -48,6 +45,9 @@
 
                                     </div>
                                 @endif
+                                <div class="dashboard-header fl-wrap">
+                                    <h3>Gelen Kutusu</h3>
+                                </div>
                                 @foreach($offers as $offer)
                                 <div class="dashboard-list">
                                     <div class="dashboard-message">

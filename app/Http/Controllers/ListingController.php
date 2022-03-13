@@ -101,8 +101,13 @@ class ListingController extends Controller
         $listing = Listing::find($id);
         $userShop = Auth::user()->whereId(Auth::id())->with('shops')->first();
         if ($listing && $listing->shop_id == $userShop->shops->id ) {
-            $listing = Listing::whereId($id)->get();
-            return view('main.include.listing.listing-edit', compact('listing'));
+            try {
+                $listing = Listing::whereId($id)->get();
+                return view('main.include.listing.listing-edit', compact('listing'));
+            }catch (Exception $exception){
+                logger()->log('Low',$exception);
+                return redirect()->back()->with('error', 'Bir hata meydana geldi');
+            }
         } else {
             abort(404);
         }
@@ -123,21 +128,26 @@ class ListingController extends Controller
         }
         $isListing = Listing::whereId($id);
         if ($isListing) {
-            Listing::whereId($id)->update([
-                'name' => $request->name,
-                'description' => $request->description,
-                'image' => $imageName,
-                'unit' => $request->unit,
-                'type' => $request->type,
-                'status' => $request->status,
-                'delivery_status' => $request->delivery_status,
-                'faulty' => $request->faulty,
-                'origin' => $request->origin,
-                'seflink' => $seflink,
-                'shop_id' => $shop->id,
-                'category_id' => $request->category_id,
-            ]);
-            return redirect()->route('ilanlar.edit', $id)->with('success', 'İlan bilgileri başarıyla güncellendi');
+            try {
+                Listing::whereId($id)->update([
+                    'name' => $request->name,
+                    'description' => $request->description,
+                    'image' => $imageName,
+                    'unit' => $request->unit,
+                    'type' => $request->type,
+                    'status' => $request->status,
+                    'delivery_status' => $request->delivery_status,
+                    'faulty' => $request->faulty,
+                    'origin' => $request->origin,
+                    'seflink' => $seflink,
+                    'shop_id' => $shop->id,
+                    'category_id' => $request->category_id,
+                ]);
+                return redirect()->route('ilanlar.edit', $id)->with('success', 'İlan bilgileri başarıyla güncellendi');
+            } catch (Exception $exception){
+                logger()->log('Low',$exception);
+                return redirect()->back()->with('error', 'Bir hata meydana geldi');
+            }
         } else {
             return redirect()->route('ilanlar.edit', $id)->with('error', 'Bir hata meydana geldi');
         }
@@ -154,10 +164,12 @@ class ListingController extends Controller
 
         //This verification process prevent that other users will not be able to delete each other listings
         if ($shopIdForVerifyUser->all() == $shopIdForRouting->all()) {
-            $isDeleted = Listing::whereId($id)->delete();
-            if ($isDeleted) {
+            try {
+                Listing::whereId($id)->delete();
                 return redirect()->route('ilanlar.show', $shopIdForRouting->all())->with('success', 'İlanınız başarıyla silindi.');
-            } else {
+
+            }catch (Exception $exception){
+                logger()->log('Low',$exception);
                 return redirect()->route('ilanlar.show', $shopIdForRouting->all())->with('error', 'İlan silinirken bir hata meydana geldi.');
             }
         } else {

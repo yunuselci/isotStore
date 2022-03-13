@@ -38,7 +38,7 @@ class OfferController extends Controller
 
         } catch (Exception $e) {
 
-            logger()->info($e);
+            logger()->log('Low',$e);
             return redirect()->back()->with('error', 'Teklif isteğiniz gönderilirken bir hata meydana geldi.');
 
         }
@@ -78,7 +78,7 @@ class OfferController extends Controller
             return redirect()->back()->with('success', 'Teklifi okundu olarak işaretlendiz.');
         }
         catch (Exception $e){
-            logger()->info($e);
+            logger()->log('Low',$e);
             return redirect()->back()->with('error', 'Bir hata meydana geldi.');
 
         }

@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\ShopPostRequest;
 use App\Models\Shop;
+use Exception;
+use Illuminate\Http\Request;
+
 use Illuminate\Support\Facades\Auth;
 
 class ShopController extends Controller
@@ -39,24 +42,23 @@ class ShopController extends Controller
         } else {
             $imageName = $request->image;
         }
-        $shop = Shop::create([
-            'name' => $request->name,
-            'user_id' => $userId,
-            'email' => $request->email,
-            'phone' => $request->phone,
-            'address' => $request->address,
-            'about' => $request->about,
-            'image' => $imageName
-        ]);
-        if ($shop) {
+        try {
+            Shop::create([
+                'name' => $request->name,
+                'user_id' => $userId,
+                'email' => $request->email,
+                'phone' => $request->phone,
+                'address' => $request->address,
+                'about' => $request->about,
+                'image' => $imageName
+            ]);
             return redirect()->route('dashboard')->with('success', 'Mağaza oluşturma isteği gönderildi, yetkililer tarafından incelentikten sonra onaylanacaktır.');
 
-        } else {
+        }catch (Exception $exception){
+            logger()->log('Low',$exception);
             return redirect()->route('magazalar.create')->with('error', 'Mağaza oluşturulurken bir hata meydana geldi.');
 
         }
-
-
     }
 
     public function show($id)
@@ -127,14 +129,20 @@ class ShopController extends Controller
         }
     }
 
-    public function shopStatusUpdate($id)
+    public function shopStatusUpdate(Request $request,$id)
     {
         $userRole = Auth::user()->role;
         if($userRole == 2){
             $isShop = Shop::whereId($id);
             if($isShop){
-                Shop::whereId($id)->update(['status'=>1]);
-                return redirect()->route('adminShopList')->with('success', 'Mağaza Onaylandı!.');
+                Shop::whereId($id)->update(['status'=>$request->status]);
+                if($request->status == 1){
+                    return redirect()->route('adminShopList')->with('success', 'Mağaza Onaylandı.');
+                }
+                else{
+                    return redirect()->route('adminShopList')->with('success', 'Mağaza Onayı Kaldırıldı.');
+
+                }
             }else{
                 return redirect()->route('adminShopList')->with('error', 'Seçtiğiniz mağaza bulunamadı.');
             }

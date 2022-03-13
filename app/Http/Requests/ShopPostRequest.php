@@ -32,13 +32,4 @@ class ShopPostRequest extends FormRequest
         ];
     }
 
-    public function messages()
-    {
-        return [
-            'name.required' => "İsim boş bırakılamaz.",
-            'email.required' => "E-Posta boş bırakılamaz.",
-            'phone.required' => "Telefon numarası boş bırakılamaz.",
-            'address.required' => "Adres boş bırakılamaz.",
-        ];
-    }
 }
