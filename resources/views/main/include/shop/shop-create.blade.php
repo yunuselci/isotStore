@@ -51,22 +51,24 @@
                                     <form action="{{ route('magazalar.store') }}" method="post" enctype="multipart/form-data">
                                         @csrf
                                         <label>Mağaza Adı <i class="fa fa-user-o"></i></label>
-                                        <input type="text" name="name" placeholder="" value=""/>
+                                        <input type="text" name="name" placeholder="" value="{{old('name')}}"/>
                                         <label>E-Posta<i class="fa fa-envelope-o"></i> </label>
-                                        <input type="text" name="email" placeholder="" value=""/>
+                                        <input type="text" name="email" placeholder="" value="{{old('email')}}"/>
                                         <label>Phone<i class="fa fa-phone"></i> </label>
-                                        <input type="text" name="phone" placeholder="" value=""/>
+                                        <input type="text" name="phone" placeholder="" value="{{old('phone')}}"/>
                                         <label>Adres <i class="fa fa-map-marker"></i> </label>
-                                        <input type="text" name="address" placeholder="" value=""/>
+                                        <input type="text" name="address" placeholder="" value="{{old('address')}}"/>
                                         <label>Resim:</label>
                                         <div class="change-photo-btn">
                                             <div class="photoUpload">
                                                 <span><i class="fa fa-upload"></i> Upload Photo</span>
-                                                <input type="file" class="upload" name="image">
+                                                <input type="file" class="upload" name="image" value="{{old('image')}}">
                                             </div>
                                         </div>
                                         <label>Hakkımızda </label>
-                                        <textarea cols="40" rows="3" name="about" placeholder="" value=""></textarea>
+                                        <textarea cols="40" rows="3" name="about" placeholder="">
+                                            {{old('about')}}
+                                        </textarea>
                                         <button class="btn  big-btn  color-bg flat-btn">Değişiklikleri Kaydet<i
                                                 class="fa fa-angle-right"></i></button>
                                     </form>

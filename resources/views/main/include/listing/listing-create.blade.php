@@ -49,18 +49,18 @@
                                     <form action="{{ route('ilanlar.store') }}" method="post" enctype="multipart/form-data">
                                         @csrf
                                         <label>Ürün Adı (İlan Adı) <i class="fa fa-text-height"></i></label>
-                                        <input type="text" name="name"/>
+                                        <input type="text" name="name"  value="{{old('name')}}"/>
                                         <label>Ürün Açıklaması <i class="fa fa-pencil-square"></i> </label>
-                                        <input type="text" name="description"/>
+                                        <input type="text" name="description" value="{{old('description')}}"/>
                                         <label>Resim:</label>
                                         <div class="change-photo-btn">
                                             <div class="photoUpload">
                                                 <span><i class="fa fa-upload"></i> Resim Yükle</span>
-                                                <input type="file" class="upload" name="image">
+                                                <input type="file" class="upload" name="image" value="{{old('image')}}">
                                             </div>
                                         </div>
                                         <label>Birim: <i class="fa fa-balance-scale"></i> </label>
-                                        <input type="text" name="unit"/>
+                                        <input type="text" name="unit" value="{{old('unit')}}"/>
                                         <label>Tipi: <i class="fa fa-map-marker"></i> </label>
                                         <select class="chosen-select"  name="type">
                                             <option value="1">Satılık</option>
@@ -89,7 +89,7 @@
                                             @endforeach
                                         </select>
                                         <label>Menşei: <i class="fa fa-globe"></i> </label>
-                                        <input type="text" name="origin"/>
+                                        <input type="text" name="origin" value="{{old('origin')}}"/>
                                         <button class="btn  big-btn  color-bg flat-btn">Listele <i
                                                 class="fa fa-angle-right"></i></button>
                                     </form>

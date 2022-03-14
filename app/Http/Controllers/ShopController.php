@@ -55,7 +55,7 @@ class ShopController extends Controller
             return redirect()->route('dashboard')->with('success', 'Mağaza oluşturma isteği gönderildi, yetkililer tarafından incelentikten sonra onaylanacaktır.');
 
         }catch (Exception $exception){
-            logger()->log('Low',$exception);
+            logger()->info($exception);
             return redirect()->route('magazalar.create')->with('error', 'Mağaza oluşturulurken bir hata meydana geldi.');
 
         }
@@ -122,7 +122,7 @@ class ShopController extends Controller
     {
         $userRole = Auth::user()->role;
         if($userRole == 2){
-            $shops = Shop::Paginate(3);
+            $shops = Shop::all();
             return view('main.include.admin.admin-shops', compact('shops'));
         }else{
             return redirect()->route('dashboard')->with('error', 'Bu sayfayı görüntülemek için yetkiniz bulunmamaktadır.');
@@ -162,7 +162,7 @@ class ShopController extends Controller
                 Shop::whereId($id)->delete();
                 return redirect()->route('adminShopList')->with('success','Mağaza Silindi!');
             }catch (Exception $exception){
-                logger()->log($exception);
+                logger()->info($exception);
                 return redirect()->route('adminShopList')->with('error','Mağaza Silinemedi!');
             }
         }
