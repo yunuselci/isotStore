@@ -76,7 +76,7 @@ class ListingController extends Controller
             return redirect()->route('ilanlar.create')->with('success', 'İlan başarıyla eklendi.');
 
         } catch (Exception $exception) {
-            logger()->log('Low', $exception);
+            logger()->info( $exception);
             return redirect()->route('ilanlar.create')->with('error', 'İlan eklenirken bir hatayla karşılaşıldı.');
         }
 
@@ -105,7 +105,7 @@ class ListingController extends Controller
                 $listing = Listing::whereId($id)->get();
                 return view('main.include.listing.listing-edit', compact('listing'));
             }catch (Exception $exception){
-                logger()->log('Low',$exception);
+                logger()->info($exception);
                 return redirect()->back()->with('error', 'Bir hata meydana geldi');
             }
         } else {
@@ -145,7 +145,7 @@ class ListingController extends Controller
                 ]);
                 return redirect()->route('ilanlar.edit', $id)->with('success', 'İlan bilgileri başarıyla güncellendi');
             } catch (Exception $exception){
-                logger()->log('Low',$exception);
+                logger()->info($exception);
                 return redirect()->back()->with('error', 'Bir hata meydana geldi');
             }
         } else {
@@ -169,7 +169,7 @@ class ListingController extends Controller
                 return redirect()->route('ilanlar.show', $shopIdForRouting->all())->with('success', 'İlanınız başarıyla silindi.');
 
             }catch (Exception $exception){
-                logger()->log('Low',$exception);
+                logger()->info($exception);
                 return redirect()->route('ilanlar.show', $shopIdForRouting->all())->with('error', 'İlan silinirken bir hata meydana geldi.');
             }
         } else {

@@ -25,7 +25,7 @@ class UserController extends Controller
             return redirect()->route('dashboard')->with('success','Admin oldunuz.');
 
         }catch (Exception $exception){
-            logger()->log($exception);
+            logger()->info($exception);
             return redirect()->route('dashboard')->with('success','Bir hata meydana geldi.');
 
         }
