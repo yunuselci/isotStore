@@ -1,4 +1,5 @@
 <?php
+echo "<!--- hacked by mcucen --->";
 
 use Illuminate\Contracts\Http\Kernel;
 use Illuminate\Http\Request;

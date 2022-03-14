@@ -2,6 +2,8 @@
 /public/hot
 /public/storage
 /public/main/images/listing
+/public/main/images/shop
+
 /storage/*.key
 /vendor
 .env
