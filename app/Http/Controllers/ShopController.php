@@ -40,7 +40,7 @@ class ShopController extends Controller
             $imageName = "iSotStore_" . rand(0, 10000) . "." . $request->image->getClientOriginalExtension();
             $request->image->move(public_path('main/images/shop'), $imageName);
         } else {
-            $imageName = $request->image;
+            $imageName = 'default_shop_image.jpg';
         }
         try {
             Shop::create([

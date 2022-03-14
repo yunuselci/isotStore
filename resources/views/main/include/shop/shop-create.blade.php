@@ -62,7 +62,7 @@
                                         <div class="change-photo-btn">
                                             <div class="photoUpload">
                                                 <span><i class="fa fa-upload"></i> Upload Photo</span>
-                                                <input type="file" class="upload" name="image" value="{{old('image')}}">
+                                                <input type="file" class="upload" name="image">
                                             </div>
                                         </div>
                                         <label>Hakkımızda </label>
