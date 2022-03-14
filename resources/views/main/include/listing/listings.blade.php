@@ -31,9 +31,10 @@
                                     <div class="listing-item">
                                         <article class="geodir-category-listing fl-wrap">
                                             <div class="geodir-category-img">
+                                                <a href="{{ route('listingDetail', $listing->seflink) }}">
                                                 <img src="{{ asset( 'main/images/listing/'. $listing->image ) }}"
                                                      alt="{{ $listing->name }}">
-                                                <div class="overlay"></div>
+                                                </a>
                                                 <div class="list-post-counter"><span> Ürün Kodu:{{ $listing->id }}</span></div>
 
                                             </div>
