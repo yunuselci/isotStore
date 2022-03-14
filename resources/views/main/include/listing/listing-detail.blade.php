@@ -96,9 +96,6 @@
                                     <div class="box-widget-content">
                                         @if (Route::has('login'))
                                             @auth
-                                                @if($listing->shops->id == Auth::user()->whereId(Auth::id())->with('shops')->get()->pluck('shops')->first()->id )
-                                                    Kendi ürününüze teklif veremezsiniz
-                                                @else
                                                 <form action="{{ route('teklifler.store') }}" method="post" class="add-comment custom-form">
                                                     @csrf
                                                     <fieldset>
@@ -117,7 +114,6 @@
                                                     </fieldset>
                                                     <button class="btn  big-btn  color-bg flat-btn">Teklif Al<i class="fa fa-angle-right"></i></button>
                                                 </form>
-                                                @endif
                                             @else
                                                 <a href="{{ route('login') }}" class="text-sm text-gray-700 dark:text-gray-500 underline">Zaten üye misiniz ? Giriş yap</a>
 
