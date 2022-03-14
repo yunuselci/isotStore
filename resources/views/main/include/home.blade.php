@@ -23,17 +23,6 @@
                         <a class="notification-close" href="#"><i class="fa fa-times"></i></a>
                     </div>
                 @endif
-                @if ($errors->any())
-                    <div class="notification reject fl-wrap">
-                        <ul>
-                            @foreach ($errors->all() as $error)
-                                <li>{{ $error }}</li>
-                            @endforeach
-                        </ul>
-                        <a class="notification-close" href="#"><i class="fa fa-times"></i></a>
-
-                    </div>
-                @endif
                 <div class="container">
                     <div class="intro-item fl-wrap">
                         <h2>Türkiye’nin Lider Stok Platformu</h2>

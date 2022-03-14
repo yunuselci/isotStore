@@ -4,7 +4,8 @@
     <!--=============== basic  ===============-->
     <meta charset="UTF-8">
     <title>@yield('title')</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <meta name="robots" content="index, follow"/>
     <meta name="keywords" content=""/>
     <meta name="description" content=""/>
@@ -26,8 +27,8 @@
 <!--loader end-->
 <!-- Main  -->
 <div id="main">
-    @include('main.data.header')
-    <!--  wrapper  -->
+@include('main.data.header')
+<!--  wrapper  -->
     <div id="wrapper">
 
         @yield('master')
@@ -50,80 +51,104 @@
         @yield('404')
 
 
-
     </div>
     <!-- wrapper end -->
-    @include('main.data.footer')
+@include('main.data.footer')
 
-    <!--register form -->
-    <div class="main-register-wrap modal">
-        <div class="main-overlay"></div>
-        <div class="main-register-holder">
-            <div class="main-register fl-wrap">
-                <div class="close-reg"><i class="fa fa-times"></i></div>
-                <h3>Giriş Yap <span>iSot<strong>Store</strong></span></h3>
-                <div id="tabs-container">
-                    <ul class="tabs-menu">
-                        <li class="current"><a href="#tab-1">Giriş Yap</a></li>
-                        <li><a href="#tab-2">Kayıt Ol</a></li>
-                    </ul>
-                    <div class="tab">
-                        <div id="tab-1" class="tab-content">
-                            <div class="custom-form">
-                                <form method="post" action="{{ route('login') }}">
-                                    @csrf
-                                    <label>E-Posta Adresi</label>
-                                    <input id="email" name="email" type="email"  onClick="this.select()" placeholder="E-Posta" required>
-                                    <label >Şifre</label>
-                                    <input id="password" name="password" type="password"   onClick="this.select()" placeholder="Şifre" required>
-                                    <div class="clearfix"></div>
-                                    <div class="filter-tags">
-                                        <label for="remember_me">
-                                        <input id="remember_me" type="checkbox" name="remember">
-                                        <span for="check-a">{{ 'Beni hatırla' }}</span>
-                                        </label>
+<!--register form -->
+    @if ($errors->any())
+        <div class="main-register-wrap modal" style="display: block">
+            @else
+                <div class="main-register-wrap modal">
+                    @endif
+                    <div class="main-overlay"></div>
+                    <div class="main-register-holder">
+                        <div class="main-register fl-wrap">
+                            <div class="close-reg"><i class="fa fa-times"></i></div>
+                            <h3>Giriş Yap <span>iSot<strong>Store</strong></span></h3>
+                            <div id="tabs-container">
+                                <ul class="tabs-menu">
+                                    <li class="current"><a href="#tab-1">Giriş Yap</a></li>
+                                    <li><a href="#tab-2">Kayıt Ol</a></li>
+                                </ul>
+                                <div class="tab">
+                                    <div id="tab-1" class="tab-content">
+                                        @if ($errors->any())
+                                            <div class="notification reject fl-wrap">
+                                                <ul>
+                                                    @foreach ($errors->all() as $error)
+                                                        <li>{{ $error }}</li>
+                                                    @endforeach
+                                                </ul>
+                                                <a class="notification-close" href="#"><i class="fa fa-times"></i></a>
+
+                                            </div>
+                                        @endif
+                                        <div class="custom-form">
+                                            <form method="post" action="{{ route('login') }}">
+                                                @csrf
+                                                <label>E-Posta Adresi</label>
+                                                <input id="email" name="email" type="email" onClick="this.select()"
+                                                       placeholder="E-Posta" required>
+                                                <label>Şifre</label>
+                                                <input id="password" name="password" type="password"
+                                                       onClick="this.select()" placeholder="Şifre" required>
+                                                <div class="clearfix"></div>
+                                                <div class="filter-tags">
+                                                    <label for="remember_me">
+                                                        <input id="remember_me" type="checkbox" name="remember">
+                                                        <span for="check-a">{{ 'Beni hatırla' }}</span>
+                                                    </label>
+                                                </div>
+                                                <button type="submit" class="log-submit-btn">
+                                                    <span> {{ 'Giriş Yap' }}</span></button>
+                                            </form>
+                                            @if (Route::has('password.request'))
+                                                <div class="lost_password">
+                                                    <a href="{{ route('password.request') }}">{{ 'Şifreni mi unuttun ?' }}</a>
+                                                </div>
+                                            @endif
+
+                                        </div>
                                     </div>
-                                    <button type="submit"  class="log-submit-btn"><span> {{ 'Giriş Yap' }}</span></button>
-                                </form>
-                                @if (Route::has('password.request'))
-                                <div class="lost_password">
-                                    <a href="{{ route('password.request') }}">{{ 'Şifreni mi unuttun ?' }}</a>
-                                </div>
-                                @endif
-
-                            </div>
-                        </div>
-                        <div class="tab">
-                            <div id="tab-2" class="tab-content">
-                                <div class="custom-form">
-                                    <form method="post" action="{{ route('register') }}" n class="main-register-form" id="main-register-form2">
-                                        @csrf
-                                        <label >İsim </label>
-                                        <input id="name" name="name" type="text"   onClick="this.select()" placeholder="İsim" required>
-                                        <label>E-Posta Adresi</label>
-                                        <input id="email" name="email" type="email"  onClick="this.select()" placeholder="E-Posta" required>
-                                        <label >Şifre</label>
-                                        <input id="password" name="password" type="password"   onClick="this.select()" placeholder="Şifre" required>
-                                        <label >Şifre Tekrar</label>
-                                        <input id="password_confirmation" name="password_confirmation" type="password"  onClick="this.select()" placeholder="Şifre Tekrar" required>
-                                        <button type="submit" class="log-submit-btn"  ><span>{{ 'Kayıt Ol' }}</span></button>
-                                    </form>
+                                    <div class="tab">
+                                        <div id="tab-2" class="tab-content">
+                                            <div class="custom-form">
+                                                <form method="post" action="{{ route('register') }}" n
+                                                      class="main-register-form" id="main-register-form2">
+                                                    @csrf
+                                                    <label>İsim </label>
+                                                    <input id="name" name="name" type="text" onClick="this.select()"
+                                                           placeholder="İsim" required>
+                                                    <label>E-Posta Adresi</label>
+                                                    <input id="email" name="email" type="email" onClick="this.select()"
+                                                           placeholder="E-Posta" required>
+                                                    <label>Şifre</label>
+                                                    <input id="password" name="password" type="password"
+                                                           onClick="this.select()" placeholder="Şifre" required>
+                                                    <label>Şifre Tekrar</label>
+                                                    <input id="password_confirmation" name="password_confirmation"
+                                                           type="password" onClick="this.select()"
+                                                           placeholder="Şifre Tekrar" required>
+                                                    <button type="submit" class="log-submit-btn">
+                                                        <span>{{ 'Kayıt Ol' }}</span></button>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
+                <!--register form end -->
+                <a class="to-top"><i class="fa fa-angle-up"></i></a>
         </div>
-    </div>
-    <!--register form end -->
-    <a class="to-top"><i class="fa fa-angle-up"></i></a>
-</div>
-<!-- Main end -->
-<!--=============== scripts  ===============-->
-<script type="text/javascript" src="{{ asset('main') }}/js/jquery.min.js"></script>
-<script type="text/javascript" src="{{ asset('main') }}/js/plugins.js"></script>
-<script type="text/javascript" src="{{ asset('main') }}/js/scripts.js"></script>
+        <!-- Main end -->
+        <!--=============== scripts  ===============-->
+        <script type="text/javascript" src="{{ asset('main') }}/js/jquery.min.js"></script>
+        <script type="text/javascript" src="{{ asset('main') }}/js/plugins.js"></script>
+        <script type="text/javascript" src="{{ asset('main') }}/js/scripts.js"></script>
 @yield('js')
 </body>
 </html>
