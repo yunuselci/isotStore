@@ -62,6 +62,7 @@
                                             <p> {{ $offer->description }}</p>
                                             <span class="reply-mail clearfix">Mail Yoluyla Cevapla : <a  class="dashboard-message-user-mail" href="mailto:{{ $offer->user_email }}" target="_top">{{ $offer->user_email }}</a></span>
                                             <span class="reply-mail clearfix">Whatsapp Üzerinden Ulaş : <a  class="dashboard-message-user-mail" href="https://api.WhatsApp.com/send?phone={{ $offer->user_phone }}" target="_blank">{{ $offer->user_phone }}</a></span>
+                                            @if($offer->status==2)
                                             <form action="{{ route('teklifler.update', $offer->id) }}" method="post" id="updateForm">
                                                 @csrf
                                                 @method('PUT')
@@ -73,6 +74,8 @@
                                                 <input type="hidden" name="shop_id" value="{{ $offer->shop_id }}">
                                                 <a class="btn circle-btn color-bg flat-btn" onclick="myFunction({{ $offer->id }})">Okundu<i class="fa fa-check-square-o"></i></a>
                                             </form>
+                                            @endif
+
                                         </div>
                                     </div>
                                 </div>

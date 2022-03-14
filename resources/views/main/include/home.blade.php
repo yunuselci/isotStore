@@ -74,7 +74,7 @@
                                     <div class="bg"
                                          data-bg="{{ asset('main/images/category/'. $category->image ) }}"></div>
                                     <div class="listing-item-cat">
-                                        <h3><a href="/kategoriler/{{ $category->seflink }}">{{ $category->name }}</a>
+                                        <h3><a href="{{ route('categoryDetail', $category->seflink) }}">{{ $category->name }}</a>
                                         </h3>
                                     </div>
                                 </div>

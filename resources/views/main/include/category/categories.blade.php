@@ -18,8 +18,9 @@
                         <div class="listing-item">
                             <article class="geodir-category-listing fl-wrap">
                                 <div class="geodir-category-img">
+                                    <a href="{{ route('categoryDetail', $category->seflink) }}">
                                     <img src="{{ asset('main/images/category/'. $category->image ) }}" alt="">
-                                    <div class="overlay"></div>
+                                    </a>
                                 </div>
                                 <div class="geodir-category-content fl-wrap">
                                     <h3><a href="{{ route('categoryDetail', $category->seflink) }}">{{ $category->name }}</a></h3>
