@@ -20,7 +20,7 @@ return new class extends Migration
             $table->string('email',55);
             $table->string('phone',55);
             $table->string('address',255);
-            $table->string('image',255)->nullable()->default('default_shop_image.jpg');
+            $table->string('image',255)->default('default_shop_image.jpg')->nullable();
             $table->text('about')->nullable();
             $table->enum('status',[1,2])->nullable()->default(2); //1 = Verificated , 2 = Not Verificated
 

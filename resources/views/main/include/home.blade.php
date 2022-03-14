@@ -167,20 +167,10 @@
                             <!--slick-slide-item end-->
                         @endforeach
                     @endisset
-
-
                 </div>
                 <!--listing-carousel end-->
-                @if($shops->lastPage()>1)
-                    <div class="pagination">
-                        <a href="{{ $shops->previousPageUrl() }}" class="prevposts-link"><i class="fa fa-caret-left"></i></a>
-                        @for($i = 1; $i<=$shops->lastPage(); $i++)
-                            <a href="{{ $shops->url($i) }}" @if($shops->currentPage()==$i) class="current-page" @endif>{{ $i }}</a>
-                        @endfor
-                        <a href="{{ $shops->nextPageUrl() }}" class="nextposts-link"><i class="fa fa-caret-right"></i></a>
-                    </div>
-                @endif
-
+                <div class="swiper-button-prev sw-btn"><i class="fa fa-long-arrow-left"></i></div>
+                <div class="swiper-button-next sw-btn"><i class="fa fa-long-arrow-right"></i></div>
             </div>
             <!--  carousel end-->
         </section>
