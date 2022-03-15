@@ -42,15 +42,22 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function (){
         return view('main.include.profile.update-password');
     })->name('passwordUpdate');
 
-    Route::resource('magazalar', ShopController::class)->except([
-        'index'
-    ]);
+
     //Admin
     Route::get('admin/magazalar', [ShopController::class,'adminShopList'])->name('adminShopList');
     Route::put('admin/magazalar/{id}', [ShopController::class,'shopStatusUpdate'])->name('adminShopStatusUpdate');
     Route::delete('admin/magazalar/{id}', [ShopController::class,'destroy'])->name('adminShopDelete');
     Route::put('profil/admin/{id}',[UserController::class,'beAdmin'])->name('beAdmin');
 
+    //shops
+    Route::get('/magazalar/arama',[ShopController::class,'search'])->name('shop.search');
+
+    Route::resource('magazalar', ShopController::class)->except([
+        'index'
+    ]);
+
+    //listings
+    Route::get('/ilanlar/arama',[ListingController::class,'search'])->name('listing.search');
 
     Route::resource('ilanlar',ListingController::class)->except([
        'index'

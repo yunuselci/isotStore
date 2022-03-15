@@ -16,11 +16,14 @@
                         </div>
                         <!-- listsearch-input-wrap  -->
                         <div class="listsearch-input-wrap fl-wrap">
-                            <div class="listsearch-input-item">
-                                <i class="mbri-key single-i"></i>
-                                <input type="text" placeholder="Mağaza Adı / Kodu" value=""/>
-                            </div>
-                            <button class="button fs-map-btn">Ara</button>
+                            <form action="{{ route('shop.search') }}" method="GET">
+                                <div class="listsearch-input-item">
+                                    <i class="mbri-key single-i"></i>
+                                    <input type="text" name="search" placeholder="Mağaza Adı / Kodu" required/>
+                                </div>
+                                <button type="submit" class="button fs-map-btn">Ara</button>
+                            </form>
+
                         </div>
                         <!-- list-main-wrap-->
                         <div class="list-main-wrap fl-wrap card-listing">

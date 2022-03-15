@@ -168,4 +168,15 @@ class ShopController extends Controller
         }
 
     }
+    public function search(Request $request){
+
+        $search = $request->input('search');
+
+        $shops = Shop::query()
+            ->where('name', 'LIKE', "%{$search}%")
+            ->orWhere('id', 'LIKE', "%{$search}%")
+            ->paginate(5);
+
+        return view('main.include.shop.shops', compact('shops'));
+    }
 }

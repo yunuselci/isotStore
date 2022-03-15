@@ -30,13 +30,12 @@
                     </div>
                     <div class="main-search-input-wrap">
                         <div class="main-search-input fl-wrap">
-                            <div class="main-search-input-item">
-                                <input type="text" placeholder="Ürün Kodu & Ürün Adı" value=""/>
-                            </div>
-                            <div class="main-search-input-item">
-                                <input type="text" placeholder="Firma & Mağaza Adı" value=""/>
-                            </div>
-                            <button class="main-search-button">Search</button>
+                            <form action="{{ route('listing.search') }}" method="GET">
+                                <div class="main-search-input-item">
+                                    <input type="text" name="search" placeholder="İlan Adı / Kodu" required/>
+                                </div>
+                                <button type="submit" class="main-search-button">Ara</button>
+                            </form>
                         </div>
                     </div>
                 </div>
@@ -63,7 +62,8 @@
                                     <div class="bg"
                                          data-bg="{{ asset('main/images/category/'. $category->image ) }}"></div>
                                     <div class="listing-item-cat">
-                                        <h3><a href="{{ route('categoryDetail', $category->seflink) }}">{{ $category->name }}</a>
+                                        <h3>
+                                            <a href="{{ route('categoryDetail', $category->seflink) }}">{{ $category->name }}</a>
                                         </h3>
                                     </div>
                                 </div>
@@ -125,19 +125,22 @@
 
                                             </div>
                                             <div class="geodir-category-content fl-wrap">
-                                                <h3><a href="{{ route('magazalar.show', $shop->id) }}">{{ $shop->name }}</a></h3>
+                                                <h3>
+                                                    <a href="{{ route('magazalar.show', $shop->id) }}">{{ $shop->name }}</a>
+                                                </h3>
                                                 <p>İlan Sayısı: {{ $shop->listings->count() }} <span
                                                         class="fa fa-shopping-basket"></span></p>
                                             </div>
                                         </article>
                                     </div>
-                                     @else
+                                @else
                                     <div class="listing-item">
                                         <article class="geodir-category-listing fl-wrap">
 
                                             <div class="geodir-category-img">
 
-                                                <img src="{{ asset('main') }}/images/shop/default_shop_image.jpg" alt="">
+                                                <img src="{{ asset('main') }}/images/shop/default_shop_image.jpg"
+                                                     alt="">
                                                 <div class="overlay"></div>
                                                 <div class="list-post-counter"><span> Mağaza Kodu:</span></div>
 
@@ -150,7 +153,7 @@
                                             </div>
                                         </article>
                                     </div>
-                                @endif
+                            @endif
                             <!-- listing-item end-->
                             </div>
 
