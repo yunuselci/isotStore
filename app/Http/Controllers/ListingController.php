@@ -177,4 +177,16 @@ class ListingController extends Controller
         }
 
     }
+
+    public function search(Request $request){
+
+        $search = $request->input('search');
+
+        $listings = Listing::query()
+            ->where('name', 'LIKE', "%{$search}%")
+            ->orWhere('id', 'LIKE', "%{$search}%")
+            ->paginate(5);
+
+        return view('main.include.listing.listings', compact('listings'));
+    }
 }
