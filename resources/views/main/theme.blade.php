@@ -56,7 +56,7 @@
 @include('main.data.footer')
 
 <!--register form -->
-    @if ($errors->any())
+    @if ($errors->default->hasAny(array('name','email','password')))
         <div class="main-register-wrap modal" style="display: block">
             @else
                 <div class="main-register-wrap modal">
@@ -73,10 +73,11 @@
                                 </ul>
                                 <div class="tab">
                                     <div id="tab-1" class="tab-content">
-                                        @if ($errors->any())
+
+                                        @if ($errors->default->any())
                                             <div class="notification reject fl-wrap">
                                                 <ul>
-                                                    @foreach ($errors->all() as $error)
+                                                    @foreach ($errors->default->all() as $error)
                                                         <li>{{ $error }}</li>
                                                     @endforeach
                                                 </ul>

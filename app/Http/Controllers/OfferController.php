@@ -33,6 +33,7 @@ class OfferController extends Controller
                 'user_email' => $request->user_email,
                 'description' => $request->description,
                 'shop_id' => $request->shop_id,
+                'listing_name'=> $request->listing_name,
             ]);
             return redirect()->back()->with('success', 'Teklif isteğiniz başarıyla gönderildi.');
 
@@ -64,17 +65,10 @@ class OfferController extends Controller
     }
 
 
-    public function update(OfferPostRequest $request, $id)
+    public function update($id)
     {
         try {
-            Offer::whereId($id)->update([
-                'user_name' => $request->user_name,
-                'user_phone' => $request->user_phone,
-                'user_email' => $request->user_email,
-                'description' => $request->description,
-                'status' => $request->status,
-                'shop_id' => $request->shop_id,
-            ]);
+            Offer::whereId($id)->update(['status' => 1]);
             return redirect()->back()->with('success', 'Teklifi okundu olarak işaretlendiz.');
         }
         catch (Exception $e){

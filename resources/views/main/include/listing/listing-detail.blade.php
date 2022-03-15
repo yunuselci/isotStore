@@ -94,6 +94,10 @@
                                 @endif
                                 <div class="box-widget">
                                     <div class="box-widget-content">
+                                        @if(!is_null(Auth::user()->whereId(Auth::id())->with('shops')->get()->pluck('shops')->first())
+                                                && Auth::user()->whereId(Auth::id())->with('shops')->get()->pluck('shops')->first()->id == $listing->shops->id)
+                                            Kendi ilanınıza teklif veremezsiniz
+                                        @else
                                         @if (Route::has('login'))
                                             @auth
                                                 <form action="{{ route('teklifler.store') }}" method="post" class="add-comment custom-form">
@@ -107,9 +111,8 @@
                                                         <div class="clearfix"></div>
                                                         <label><i class="fa fa-envelope-o"></i>  </label>
                                                         <input type="email" name="user_email" placeholder="E-Posta Adresi *" value="{{ Auth::user()->email }}"/>
-                                                        <textarea name="description" cols="40" rows="3">
-                                                            {{ $listing->name }} Ürnünüz için teklif almak istiyorum!
-                                                        </textarea>
+                                                        <textarea name="description" cols="40" rows="3"></textarea>
+                                                        <input type="hidden" name="listing_name" value="{{$listing->name}}">
                                                         <input type="hidden" name="shop_id" value="{{$listing->shops->id}}">
                                                     </fieldset>
                                                     <button class="btn  big-btn  color-bg flat-btn">Teklif Al<i class="fa fa-angle-right"></i></button>
@@ -121,6 +124,7 @@
                                                     <h3> Teklif almak için kayıt olun! </h3>
                                                 @endif
                                             @endauth
+                                        @endif
                                         @endif
 
                                     </div>
