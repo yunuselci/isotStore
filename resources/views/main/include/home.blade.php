@@ -116,9 +116,10 @@
                                     <div class="listing-item">
                                         <article class="geodir-category-listing fl-wrap">
                                             <div class="geodir-category-img">
-                                                <img src="{{ asset( 'main/images/shop/'. $shop->image ) }}"
-                                                     alt="">
-                                                <div class="overlay"></div>
+                                                <a href="{{ route('magazalar.show', $shop->id) }}">
+                                                    <img src="{{ asset( 'main/images/shop/'. $shop->image ) }}"
+                                                         alt="">
+                                                </a>
                                                 <div class="list-post-counter"><span> Mağaza Kodu:{{ $shop->id }}</span>
                                                 </div>
 

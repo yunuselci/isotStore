@@ -26,12 +26,12 @@
                         </form>
                     </ul>
                 </div>
+            @else
+                @if (Route::has('register'))
+                    <div class="show-reg-form modal-open"><i class="fa fa-sign-in"></i>Giriş Yap</div>
             @endif
-
-            @if (Route::has('register'))
-                <div class="show-reg-form modal-open"><i class="fa fa-sign-in"></i>Giriş Yap</div>
-            @endif
-            @endauth
+        @endauth
+    @endif
 
     <!-- nav-button-wrap-->
         <div class="nav-button-wrap color-bg">
